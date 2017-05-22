@@ -1,0 +1,15 @@
+header{
+    border-bottom:5px solid lightsalmon;    
+}
+body{
+    background-color: gainsboro;
+}
+footer{
+    background-color: white;
+    border-top: 5px solid lightsalmon;
+    bottom:0;
+    width: 100%;
+    margin-top: 500px;
+    text-align: center;
+    position: relative;
+}
