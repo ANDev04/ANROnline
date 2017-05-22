@@ -65,7 +65,7 @@ class ANROC_Kelas extends CI_Controller{
             $resource = $this->ANRO_Model->read("anr_paket_keahlian")->result();
             echo '<option> Pilih Jurusan</option>';
             foreach ($resource as $res){
-            echo '<option'.$selected.'name="jurusan">'.$res->paket_keahlian.'</option>'; 
+            echo '<option'.$selected.'>'.$res->paket_keahlian.'</option>'; 
             }
         }
     }
