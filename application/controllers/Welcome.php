@@ -20,7 +20,7 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-        $data['table']='ANRO_Mapel';
-		$this->load->view('ANROV_BODY',$data);
+//        $data['table']='ANRO_Mapel';
+//		$this->load->view('ANROV_BODY',$data);
 	}
 }

@@ -3,7 +3,7 @@ class ANRO_Model extends CI_Model{
     public function create($table,$data){
         $this->db->insert($table,$data);
     }
-    public function read($table, $where){
+    public function read($table, $where=""){
         if(!empty($where)){
             return $this->db->get_where($table, $where);    
         }

@@ -1,6 +1,5 @@
 <body>
     <table>
-        <?php if($table == "ANR_Mapel"){ $kolom = 6;?>
         <tr>
             <th>Kode Mata Pelajaran</th>
             <th>Nama Mata Pelajaran</th>
@@ -8,18 +7,17 @@
             <th>Guru</th>
             <th colspan="2">Aksi</th>
         </tr>
+        <?php foreach($resource as $res){?>
         <tr>
-            <?php foreach($resource as $res){?>
             <td><?php echo $res->Kode_Mapel?></td>
             <td><?php echo $res->Nama_Mapel?></td>
             <td><?php echo $res->KKM ?></td>
             <td><?php echo $res->Guru ?></td>
-            <td><a href="ANR_Mapel/edit/<?php echo $res->Kode_Mapel; ?>">Edit Data</a></td>
-            <td><a href="ANR_CRUD/delete/ANR_Mapel/Kode_Mapel/<?php echo $res->Kode_Mapel; ?>">Hapus Data</a></td>
-            <?php } ?>
+            <td><a href="ANROC_Mapel/edit/<?php echo $res->Kode_Mapel; ?>">Edit Data</a></td>
+            <td><a href="ANROC_Mapel/delete/<?php echo $res->Kode_Mapel; ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data?')">Hapus Data</a></td>
         </tr>
+        <?php } ?>
         <tr>
-            <td colspan="<?php echo $kolom?>"><a href="ANR_Mapel/create">Add Data</a></td>
+            <td><a href="ANROC_Mapel/create">Add Data</a></td>
         </tr>
-        <?php }?>
     </table>
