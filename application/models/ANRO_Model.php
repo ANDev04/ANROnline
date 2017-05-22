@@ -4,11 +4,34 @@ class ANRO_Model extends CI_Model{
         $this->db->insert($table,$data);
     }
     public function read($table, $where=""){
-        if(!empty($where)){
-            return $this->db->get_where($table, $where);    
+        if($table=="anr_siswa"){
+            $this->db->select('*');
+            $this->db->from('anr_siswa');
+            if(!empty($where)){
+                $this->db->where($where);
+            }
+            $this->db->join('anr_kelas', 'anr_kelas.Kode_Kelas = anr_siswa.kelas');
+            $query = $this->db->get();
+            return $query;
         }
-        else{
-            return $this->db->get($table);
+        else if($table=="anr_nilai"){
+            $this->db->select('*');
+            $this->db->from('anr_nilai');
+            if(!empty($where)){
+                $this->db->where($where);
+            }
+            $this->db->join('anr_siswa', 'anr_siswa.ID_SISWA = anr_nilai.Siswa');
+            $this->db->join('anr_kelas', 'anr_kelas.Kode_Kelas = anr_nilai.Kelas');
+            $this->db->join('anr_mapel', 'anr_mapel.Kode_Mapel = anr_nilai.Mapel');
+            $query = $this->db->get();
+            return $query;
+        }else{
+            if(!empty($where)){
+                return $this->db->get_where($table, $where);    
+            }
+            else{
+                return $this->db->get($table);
+            }
         }
     }
     public function delete($table,$where){
@@ -31,7 +54,14 @@ class ANRO_Model extends CI_Model{
         else{       
             $kode = 1;     
         }
-        $kodemax = str_pad($kode, 2, "0", STR_PAD_LEFT);    
+        if($kode<10){
+            $param=3;
+        }else if($kode>=10 && $kode<100){
+            $param=2;
+        }else{
+            $param=1;
+        }
+        $kodemax = str_pad($kode, $param, '0',STR_PAD_LEFT);  
         $kodejadi = $awal.$kodemax;     
         return $kodejadi;  
     }
