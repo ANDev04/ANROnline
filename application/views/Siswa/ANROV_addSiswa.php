@@ -16,8 +16,10 @@
             <tr>
                 <td>Jenis Kelamin</td>
                 <td>
-                    <input type="radio" name="Jenis_Kelamin" value="L">Laki-Laki
-                    <input type="radio" name="Jenis_Kelamin" value="P">Perempuan
+                    <input type="radio" name="Jenis_Kelamin"  value="L" id="jk1">
+                    <label for="jk1">Laki-Laki</label>
+                    <input type="radio" name="Jenis_Kelamin" value="P" id="jk2">
+                    <label for="jk2">Perempuan</label>
                 </td>
             </tr>
             <tr>
@@ -26,12 +28,12 @@
             </tr>
             <tr>
                 <td>Tanggal Lahir</td>
-                <td><input type="date" name="Tanggal_Lahir"></td>
+                <td><input type="date" name="Tanggal_Lahir" class="datepicker"></td>
             </tr>
             <tr>
                 <td>Agama</td>
                 <td>
-                    <select name="Agama">
+                    <select name="Agama" class="browser-default">
                         <option>Islam</option>
                         <option>Kristen Katholik</option>
                         <option>Kristen Protestan</option>
@@ -45,7 +47,7 @@
             <tr>
                 <td>Kelas</td>
                 <td>
-                    <select name="Kelas">
+                    <select name="Kelas" class="browser-default">
                 <?php foreach($resource as $res){ ?>
                         <option value="<?php echo $res->Kode_Kelas ?>"><?php echo $res->Tingkat_Kelas."-".$res->Nama_Kelas ?></option>
                 <?php } ?>
@@ -63,8 +65,10 @@
             <tr>
                 <td>Status</td>
                 <td>
-                    <input type="radio" name="Status" checked value="Aktif">Aktif
-                    <input type="radio" name="Status" value="Tidak Aktif">Tidak Aktif
+                    <input type="radio" name="Status" checked value="Aktif" id="aktif">
+                    <label for="aktif">Aktif</label>
+                    <input type="radio" name="Status" value="Tidak Aktif" id="tidak_aktif">
+                    <label for="tidak_aktif">Tidak Aktif</label>
                 </td>
             </tr>
             <tr>
@@ -72,3 +76,9 @@
             </tr>
         </table>
     </form>
+    <script>
+     $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 34 // Creates a dropdown of 15 years to control year
+      });
+    </script>

@@ -26,7 +26,7 @@
         </tr>
         <tr>
             <td>Tempat, Tanggal Lahir</td>
-            <td><?php echo $res->Tempat_Lahir.', '.date("d F Y", strtotime($res->Tanggal_Lahir)) ?></td>
+            <td><?php echo $res->Tempat_Lahir.', '.$res->Tanggal_Lahir ?></td>
         </tr>
         <tr>
             <td>Agama</td>
