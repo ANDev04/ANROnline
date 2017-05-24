@@ -1,5 +1,5 @@
 <body>
-    <form autocomplete="off" method="post" action="save">
+    <form autocomplete="off" method="post" action="<?php echo base_url("ANROC_Nilai/save") ?>">
         <table>
             <tr>
                 <td>Nama Siswa</td>
