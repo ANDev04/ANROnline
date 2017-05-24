@@ -32,7 +32,7 @@
         }
     ?>
         <tr>
-            <td colspan="6"><a href="ANROC_Kelas/create">Tambah Data</a></td>
+            <td colspan="6"><a href="<?php echo base_url("ANROC_Kelas/create") ?>">Tambah Data</a></td>
             
         </tr>
     </table>

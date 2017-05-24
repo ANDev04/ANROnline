@@ -1,5 +1,5 @@
 <body>
-    <form action="save" method="post">
+    <form action="<?php echo base_url("ANROC_Kelas/save") ?>" method="post">
         <table>
             <tr>
                 <td>Tingkat Kelas</td>

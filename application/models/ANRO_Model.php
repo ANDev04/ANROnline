@@ -25,6 +25,15 @@ class ANRO_Model extends CI_Model{
             $this->db->join('anr_mapel', 'anr_mapel.Kode_Mapel = anr_nilai.Mapel');
             $query = $this->db->get();
             return $query;
+        }else if($table=="anr_paket_keahlian"){
+            $this->db->select('*');
+            $this->db->from('anr_paket_keahlian');
+            if(!empty($where)){
+                $this->db->where($where);
+            }
+            $this->db->join('anr_program_keahlian', 'anr_program_keahlian.id_program_keahlian = anr_paket_keahlian.id_program_keahlian');
+            $query = $this->db->get();
+            return $query;    
         }else{
             if(!empty($where)){
                 return $this->db->get_where($table, $where);    
