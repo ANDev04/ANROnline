@@ -41,7 +41,11 @@ class ANRO_Model extends CI_Model{
         $this->db->where($where);
         $this->db->update($table,$data);
     }
-    
+    public function search($table,$data){
+        $this->db->like($data);
+        return $this->db->get($table);
+        
+    }
     public function CKode($table, $data, $awal){
         $this->db->select('RIGHT('.$table.'.'.$data.',1) as kode', FALSE);
         $this->db->order_by($data,'DESC');    

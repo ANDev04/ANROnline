@@ -1,5 +1,5 @@
 <body>
-    <form autocomplete="off" method="post" action="../save">
+    <form autocomplete="off" method="post" action="<?php echo base_url("ANROC_Mapel/save") ?>">
         <input type="hidden" name="kode_mapel" value="<?php echo $resource['Kode_Mapel']?>">
         <table>
             <tr>
