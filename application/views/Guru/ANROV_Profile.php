@@ -21,6 +21,14 @@
             <td><?php echo $jk ?></td>
         </tr>
         <tr>
+            <td>Mengajar</td>
+                <?php foreach($mapel as $pel){ ?>
+            <td>
+                <?php echo $pel->Nama_Mapel ?>
+            </td>
+                <?php } ?>
+        </tr>
+        <tr>
             <td>Status</td>
             <td><?php echo $res->Status ?></td>
         </tr>
