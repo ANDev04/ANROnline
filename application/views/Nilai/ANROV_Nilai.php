@@ -21,6 +21,7 @@
         </tr>
         <?php } ?>
         <tr>
-            <td><a href="<?php echo base_url("ANROC_Nilai/create")?>">Add Data</a></td>
+            <td colspan="3"><a href="<?php echo base_url()."ANROC_Exel/import/anr_nilai" ?>">Import Data</a></td>
+            <td colspan="3"><a href="<?php echo base_url("ANROC_Nilai/create")?>">Add Data</a></td>
         </tr>
     </table>
