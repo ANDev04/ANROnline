@@ -10,7 +10,23 @@ class ANRO_Model extends CI_Model{
             if(!empty($where)){
                 $this->db->where($where);
             }
+<<<<<<< HEAD
             $this->db->join('anr_kelas', 'anr_kelas.kode_kelas = anr_siswa.kelas');
+=======
+            $this->db->join('anr_kelas', 'anr_kelas.Kode_Kelas = anr_siswa.kelas');
+            $query = $this->db->get();
+            return $query;
+        }
+        else if($table=="anr_nilai"){
+            $this->db->select('*');
+            $this->db->from('anr_nilai');
+            if(!empty($where)){
+                $this->db->where($where);
+            }
+            $this->db->join('anr_siswa', 'anr_siswa.ID_SISWA = anr_nilai.Siswa');
+            $this->db->join('anr_kelas', 'anr_kelas.Kode_Kelas = anr_nilai.Kelas');
+            $this->db->join('anr_mapel', 'anr_mapel.Kode_Mapel = anr_nilai.Mapel');
+>>>>>>> 2cd9fe7f9926d122260c2fded9a5fbda494cd5da
             $query = $this->db->get();
             return $query;
         }else{
@@ -29,11 +45,15 @@ class ANRO_Model extends CI_Model{
         $this->db->where($where);
         $this->db->update($table,$data);
     }
+<<<<<<< HEAD
     public function search($table,$data){
         $this->db->like($data);
         return $this->db->get($table);
         
     }
+=======
+    
+>>>>>>> 2cd9fe7f9926d122260c2fded9a5fbda494cd5da
     public function CKode($table, $data, $awal){
         $this->db->select('RIGHT('.$table.'.'.$data.',1) as kode', FALSE);
         $this->db->order_by($data,'DESC');    

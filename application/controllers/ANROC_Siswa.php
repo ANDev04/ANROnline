@@ -72,6 +72,7 @@ class ANROC_Siswa extends CI_Controller{
     function hapus($id_siswa){
         $where=array('id_siswa'=>$id_siswa);
         $this->ANRO_Model->delete("anr_siswa",$where);
+        redirect("ANROC_SISWA");
         
     }
 }
