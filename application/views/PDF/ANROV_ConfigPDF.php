@@ -19,6 +19,6 @@
         </tr>
         <?php } ?>
         <tr>
-            <td colspan="3"><a href="ANROC_PDF/create">Tambah Konfigurasi</a><br></td>
+            <td colspan="3"><a href="<?php echo base_url("ANROC_PDF/create") ?>">Tambah Konfigurasi</a><br></td>
         </tr>
     </table>
