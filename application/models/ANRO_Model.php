@@ -69,4 +69,12 @@ class ANRO_Model extends CI_Model{
         $kodejadi = $awal.$kodemax;     
         return $kodejadi;  
     }
+    
+    function insertExel($table, $data, $banyak){
+        if($this->db->insert($table, $data)){
+            return $banyak;
+        }else{
+            return $banyak += 1;
+        }
+    }
 }
