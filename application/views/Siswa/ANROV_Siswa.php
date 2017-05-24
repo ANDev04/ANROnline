@@ -26,4 +26,7 @@
     <?php 
         }
     ?>
+        <tr>
+           <td colspan="6"><a href="create">Tambah Data</a></td>
+        </tr>
     </table>

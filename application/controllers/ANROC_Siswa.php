@@ -15,6 +15,13 @@ class ANROC_Siswa extends CI_Controller{
         $this->load->view("Siswa/ANROV_Profile",$data);
         $this->load->view("ANROV_Footer",$data);
     }
+    function create(){
+        $data['title']="ANROnline | Tambah Data Siswa";
+        $data['resource']=$this->ANRO_Model->read("ANR_Kelas")->result();
+        $this->load->view("ANROV_Header",$data);
+        $this->load->view("Siswa/ANROV_addSiswa",$data);
+        $this->load->view("ANROV_Footer",$data);
+    }
 }
 
 ?>

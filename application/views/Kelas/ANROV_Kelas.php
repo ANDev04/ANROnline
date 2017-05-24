@@ -25,8 +25,8 @@
         <?php } ?>
             <td><?php echo $res->Kuota ?></td>
             <td><?php echo $res->Tahun_Masuk."/".$res->Tahun_Keluar ?></td>
-            <td><a href="ANROC_Kelas/Edit/<?php echo $res->Kode_Kelas ?>">Edit</a></td>
-            <td><a href="ANROC_Kelas/Hapus/<?php echo $res->Kode_Kelas ?>">Hapus</a></td>
+            <td><a href="Edit/<?php echo $res->Kode_Kelas ?>">Edit</a></td>
+            <td><a href="Hapus/<?php echo $res->Kode_Kelas ?>">Hapus</a></td>
         </tr>
     <?php 
         }
