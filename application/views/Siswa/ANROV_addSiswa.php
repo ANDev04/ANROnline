@@ -71,6 +71,4 @@
                 <td><button type="submit" name="type" value="insert">Submit</button></td>
             </tr>
         </table>
-    
     </form>
-    <script src="<?php echo base_url()."assets/js/jquery-3.1.1.min.js" ?>"></script>
