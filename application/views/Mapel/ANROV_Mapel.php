@@ -12,7 +12,7 @@
             <td><?php echo $res->Kode_Mapel?></td>
             <td><?php echo $res->Nama_Mapel?></td>
             <td><?php echo $res->KKM ?></td>
-            <td><?php echo $res->Guru ?></td>
+            <td><a href="<?php echo base_url("ANROC_Guru/profile/".$res->ID_Guru) ?>"><?php echo $res->Nama_Guru?></a></td>
             <td><a href="<?php echo base_url("ANROC_Mapel/edit/".$res->Kode_Mapel) ?>">Edit Data</a></td>
             <td><a href="<?php echo base_url("ANROC_Mapel/delete/".$res->Kode_Mapel) ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data?')">Hapus Data</a></td>
         </tr>
