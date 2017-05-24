@@ -30,6 +30,7 @@
         }
     ?>
         <tr>
-           <td colspan="6"><a href="<?php echo base_url()."ANROC_Siswa/create/" ?>">Tambah Data</a></td>
+           <td colspan="3"><a href="<?php echo base_url()."ANROC_Exel/import/anr_siswa" ?>">Import Data</a></td>
+           <td colspan="3"><a href="<?php echo base_url()."ANROC_Siswa/create/" ?>">Tambah Data</a></td>
         </tr>
     </table>

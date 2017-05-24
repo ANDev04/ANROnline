@@ -33,6 +33,6 @@
     ?>
         <tr>
             <td colspan="6"><a href="<?php echo base_url("ANROC_Kelas/create") ?>">Tambah Data</a></td>
-            
+            <td colspan="3"><a href="<?php echo base_url()."ANROC_Exel/import/anr_kelas" ?>">Import Data</a></td>
         </tr>
     </table>

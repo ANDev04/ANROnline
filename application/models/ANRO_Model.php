@@ -10,7 +10,7 @@ class ANRO_Model extends CI_Model{
             if(!empty($where)){
                 $this->db->where($where);
             }
-            $this->db->join('anr_kelas', 'anr_kelas.kode_kelas = anr_siswa.kelas');
+            $this->db->join('anr_kelas', 'anr_kelas.Kode_Kelas = anr_siswa.kelas');
             $query = $this->db->get();
             return $query;
         }

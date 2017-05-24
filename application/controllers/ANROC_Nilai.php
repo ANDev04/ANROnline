@@ -49,7 +49,7 @@ class ANROC_Nilai extends CI_Controller{
                 'Siswa' => $this->input->post('siswa'),
                 'Mapel' => $this->input->post('mapel'),
                 'Jenis_Nilai' => $this->input->post('jenis_nilai'),
-                'Kelas' => $this->input->post('Kelas'),
+                'Kelas' => $this->input->post('kelas'),
                 'Semester' => $this->input->post('semester'),
                 'Nilai' => $this->input->post('nilai')
             );
