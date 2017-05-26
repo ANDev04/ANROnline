@@ -101,7 +101,7 @@ class ANRO_Model extends CI_Model{
         }
     }
     
-    function readNilai($where=""){
+    function readNilai($table, $where=""){
         $this->db->select('*');
         $this->db->from('anr_nilai');
         if(!empty($where)){

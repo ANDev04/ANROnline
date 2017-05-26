@@ -27,7 +27,7 @@ class ANROC_Nilai extends CI_Controller{
         $id = array('ID_NILAI' => $this->uri->segment(3));
         $data['title'] = "ANROnline | Ubah Data Nilai";
         $data['resource'] = $this->ANRO_Model->read("anr_nilai", $id)->row_array();
-        $nilai = $this->ANRO_Model->read("anr_nilai", $id)->row_array();
+        $nilai = $this->ANRO_Model->readNilai("anr_nilai", $id)->row_array();
         $data['siswa'] = $this->ANRO_Model->read("anr_siswa", array('ID_SISWA' => $nilai['Siswa']))->row_array();
         $data['mapel'] = $this->ANRO_Model->read("anr_mapel", array('Kode_Mapel' => $nilai['Mapel']))->row_array();
         $data['kelas'] = $this->ANRO_Model->read("anr_kelas", array('Kode_Kelas' => $nilai['Kelas']))->row_array();
