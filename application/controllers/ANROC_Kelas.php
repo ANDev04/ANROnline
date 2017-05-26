@@ -52,6 +52,7 @@ class ANROC_Kelas extends CI_Controller{
     function hapus($kode_kelas){
         $where=array('kode_kelas'=>$kode_kelas);
         $this->ANRO_Model->delete("ANR_Kelas",$where);
+        redirect("ANROC_Kelas");
         
     }
     function jurusan(){
@@ -79,6 +80,14 @@ class ANROC_Kelas extends CI_Controller{
         else{
             echo $this->input->post("nomer");        
         }
+    }
+    function Kelas($Kode_Kelas){
+        $data['resource']=$this->ANRO_Model->read("anr_kelas",array("Kode_Kelas" => $Kode_Kelas))->result();
+        $data['siswa']=$this->ANRO_Model->read("anr_siswa_kelas",array("anr_kelas.Kode_Kelas" => $Kode_Kelas));
+        $data['title']="Data Kelas";
+        $this->load->view("ANROV_Header",$data);
+        $this->load->view("Kelas/ANROV_DataKelas",$data);
+        $this->load->view("ANROV_Footer",$data);
     }
 }
 ?>

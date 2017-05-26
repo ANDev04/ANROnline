@@ -9,8 +9,10 @@ class ANROC_Siswa extends CI_Controller{
     }
     function profile($id_siswa){
         $data['resource']=$this->ANRO_Model->read("anr_siswa",array('id_siswa'=>$id_siswa))->result();
+        $data['kelas']= $this->ANRO_Model->read("anr_siswa_kelas",array('anr_siswa.id_siswa'=>$id_siswa))->result();
         foreach($data['resource'] as $res){
             $nama=$res->Nama_Siswa;
+            $data["ID_Siswa"]=$id_siswa;
         }
         $data['title']="ANROnline | ".$nama;
         $this->load->view("ANROV_Header",$data);
@@ -35,7 +37,6 @@ class ANROC_Siswa extends CI_Controller{
     function save(){
         if($this->input->post("type")=="insert"){
             $data=array(
-                'ID_Siswa'=>'',
                 'NIS'=>$this->input->post('NIS'),
                 'NISN'=>$this->input->post('NISN'),
                 'nama_siswa'=>$this->input->post('Nama_Siswa'),
@@ -49,6 +50,12 @@ class ANROC_Siswa extends CI_Controller{
                 'status'=>$this->input->post('Status')
             );
             $this->ANRO_Model->create("ANR_Siswa",$data);
+            $siswa=$this->ANRO_Model->read("anr_siswa",$data)->result();
+            foreach($siswa as $sis){
+                $tahun_masuk=$sis->tahun_masuk;
+                $tahun_keluar=$sis->tahun_keluar;
+            }
+            
         }
         else if($this->input->post("type")=="update"){
             $where=array("id_siswa"=>$this->input->post("id_siswa"));

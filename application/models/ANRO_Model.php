@@ -4,17 +4,7 @@ class ANRO_Model extends CI_Model{
         $this->db->insert($table,$data);
     }
     public function read($table, $where=""){
-        if($table=="anr_siswa"){
-            $this->db->select('*');
-            $this->db->from('anr_siswa');
-            if(!empty($where)){
-                $this->db->where($where);
-            }
-            $this->db->join('anr_kelas', 'anr_kelas.Kode_Kelas = anr_siswa.kelas');
-            $query = $this->db->get();
-            return $query;
-        }
-        else if($table=="anr_nilai"){
+        if($table=="anr_nilai"){
             $this->db->select('*');
             $this->db->from('anr_nilai');
             if(!empty($where)){
@@ -43,6 +33,16 @@ class ANRO_Model extends CI_Model{
             $this->db->join('anr_guru', 'anr_guru.ID_Guru = anr_mapel.Guru');
             $query = $this->db->get();
             return $query;    
+        }else if($table=="anr_siswa_kelas"){
+            $this->db->select('*');
+            $this->db->from('anr_siswa_kelas');
+            if(!empty($where)){
+                $this->db->where($where);
+            }
+            $this->db->join('anr_siswa', 'anr_siswa.ID_Siswa = anr_siswa_kelas.ID_Siswa');
+            $this->db->join('anr_kelas', 'anr_kelas.Kode_Kelas = anr_siswa_kelas.Kode_Kelas');
+            $query = $this->db->get();
+            return $query;    
         }else{
             if(!empty($where)){
                 return $this->db->get_where($table, $where);    
@@ -53,7 +53,12 @@ class ANRO_Model extends CI_Model{
         }
     }
     public function delete($table,$where){
-        $this->db->delete($table,$where);
+        $del=$this->db->delete($table,$where);
+        if($del){
+        return true;
+        }else{
+            return false;
+        }
     }
     public function update($where,$data,$table){
         $this->db->where($where);
