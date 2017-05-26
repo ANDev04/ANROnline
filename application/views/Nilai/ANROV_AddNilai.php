@@ -61,8 +61,8 @@
                 <td>Semester</td>
                 <td>:</td>
                 <td>
-                    <input type="radio" name="semester" value="Ganjil">Ganjil
-                    <input type="radio" name="semester" value="Genap">Genap
+                    <input type="radio" name="semester" value="Ganjil" id="ganjil"><label for="ganjil">Ganjil</label>
+                    <input type="radio" name="semester" value="Genap" id="genap"><label for="genap">Genap</label>
                 </td>
             </tr>
             <tr>

@@ -5,7 +5,7 @@
                 <td>Nama Siswa</td>
                 <td>:</td>
                 <td>
-                    <select name="nis">
+                    <select name="id_siswa">
                         <option value="Pilih" disabled selected>Pilih Siswa</option>
                         <?php foreach($siswa as $b){?>
                         <option value="<?php echo $b->ID_SISWA ?>"><?php echo $b->NIS."/".$b->NISN." | ".$b->Nama_Siswa ?></option>
@@ -29,8 +29,8 @@
                 <td>Semester</td>
                 <td>:</td>
                 <td>
-                    <input type="radio" name="semester" value="Ganjil">Ganjil
-                    <input type="radio" name="semester" value="Genap">Genap
+                    <input type="radio" name="semester" value="Ganjil" id="ganjil"><label for="ganjil">Ganjil</label>
+                    <input type="radio" name="semester" value="Genap" id="genap"><label for="genap">Genap</label>
                 </td>
             </tr>
             <tr>

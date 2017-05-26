@@ -95,4 +95,14 @@ class ANRO_Model extends CI_Model{
             return $banyak += 1;
         }
     }
+    
+    function readNilai($where=""){
+        $this->db->select('*');
+        $this->db->from('anr_nilai');
+        if(!empty($where)){
+            $this->db->where($where);
+        }
+        $this->db->join('anr_mapel', 'anr_mapel.Kode_Mapel = anr_nilai.Mapel');
+        return $this->db->get();
+    }
 }
