@@ -21,9 +21,9 @@ class ANROC_PDF extends CI_Controller{
         $data['kelas'] = $this->ANRO_Model->read("anr_kelas", array('Kode_Kelas' => $this->input->post('kode_kelas')))->row_array();
         $data['header'] = $this->ANRO_Model->read("anr_config", array('ID_Config' => $this->input->post('header')))->row_array();
         $data['footer'] = $this->ANRO_Model->read("anr_config", array('ID_Config' => $this->input->post('footer')))->row_array();
-        $data['nilai'] = $this->ANRO_Model->read("anr_nilai", array('Siswa' => $this->input->post('id_siswa'), 'Kelas' => $this->input->post('kode_kelas'), 'Semester' => $this->input->post('semester')))->result();
+        $data['nilai'] = $this->ANRO_Model->readNilai(array('Siswa' => $this->input->post('id_siswa'), 'Kelas' => $this->input->post('kode_kelas'), 'Semester' => $this->input->post('semester')))->result();
         $data['semester'] = $this->input->post('semester');
-        $cek = $this->ANRO_Model->read("anr_nilai", array('Siswa' => $this->input->post('id_siswa'), 'Kelas' => $this->input->post('kode_kelas'), 'Semester' => $this->input->post('Semester')))->num_rows();
+        $cek = $this->ANRO_Model->readNilai(array('Siswa' => $this->input->post('id_siswa'), 'Kelas' => $this->input->post('kode_kelas'), 'Semester' => $this->input->post('Semester')))->num_rows();
 
         $html = $this->load->view('PDF/ANROV_Raport', $data, true);
 
@@ -31,7 +31,7 @@ class ANROC_PDF extends CI_Controller{
         $paper = 'A4';
         $orientation = 'potrait';
 
-        if($cek>0){
+        if(!$cek>0){
             pdf_create($html, $filename, $paper, $orientation);
         }
         else{
@@ -62,7 +62,7 @@ class ANROC_PDF extends CI_Controller{
     function delete(){
         $id = array('ID_Config' => $this->uri->segment(3));
         $this->ANRO_Model->delete("anr_config", $id);
-        redirect(base_url("ANROC_PDF"));
+        redirect(base_url("ANROC_PDF/config"));
     }
     function save(){
         if($this->input->post('tipe') == "Footer"){

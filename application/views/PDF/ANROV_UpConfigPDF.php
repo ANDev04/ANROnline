@@ -33,18 +33,24 @@
             </div>
         </div>
     </div>
+</main>
     <script src='<?php echo base_url()?>assets/js/tinymce/tinymce.min.js'></script>
     <script type="text/javascript">
         $(document).ready(function() {
             tinymce.init({
                 selector: "textarea",
+                theme : "modern",
+                width : 1000,
+                height : 200,
                 plugins: [
-                    "advlist autolink lists link image charmap print preview anchor",
-                    "searchreplace visualblocks code fullscreen",
-                    "insertdatetime media table contextmenu paste jbimages"
+                  'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+                  'searchreplace wordcount visualblocks visualchars code fullscreen',
+                  'insertdatetime media nonbreaking save table contextmenu directionality',
+                  'emoticons template paste textcolor colorpicker textpattern imagetools codesample jbimages'
                 ],
-                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
-                relative_urls: false
+                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link jbimages",
+                relative_urls: false,
+                remove_script_host: false
             });
         });
     </script>

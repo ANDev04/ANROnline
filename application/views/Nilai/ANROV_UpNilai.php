@@ -43,12 +43,12 @@
                 <td>
                     <?php 
                         if($resource['Semester'] == "Ganjil"){
-                            echo "<input type='radio' name='semester' value='Ganjil' checked>Ganjil";
-                            echo "<input type='radio' name='semester' value='Genap'>Genap";
+                            echo "<input type='radio' name='semester' value='Ganjil' id='ganjil' checked><label for='ganjil'>Ganjil</label>";
+                            echo "<input type='radio' name='semester' value='Genap' id='genap'><label for='genap'>Genap</label>";
                         } 
                         else if($resource['Semester'] == "Genap"){
-                            echo "<input type='radio' name='semester' value='Ganjil'>Ganjil";
-                            echo "<input type='radio' name='semester' value='Genap' checked>Genap";
+                            echo "<input type='radio' name='semester' value='Ganjil' id='ganjil' checked><label for='ganjil'>Ganjil</label>";
+                            echo "<input type='radio' name='semester' value='Genap' checked id='genap'><label for='genap'>Genap</label>";
                         }
                     ?>
                 </td>
