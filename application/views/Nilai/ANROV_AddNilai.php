@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col s12 z-depth-3">
-                <blockquote><h3>Data Paket Keahlian</h3></blockquote>
+                <blockquote><h3>Tambah Nilai</h3></blockquote>
             </div>
         </div>
         <div class="row">
@@ -49,9 +49,6 @@
                             <td>
                                 <select name="kelas">
                                     <option value="" disabled selected>Pilih Kelas</option>
-                                    <?php foreach($kelas as $res){?>
-                                    <option value="<?php echo $res->Kode_Kelas ?>"><?php echo $res->Tingkat_Kelas."-".$res->Nama_Kelas." (".$res->Tahun_Masuk."/".$res->Tahun_Keluar.")" ?></option>
-                                    <?php } ?>
                                 </select>
                             </td>
                         </tr>
