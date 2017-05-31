@@ -58,7 +58,7 @@
 					type : 'POST', 
 					url  : '<?php echo site_url('ANROC_SiswaKelas/tambah/'.$Kode_Kelas); ?>', 
 					data : {
-						ID_Siswa : $("#tambah").val()
+						ID_Siswa : $(this).val()
 					},
                     success : function(notif){
                         location.reload()
@@ -71,7 +71,7 @@
 					type : 'POST', 
 					url  : '<?php echo site_url('ANROC_SiswaKelas/hapus/'.$Kode_Kelas); ?>', 
 					data : {
-						ID_Siswa : $("#hapus").val()
+						ID_Siswa : $(this).val()
 					},
                     success : function(notif){
                         location.reload()
