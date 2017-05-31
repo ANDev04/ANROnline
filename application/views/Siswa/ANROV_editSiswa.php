@@ -7,7 +7,7 @@
         </div>
         <div class="row">
             <div class="col s12 z-depth-3">
-                <form action="<?php echo base_url()."ANROC_Siswa/Save" ?>" method="post">
+                <form onsubmit="return validasi(this, 'siswa')" action="<?php echo base_url()."ANROC_Siswa/Save" ?>" method="post">
                     <table class="table table-responsive">
                         <?php foreach($resource as $res){ 
                                     $islam="";

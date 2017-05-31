@@ -7,7 +7,7 @@
         </div>
         <div class="row">
             <div class="col s12 z-depth-3">
-                <form autocomplete="off" method="post" action="<?php echo base_url("ANROC_Mapel/save") ?>">
+                <form onsubmit="return validasi(this, 'mapel')" autocomplete="off" method="post" action="<?php echo base_url("ANROC_Mapel/save") ?>">
                     <input type="hidden" name="kode_mapel" value="<?php echo $resource['Kode_Mapel']?>">
                     <table>
                         <tr>

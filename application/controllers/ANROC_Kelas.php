@@ -58,13 +58,13 @@ class ANROC_Kelas extends CI_Controller{
     function jurusan(){
         if($this->input->post('tingkat_kelas')=="X"){
             $resource = $this->ANRO_Model->read("anr_program_keahlian")->result();
-            echo '<option selected disabled> Pilih Jurusan</option>';
+            echo '<option selected value="Pilih" disabled> Pilih Jurusan</option>';
             foreach ($resource as $res){
             echo '<option value="'.$res->program_keahlian.'">'.$res->program_keahlian.'</option>'; 
             }
         }else{
             $resource = $this->ANRO_Model->read("anr_paket_keahlian")->result();
-            echo '<option selected disabled> Pilih Jurusan</option>';
+            echo '<option selected value="Pilih" disabled> Pilih Jurusan</option>';
             foreach ($resource as $res){
             echo '<option>'.$res->paket_keahlian.'</option>'; 
             }

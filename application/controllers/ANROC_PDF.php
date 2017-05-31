@@ -31,7 +31,7 @@ class ANROC_PDF extends CI_Controller{
         $paper = 'A4';
         $orientation = 'potrait';
 
-        if(!$cek>0){
+        if($cek>0){
             pdf_create($html, $filename, $paper, $orientation);
         }
         else{
@@ -85,10 +85,19 @@ class ANROC_PDF extends CI_Controller{
         else if($type == "update"){
             $id = array('ID_Config' => $this->input->post('id'));
             $data = array(
+                'Nama' => $this->input->post('nama'),
+                'Tipe' => $this->input->post('tipe'),
                 'Isi' => $this->input->post('isi')
             );
             $this->ANRO_Model->update($id, $data, "anr_config");
         }
         redirect(base_url("ANROC_PDF/config"));
+    }
+    public function Cari_Nilai(){
+        $harian = $this->ANRO_Model->read("anr_nilai",array("Siswa" => $this->input->post("Siswa"), "anr_nilai.Kelas" => $this->input->post("Kelas"), "Mapel" => $this->input->post("Mapel"), "Jenis_Nilai" => $this->input->post("Harian"), "Semester" => $this->input->post("Semester")))->row_array();
+        $uts = $this->ANRO_Model->read("anr_nilai",array("Siswa" => $this->input->post("Siswa"), "anr_nilai.Kelas" => $this->input->post("Kelas"), "Mapel" => $this->input->post("Mapel"), "Jenis_Nilai" => $this->input->post("UAS"), "Semester" => $this->input->post("Semester")))->row_array();
+        $uas = $this->ANRO_Model->read("anr_nilai",array("Siswa" => $this->input->post("Siswa"), "anr_nilai.Kelas" => $this->input->post("Kelas"), "Mapel" => $this->input->post("Mapel"), "Jenis_Nilai" => $this->input->post("UTS"), "Semester" => $this->input->post("Semester")))->row_array();
+        $pra = $this->ANRO_Model->read("anr_nilai",array("Siswa" => $this->input->post("Siswa"), "anr_nilai.Kelas" => $this->input->post("Kelas"), "Mapel" => $this->input->post("Mapel"), "Jenis_Nilai" => $this->input->post("Praktek"), "Semester" => $this->input->post("Semester")))->row_array();
+        echo $harian['Nilai'].",",$uts['Nilai'].",",$uas['Nilai'].",",$pra['Nilai'];
     }
 }

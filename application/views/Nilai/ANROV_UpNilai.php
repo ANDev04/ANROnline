@@ -1,5 +1,5 @@
 <body>
-    <form autocomplete="off" method="post" action="<?php echo base_url("ANROC_Nilai/save") ?>">
+    <form onsubmit="return validasi(this, 'edit_nilai')" autocomplete="off" method="post" action="<?php echo base_url("ANROC_Nilai/save") ?>">
         <input type="hidden" name="id_nilai" value="<?php echo $resource['ID_NILAI']?>">
         <table>
             <tr>
@@ -34,7 +34,7 @@
                 <td>Nilai</td>
                 <td>:</td>
                 <td>
-                    <input type="number" name="nilai" min="0" max="100" value="<?php echo $resource['Nilai'] ?>" required>
+                    <input type="number" name="nilai" min="0" max="100" value="<?php echo $resource['Nilai'] ?>">
                 </td>
             </tr>
             <tr>

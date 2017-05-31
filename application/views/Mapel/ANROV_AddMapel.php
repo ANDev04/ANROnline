@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col s12 z-depth-3">
                 
-                <form autocomplete="off" method="post" action="<?php echo base_url("ANROC_Mapel/save") ?>">
+                <form onsubmit="return validasi(this, 'mapel')" autocomplete="off" method="post" action="<?php echo base_url("ANROC_Mapel/save") ?>">
                     <input type="hidden" name="kode_mapel" value="<?php echo $kode ?>">
                     <table class="responsive-table">
                         <tr>
@@ -31,7 +31,7 @@
                             
                             <td>
                                 <select name="guru">
-                                    <option value="" disabled selected>Pilih Guru</option>
+                                    <option value="Pilih" disabled selected>Pilih Guru</option>
                                     <?php foreach($resource as $res){?>
                                     <option value="<?php echo $res->ID_Guru ?>"><?php echo $res->NIP." / ".$res->NUPTK." ".$res->Nama_Guru ?></option>
                                     <?php } ?>

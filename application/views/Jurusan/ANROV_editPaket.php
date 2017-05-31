@@ -9,7 +9,7 @@
             <div class="col s12 z-depth-3">
             
             
-                <form action="<?php echo base_url("ANROC_Paket/save") ?>" method="post">
+                <form onsubmit="return validasi(this, 'paket')" action="<?php echo base_url("ANROC_Paket/save") ?>" method="post">
                     <table>
                         <?php foreach($resource as $res){?>
                         <input type="hidden" name="id_paket_keahlian" value="<?php echo $res->id_paket_keahlian ?>">

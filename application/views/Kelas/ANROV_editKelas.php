@@ -7,7 +7,7 @@
         </div>
         <div class="row">
             <div class="col s12 z-depth-3">
-                <form action="<?php echo base_url("ANROC_Kelas/save") ?>" method="post">
+                <form onsubmit="return validasi(this, 'kelas')" action="<?php echo base_url("ANROC_Kelas/save") ?>" method="post">
                     <table>
                         <?php 
                             foreach($resource->result() as $res)
@@ -128,7 +128,7 @@
                         var current=$('input[name="current"]').val();
                         if(parseInt(add)!=nomer){
                             if(nomer!=current){
-                                alert("Kelas Sudah Ada");
+                                Materialize.toast("Kelas Sudah Ada", 4000);
                                 $('input[name="nomer"]').val(current); 
                                 
                             }

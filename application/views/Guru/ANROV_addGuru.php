@@ -7,19 +7,19 @@
         </div>
         <div class="row">
             <div class="col s12 z-depth-3">
-                <form action="<?php echo base_url()."ANROC_Guru/Save" ?>" method="post">
+                <form onsubmit="return validasi(this, 'guru')" action="<?php echo base_url()."ANROC_Guru/Save" ?>" method="post">
                     <table>
                         <tr>
                             <td>Masukkan NIP</td>
-                            <td><input type="number" name="NIP" min="9" required></td>
+                            <td><input type="number" name="NIP"></td>
                         </tr>
                         <tr>
                             <td>Masukkan NUPTK</td>
-                            <td><input type="number" name="NUPTK" min="9" required></td>
+                            <td><input type="number" name="NUPTK"></td>
                         </tr>
                         <tr>
                             <td>Masukkan Nama Guru</td>
-                            <td><input type="text" name="Nama_Guru" required></td>
+                            <td><input type="text" name="Nama_Guru"></td>
                         </tr>
                         <tr>
                             <td>Jenis Kelamin</td>
