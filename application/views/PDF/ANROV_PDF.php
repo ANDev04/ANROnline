@@ -7,13 +7,13 @@
         </div>
         <div class="row">
             <div class="col s12 z-depth-3">
-                 <form autocomplete="off" method="post" action="<?php echo base_url("ANROC_PDF/PDF") ?>">
+                 <form onsubmit="return validasi(this, 'PDF')" autocomplete="off" method="post" action="<?php echo base_url("ANROC_PDF/PDF") ?>">
                     <table>
                         <tr>
                             <td>Nama Siswa</td>
                             
                             <td>
-                                <select name="nis">
+                                <select name="id_siswa">
                                     <option value="Pilih" disabled selected>Pilih Siswa</option>
                                     <?php foreach($siswa as $b){?>
                                     <option value="<?php echo $b->ID_SISWA ?>"><?php echo $b->NIS."/".$b->NISN." | ".$b->Nama_Siswa ?></option>
@@ -48,7 +48,7 @@
                             
                             <td>
                                 <select name="header">
-                                    <option name="Pilih" disabled selected>Pilih Configurasi Header</option>
+                                    <option value="Pilih" disabled selected>Pilih Configurasi Header</option>
                                     <?php foreach($header as $b){?>
                                     <option value="<?php echo $b->ID_Config ?>"><?php echo $b->ID_Config." - ".$b->Nama ?></option>
                                     <?php } ?>
@@ -60,7 +60,7 @@
                             
                             <td>
                                 <select name="footer">
-                                    <option name="Pilih" disabled selected>Pilih Configurasi Footer</option>
+                                    <option value="Pilih" disabled selected>Pilih Configurasi Footer</option>
                                     <?php foreach($footer as $b){?>
                                     <option value="<?php echo $b->ID_Config ?>"><?php echo $b->ID_Config." - ".$b->Nama ?></option>
                                     <?php } ?>

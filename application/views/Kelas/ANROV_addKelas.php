@@ -7,14 +7,14 @@
         </div>
         <div class="row">
             <div class="col s12 z-depth-3">
-                <form action="<?php echo base_url("ANROC_Kelas/save") ?>" method="post">
+                <form onsubmit="return validasi(this, 'kelas')" action="<?php echo base_url("ANROC_Kelas/save") ?>" method="post">
                     <table>
                         <tr>
                             <td>Tingkat Kelas</td>
                             <td>
                                 <div class="input-field col s12">
-                                    <select id="tingkat_kelas" name="tingkat_kelas" required>
-                                        <option disabled selected>Pilih Tingkat Kelas</option>
+                                    <select id="tingkat_kelas" name="tingkat_kelas">
+                                        <option value="Pilih" disabled selected>Pilih Tingkat Kelas</option>
                                         <option value="X">X</option>
                                         <option value="XI">XI</option>
                                         <option value="XII">XII</option>
@@ -27,7 +27,7 @@
                             <td>
                                  <div class="input-field col s6">
                                     <select id="jurusan" name="jurusan">
-                                        <option>Pilih Jurusan</option>
+                                        <option value="Pilih">Pilih Jurusan</option>
                                     </select>
                                 </div>
                                 <div class="input-field col s6">
@@ -83,7 +83,7 @@
 					success : function(add){
                         var nomer=$('input[name="nomer"]').val();
                         if(parseInt(add)!=nomer){
-                            alert("Kelas Sudah Ada");
+                            Materialize.toast("Kelas Sudah Ada", 4000);
                         }
                         $total = parseInt(add);
 						$('input[name="nomer"]').val($total); 

@@ -7,41 +7,42 @@
         </div>
     <div class="row">
         <div class="col s12 z-depth-3">
-            <form action="<?php echo base_url()."ANROC_Siswa/Save" ?>" method="post">
+            <form onsubmit="return validasi(this, 'siswa')" action="<?php echo base_url()."ANROC_Siswa/Save" ?>" method="post">
                 <table>
                     <tr>
                         <td>Masukkan NIS</td>
-                        <td><input type="number" name="NIS" min="9" required></td>
+                        <td><input type="number" name="NIS"></td>
                     </tr>
                     <tr>
                         <td>Masukkan NISN</td>
-                        <td><input type="number" name="NISN" min="9" required></td>
+                        <td><input type="number" name="NISN"></td>
                     </tr>
                     <tr>
                         <td>Masukkan Nama Siswa</td>
-                        <td><input type="text" name="Nama_Siswa" required></td>
+                        <td><input type="text" name="Nama_Siswa" ></td>
                     </tr>
                     <tr>
                         <td>Jenis Kelamin</td>
                         <td>
-                            <input type="radio" name="Jenis_Kelamin"  value="L" id="jk1" required>
+                            <input type="radio" name="Jenis_Kelamin"  value="L" id="jk1" >
                             <label for="jk1">Laki-Laki</label>
-                            <input type="radio" name="Jenis_Kelamin" value="P" id="jk2" required>
+                            <input type="radio" name="Jenis_Kelamin" value="P" id="jk2" >
                             <label for="jk2">Perempuan</label>
                         </td>
                     </tr>
                     <tr>
                         <td>Tempat Lahir</td>
-                        <td><input type="text" name="Tempat_Lahir" required></td>
+                        <td><input type="text" name="Tempat_Lahir" ></td>
                     </tr>
                     <tr>
                         <td>Tanggal Lahir</td>
-                        <td><input type="date" name="Tanggal_Lahir" required></td>
+                        <td><input type="date" name="Tanggal_Lahir" ></td>
                     </tr>
                     <tr>
                         <td>Agama</td>
                         <td>
-                            <select name="Agama" required>
+                            <select name="Agama" >
+                                <option value="Pilih" disabled selected>Pilih Agama</option>
                                 <option>Islam</option>
                                 <option>Kristen Katholik</option>
                                 <option>Kristen Protestan</option>
@@ -56,8 +57,8 @@
                         <td>Kelas</td>
                         <td>
                             <div class="input-field">
-                                <select name="Kelas" required>
-                                  <option value="" disabled selected>Tingkat Kelas</option>
+                                <select name="Kelas" >
+                                  <option value="Pilih" disabled selected>Tingkat Kelas</option>
                                   <option value="X">X</option>
                                   <option value="XI">XI</option>
                                   <option value="XII">XII</option>

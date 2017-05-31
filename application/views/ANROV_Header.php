@@ -4,6 +4,7 @@
         <title><?php echo $title ?></title>
         <script src="<?php echo base_url("assets/js/jquery.min.js") ?>"></script>
         <script src="<?php echo base_url("assets/js/materialize.min.js") ?>"></script>
+        <script src="<?php echo base_url("assets/js/validasi.js") ?>"></script>
         <link href="<?php echo base_url("assets/css/materialize.min.css") ?>" rel=stylesheet>
         <link href="<?php echo base_url("assets/css/style.css") ?>" rel=stylesheet>
         <link href="<?php echo base_url("assets/css/materialize-icon.css") ?>" rel=stylesheet>

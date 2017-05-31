@@ -7,12 +7,12 @@
         </div>
         <div class="row">
             <div class="col s12 z-depth-3">
-                <form autocomplete="off" method="post" action="<?php echo base_url("ANROC_PDF/save")?>">
+                <form onsubmit="return validasi(this, 'Config')" autocomplete="off" method="post" action="<?php echo base_url("ANROC_PDF/save")?>">
                     <table>
                         <tr>
                             <td>Nama Konfigurasi</td>
                             
-                            <td><input type="text" name="nama" required/></td>
+                            <td><input type="text" name="nama"/></td>
                         </tr>
                         
                         <tr>
@@ -20,7 +20,7 @@
                             <td>
                                 <div class="input-field">
                                     <select name="tipe"  style="width:40%">
-                                        <option disabled selected>Pilih Tipe</option>
+                                        <option value="Pilih" disabled selected>Pilih Tipe</option>
                                         <option value="Header">Header</option>
                                         <option value="Footer">Footer</option>
                                     </select>
@@ -46,7 +46,6 @@
             tinymce.init({
                 selector: "textarea",
                 theme : "modern",
-                width : 1000,
                 height : 200,
                 plugins: [
                   'advlist autolink lists link image charmap print preview hr anchor pagebreak',

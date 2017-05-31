@@ -1,10 +1,11 @@
 <body>
-    <form action="<?php echo base_url("ANROC_Paket/save") ?>" method="post">
+    <form onsubmit="return validasi(this, 'paket')" action="<?php echo base_url("ANROC_Paket/save") ?>" method="post">
         <table>
             <tr>
                 <td>Program Keahlian</td>
                 <td>
                     <select name="id_program_keahlian">
+                        <option value="Pilih" disabled selected>Pilih Program Keahlian</option>
                         <?php foreach($resource as $res){ ?>
                         <option value="<?php echo $res->id_program_keahlian ?>"><?php echo $res->program_keahlian ?></option>
                         <?php } ?>

@@ -7,13 +7,13 @@
         </div>
         <div class="row">
             <div class="col s12 z-depth-3">
-                <form autocomplete="off" method="post" action="<?php echo base_url("ANROC_Nilai/save") ?>">
+                <form onsubmit="return validasi(this, 'nilai')" autocomplete="off" method="post" action="<?php echo base_url("ANROC_Nilai/save") ?>">
                     <table>
                         <tr>
                             <td>Nama Siswa</td>
                             <td>
                                 <select name="siswa">
-                                    <option value="" disabled selected>Pilih Siswa</option>
+                                    <option value="Pilih" disabled selected>Pilih Siswa</option>
                                     <?php foreach($siswa as $res){?>
                                     <option value="<?php echo $res->ID_SISWA ?>"><?php echo $res->NIS." / ".$res->NISN." ".$res->Nama_Siswa ?></option>
                                     <?php } ?>
@@ -24,7 +24,7 @@
                             <td>Nama Mata Pelajaran</td>
                             <td>
                                 <select name="mapel">
-                                    <option value="" disabled selected>Pilih Mata Pelajaran</option>
+                                    <option value="Pilih" disabled selected>Pilih Mata Pelajaran</option>
                                     <?php foreach($mapel as $res){?>
                                     <option value="<?php echo $res->Kode_Mapel ?>"><?php echo $res->Nama_Mapel ?></option>
                                     <?php } ?>
@@ -35,7 +35,7 @@
                             <td>Jenis Nilai</td>
                             <td>
                                 <select name="jenis_nilai">
-                                    <option value="" disabled selected>Pilih Jenis Nilai</option>
+                                    <option value="Pilih" disabled selected>Pilih Jenis Nilai</option>
                                     <option value="Harian">Harian</option>
                                     <option value="Ujian Tengah Semester">Ujian Tengah Semester</option>
                                     <option value="Ujian Akhir Semester">Ujian Akhir Semester</option>
@@ -48,14 +48,14 @@
                            
                             <td>
                                 <select name="kelas">
-                                    <option value="" disabled selected>Pilih Kelas</option>
+                                    <option value="Pilih" disabled selected>Pilih Kelas</option>
                                 </select>
                             </td>
                         </tr>
                         <tr>
                             <td>Nilai</td>
                             <td>
-                                <input type="number" name="nilai" min="0" max="100" required>
+                                <input type="number" name="nilai" min="0" max="100">
                             </td>
                         </tr>
                         <tr>

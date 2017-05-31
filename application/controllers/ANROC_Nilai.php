@@ -67,7 +67,7 @@ class ANROC_Nilai extends CI_Controller{
     }
     public function Cari_Kelas(){
         $resource = $this->ANRO_Model->read("anr_siswa_kelas",array("anr_siswa.ID_Siswa"=>$this->input->post("ID_Siswa")))->result();
-        echo '<option selected disabled> Pilih Kelas</option>';
+        echo '<option value="Pilih" selected disabled>Pilih Kelas</option>';
         foreach ($resource as $res){
             echo '<option value="'.$res->Kode_Kelas.'">'.$res->Tingkat_Kelas.'-'.$res->Nama_Kelas.'</option>'; 
         }

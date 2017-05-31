@@ -7,7 +7,7 @@
         </div>
         <div class="row">
             <div class="col s12 z-depth-3">
-                <form action="<?php echo base_url("ANROC_Program/save") ?>" method="post">
+                <form onsubmit="return validasi(this, 'program')" action="<?php echo base_url("ANROC_Program/save") ?>" method="post">
                     <table>
                         <tr>
                             <td>Program Keahlian</td>
