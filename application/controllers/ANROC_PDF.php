@@ -93,11 +93,4 @@ class ANROC_PDF extends CI_Controller{
         }
         redirect(base_url("ANROC_PDF/config"));
     }
-    public function Cari_Nilai(){
-        $harian = $this->ANRO_Model->read("anr_nilai",array("Siswa" => $this->input->post("Siswa"), "anr_nilai.Kelas" => $this->input->post("Kelas"), "Mapel" => $this->input->post("Mapel"), "Jenis_Nilai" => $this->input->post("Harian"), "Semester" => $this->input->post("Semester")))->row_array();
-        $uts = $this->ANRO_Model->read("anr_nilai",array("Siswa" => $this->input->post("Siswa"), "anr_nilai.Kelas" => $this->input->post("Kelas"), "Mapel" => $this->input->post("Mapel"), "Jenis_Nilai" => $this->input->post("UAS"), "Semester" => $this->input->post("Semester")))->row_array();
-        $uas = $this->ANRO_Model->read("anr_nilai",array("Siswa" => $this->input->post("Siswa"), "anr_nilai.Kelas" => $this->input->post("Kelas"), "Mapel" => $this->input->post("Mapel"), "Jenis_Nilai" => $this->input->post("UTS"), "Semester" => $this->input->post("Semester")))->row_array();
-        $pra = $this->ANRO_Model->read("anr_nilai",array("Siswa" => $this->input->post("Siswa"), "anr_nilai.Kelas" => $this->input->post("Kelas"), "Mapel" => $this->input->post("Mapel"), "Jenis_Nilai" => $this->input->post("Praktek"), "Semester" => $this->input->post("Semester")))->row_array();
-        echo $harian['Nilai'].",",$uts['Nilai'].",",$uas['Nilai'].",",$pra['Nilai'];
-    }
 }
