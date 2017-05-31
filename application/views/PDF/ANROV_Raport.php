@@ -1,7 +1,6 @@
 <html>
     <head>
         <title>Raport Siswa <?php echo $siswa['Nama_Siswa']?></title>
-        <script src="<?php echo base_url("assets/js/jquery.min.js") ?>"></script>
         <style>
             table{
                 width: 100%;
@@ -65,53 +64,36 @@
                 $i = 1;
                 $temp = "";
                 foreach($nilai as $r){
-                    if($r->Nama_Mapel != $temp){
+                    $nilai = explode(", ", $r->Nilai_Siswa);
+                    $banyak = count($nilai);
             ?>
             
             <tr>
-                <td><?php echo $i ?></td>
+                <td class="angka"><?php echo $i ?></td>
                 <td><?php echo $r->Nama_Mapel; ?></td>
                 <td class="angka"><?php echo $r->KKM; ?></td>
-                <td class="angka harian<?php echo $i ?>"></td>
-                <td class="angka uts<?php echo $i ?>"></td>
-                <td class="angka uas<?php echo $i ?>"></td>
-                <td></td>
-                <td class="angka praktek<?php echo $i ?>"></td>
-                <td></td>
+                <td class="angka harian<?php echo $i ?>"><?php if($banyak > 0){echo $nilai[0]; $banyak--;} ?></td>
+                <td class="angka uts<?php echo $i ?>"><?php if($banyak > 0){echo $nilai[1]; $banyak--;} ?></td>
+                <td class="angka uas<?php echo $i ?>"><?php if($banyak > 0){echo $nilai[2]; $banyak--;} ?></td>
+                <td class="angka"><?php echo ($nilai[0]+$nilai[1]+$nilai[2])/3; ?></td>
+                <td class="angka praktek<?php echo $i ?>"><?php if($banyak > 0){echo $nilai[3]; $banyak--;} ?></td>
+                <td><?php echo parLulus(($nilai[0]+$nilai[1]+$nilai[2])/3, $r->KKM, count($nilai)); ?></td>
             </tr>
             <?php 
-                        $i++;
-                        $temp = $r->Nama_Mapel;
-                    }
+                    $i++;
                 }
             ?>
         </table>
         <footer><?php echo $footer['Isi'] ?></footer>
     </body>
-</html>
-
-<!--<script>
-    $(document).ready(function(){
-        $.ajax({
-            type : 'POST', 
-            url  : '<?php echo site_url('ANROC_PDF/Cari_Nilai'); ?>', 
-            data : {
-                Siswa : '<?php echo $r->Siswa; ?>',
-                Kelas : '<?php echo $r->Kelas; ?>',
-                Mapel : '<?php echo $r->Mapel; ?>',
-                Harian : 'Harian',
-                UTS : 'Ujian Tengah Semester',
-                UAS : 'Ujian Akhir Semester',
-                Praktek : 'Praktek',
-                Semester : '<?php echo $r->Semester; ?>'
-            },
-            success : function(notif){
-                var nilai = notif.split(",")
-                $(".harian<?php echo $i ?>").html(nilai[0])
-                $(".uts<?php echo $i ?>").html(nilai[1])
-                $(".uas<?php echo $i ?>").html(nilai[2])
-                $(".praktek<?php echo $i ?>").html(nilai[3])
+    <?php
+        function parLulus($nilai, $kkm, $par){
+            if($nilai >= $kkm && $par == 4){
+                return "Lulus";
             }
-        }); 
-    });
-</script>-->
+            else{
+                return "Tidak Lulus";
+            }
+        }
+    ?>
+</html>

@@ -102,12 +102,13 @@ class ANRO_Model extends CI_Model{
     }
     
     function readNilai($table, $where=""){
-        $this->db->select('*');
+        $this->db->select('*, GROUP_CONCAT(Nilai SEPARATOR ",") AS Nilai_Siswa');
         $this->db->from('anr_nilai');
         if(!empty($where)){
             $this->db->where($where);
         }
-        $this->db->join('anr_mapel', 'anr_mapel.Kode_Mapel = anr_nilai.Mapel');
+        $this->db->order_by('Jenis_Nilai', 'DESC');
+        $this->db->join('anr_mapel', 'anr_mapel.Kode_Mapel = anr_nilai.Mapel','left');
         return $this->db->get();
     }
 }
