@@ -84,7 +84,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><button type="submit" name="type" value="insert">Submit</button></td>
+                        <td colspan="2" class="right-align"><button class="btn" type="submit" name="type" value="insert">Submit</button></td>
                     </tr>
                 </table>
             </form>
