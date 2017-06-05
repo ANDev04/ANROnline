@@ -30,7 +30,7 @@
                         ?>
                         <td><?php echo $jk?></td>
                         <td><a href="<?php echo base_url()."ANROC_Guru/Edit/".$res->ID_Guru ?>"><i class="material-icons">edit</i></a></td>
-                        <td><a href="<?php echo base_url()."ANROC_Guru/Hapus/".$res->ID_Guru ?>"><i class="material-icons">delete</i></a></td>
+                        <td><a href="<?php echo base_url()."ANROC_Guru/Hapus/".$res->ID_Guru ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data?')"><i class="material-icons">delete</i></a></td>
                     </tr>
                 <?php 
                     }

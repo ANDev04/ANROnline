@@ -24,7 +24,7 @@
             <td><?php echo $jk?></td>
             <td><?php echo $res->Tingkat_Kelas.'-'.$res->Nama_Kelas ?></td>
             <td><a href="<?php echo base_url()."ANROC_Siswa/Edit/".$res->ID_SISWA ?>">Edit</a></td>
-            <td><a href="<?php echo base_url()."ANROC_Siswa/Hapus/".$res->ID_SISWA ?>">Hapus</a></td>
+            <td><a href="<?php echo base_url()."ANROC_Siswa/Hapus/".$res->ID_SISWA ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data?')">Hapus</a></td>
         </tr>
     <?php 
         }
