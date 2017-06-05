@@ -39,7 +39,7 @@
                         <?php if($cek==0){?>
                         <td><button class="btn" name="Tambah" id="tambah" value="<?php echo $res->ID_SISWA ?>"><i class=material-icons>add</i></button></td>
                         <?php }else{?>
-                        <td><button class="btn" name="Hapus" id="hapus" value="<?php echo $res->ID_SISWA ?>"><i class="material-icons">delete</i></button></td>
+                        <td><button class="btn" name="Hapus" id="hapus" value="<?php echo $res->ID_SISWA ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data?')"><i class="material-icons">delete</i></button></td>
                         <?php }?>   
                     </tr>
                 <?php 
