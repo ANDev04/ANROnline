@@ -6,6 +6,7 @@ class ANRO_Model extends CI_Model{
     public function read($table, $where=""){
         if($table=="anr_nilai"){
             $this->db->select('*');
+            $this->db->order_by('Mapel' ,'DESC');    
             $this->db->from('anr_nilai');
             if(!empty($where)){
                 $this->db->where($where);
@@ -101,14 +102,10 @@ class ANRO_Model extends CI_Model{
         }
     }
     
-    function readNilai($table, $where=""){
-        $this->db->select('*, GROUP_CONCAT(Nilai SEPARATOR ",") AS Nilai_Siswa');
+    function readNilai($where){
+        $this->db->select('GROUP_CONCAT(Mapel SEPARATOR ",") AS Mapel, GROUP_CONCAT(Jenis_Nilai SEPARATOR ",") AS Jenis_Nilai, GROUP_CONCAT(Nilai SEPARATOR ",") AS Nilai_Siswa');
         $this->db->from('anr_nilai');
-        if(!empty($where)){
-            $this->db->where($where);
-        }
-        $this->db->order_by('Jenis_Nilai', 'DESC');
-        $this->db->join('anr_mapel', 'anr_mapel.Kode_Mapel = anr_nilai.Mapel','left');
+        $this->db->where($where);
         return $this->db->get();
     }
 }

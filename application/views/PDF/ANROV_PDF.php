@@ -79,7 +79,7 @@
    
 </main>
 <script>
-$('select[name="nis"]').on('change', function(){
+$('select[name="id_siswa"]').on('change', function(){
     $.ajax({
         type : 'POST', 
         url  : '<?php echo site_url('ANROC_Nilai/Cari_Kelas'); ?>', 

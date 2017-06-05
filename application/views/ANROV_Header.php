@@ -8,6 +8,20 @@
         <link href="<?php echo base_url("assets/css/materialize.min.css") ?>" rel=stylesheet>
         <link href="<?php echo base_url("assets/css/style.css") ?>" rel=stylesheet>
         <link href="<?php echo base_url("assets/css/materialize-icon.css") ?>" rel=stylesheet>
+        <script>
+            $( document ).ready(function(){
+                <?php
+                    if(isset($_GET['success'])&&isset($_GET['error'])){
+                        $success = $_GET['success'];
+                        $error = $_GET['error'];
+                ?>
+                        Materialize.toast("Data Berhasil di Import : <?php echo $success ?>", 4000);
+                        Materialize.toast("Data Gagal di Import : <?php echo $error ?>", 4000);
+                <?php
+                    }
+                ?>
+            });
+        </script>    
     </head>
     <body>
         <header>

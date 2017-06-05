@@ -27,10 +27,9 @@ class ANROC_Nilai extends CI_Controller{
         $id = array('ID_NILAI' => $this->uri->segment(3));
         $data['title'] = "ANROnline | Ubah Data Nilai";
         $data['resource'] = $this->ANRO_Model->read("anr_nilai", $id)->row_array();
-        $nilai = $this->ANRO_Model->readNilai("anr_nilai", $id)->row_array();
+        $nilai = $this->ANRO_Model->read("anr_nilai", $id)->row_array();
         $data['siswa'] = $this->ANRO_Model->read("anr_siswa", array('ID_SISWA' => $nilai['Siswa']))->row_array();
         $data['mapel'] = $this->ANRO_Model->read("anr_mapel", array('Kode_Mapel' => $nilai['Mapel']))->row_array();
-        $data['kelas'] = $this->ANRO_Model->read("anr_kelas", array('Kode_Kelas' => $nilai['Kelas']))->row_array();
         $this->load->view("ANROV_Header", $data);
         $this->load->view("Nilai/ANROV_UpNilai", $data);
         $this->load->view("ANROV_Footer", $data);
@@ -45,15 +44,21 @@ class ANROC_Nilai extends CI_Controller{
     public function save(){
         $type = $this->input->post('type');
         if($type == "insert"){
-            $data = array(
-                'Siswa' => $this->input->post('siswa'),
-                'Mapel' => $this->input->post('mapel'),
-                'Jenis_Nilai' => $this->input->post('jenis_nilai'),
-                'Kelas' => $this->input->post('kelas'),
-                'Semester' => $this->input->post('semester'),
-                'Nilai' => $this->input->post('nilai')
-            );
-            $this->ANRO_Model->create("anr_nilai", $data);
+            $cek = $this->ANRO_Model->read("anr_nilai", array('Siswa' => $this->input->post('siswa'), 'Mapel' => $this->input->post('mapel'), 'Jenis_Nilai' => $this->input->post('jenis_nilai'), 'anr_nilai.Kelas' => $this->input->post('kelas'), 'Semester' => $this->input->post('semester')))->num_rows();
+            if(!$cek>0){
+                $data = array(
+                    'Siswa' => $this->input->post('siswa'),
+                    'Mapel' => $this->input->post('mapel'),
+                    'Jenis_Nilai' => $this->input->post('jenis_nilai'),
+                    'Kelas' => $this->input->post('kelas'),
+                    'Semester' => $this->input->post('semester'),
+                    'Nilai' => $this->input->post('nilai')
+                );
+                $this->ANRO_Model->create("anr_nilai", $data);
+            }
+            else{
+                
+            }
         }
         else if($type == "update"){
             $id = array('ID_NILAI' => $this->input->post('id_nilai'));

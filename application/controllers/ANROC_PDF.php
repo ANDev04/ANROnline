@@ -21,9 +21,12 @@ class ANROC_PDF extends CI_Controller{
         $data['kelas'] = $this->ANRO_Model->read("anr_kelas", array('Kode_Kelas' => $this->input->post('kode_kelas')))->row_array();
         $data['header'] = $this->ANRO_Model->read("anr_config", array('ID_Config' => $this->input->post('header')))->row_array();
         $data['footer'] = $this->ANRO_Model->read("anr_config", array('ID_Config' => $this->input->post('footer')))->row_array();
-        $data['nilai'] = $this->ANRO_Model->readNilai(array('Siswa' => $this->input->post('id_siswa'), 'Kelas' => $this->input->post('kode_kelas'), 'Semester' => $this->input->post('semester')))->result();
+        $data['nilai'] = $this->ANRO_Model->read("anr_nilai",array('Siswa' => $this->input->post('id_siswa'), 'anr_nilai.Kelas' => $this->input->post('kode_kelas'), 'Semester' => $this->input->post('semester')))->result();
+        
+        $data['nilai_siswa'] = $this->ANRO_Model->readNilai(array('Siswa' => $this->input->post('id_siswa'), 'anr_nilai.Kelas' => $this->input->post('kode_kelas'), 'Semester' => $this->input->post('semester')))->row_array();
+        
         $data['semester'] = $this->input->post('semester');
-        $cek = $this->ANRO_Model->readNilai(array('Siswa' => $this->input->post('id_siswa'), 'Kelas' => $this->input->post('kode_kelas'), 'Semester' => $this->input->post('Semester')))->num_rows();
+        $cek = $this->ANRO_Model->read("anr_nilai", array('Siswa' => $this->input->post('id_siswa'), 'anr_nilai.Kelas' => $this->input->post('kode_kelas'), 'Semester' => $this->input->post('semester')))->num_rows();
 
         $html = $this->load->view('PDF/ANROV_Raport', $data, true);
 

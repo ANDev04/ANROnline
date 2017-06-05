@@ -27,7 +27,7 @@
                 <td>Kelas</td>
                 <td>:</td>
                 <td>
-                    <input type="text" name="kelas" value="<?php echo $kelas['Tingkat_Kelas']."-".$kelas['Nama_Kelas']." (".$kelas['Tahun_Masuk']."/".$kelas['Tahun_Keluar'].")"?>" disabled>
+                    <input type="text" name="kelas" value="<?php echo $resource['Tingkat_Kelas']."-".$resource['Nama_Kelas']." (".$resource['Tahun_Masuk']."/".$resource['Tahun_Keluar'].")"?>" disabled>
                 </td>
             </tr>
             <tr>
