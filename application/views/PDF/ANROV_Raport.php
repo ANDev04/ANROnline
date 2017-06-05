@@ -64,36 +64,64 @@
                 $i = 1;
                 $temp = "";
                 foreach($nilai as $r){
-                    $nilai = explode(", ", $r->Nilai_Siswa);
-                    $banyak = count($nilai);
+                    if($r->Kode_Mapel != $temp){
+                        $sort = sortNilai($r->Kode_Mapel, $nilai_siswa);
+                        $nilai = explode(", ", $sort);
+                        $banyak = count($nilai);
             ?>
             
             <tr>
                 <td class="angka"><?php echo $i ?></td>
                 <td><?php echo $r->Nama_Mapel; ?></td>
                 <td class="angka"><?php echo $r->KKM; ?></td>
-                <td class="angka harian<?php echo $i ?>"><?php if($banyak > 0){echo $nilai[0]; $banyak--;} ?></td>
-                <td class="angka uts<?php echo $i ?>"><?php if($banyak > 0){echo $nilai[1]; $banyak--;} ?></td>
-                <td class="angka uas<?php echo $i ?>"><?php if($banyak > 0){echo $nilai[2]; $banyak--;} ?></td>
-                <td class="angka"><?php echo ($nilai[0]+$nilai[1]+$nilai[2])/3; ?></td>
-                <td class="angka praktek<?php echo $i ?>"><?php if($banyak > 0){echo $nilai[3]; $banyak--;} ?></td>
-                <td><?php echo parLulus(($nilai[0]+$nilai[1]+$nilai[2])/3, $r->KKM, count($nilai)); ?></td>
+                <td class="angka harian<?php echo $i ?>"><?php if($banyak > 0 && $nilai[0] != "0"){echo $harian=$nilai[0]; $banyak--;}else{$harian=0;} ?></td>
+                <td class="angka uts<?php echo $i ?>"><?php if($banyak > 0 && $nilai[1] != "0"){echo $uts=$nilai[1]; $banyak--;}else{$uts=0;} ?></td>
+                <td class="angka uas<?php echo $i ?>"><?php if($banyak > 0 && $nilai[2] != "0"){echo $uas=$nilai[2]; $banyak--;}else{$uas=0;} ?></td>
+                <td class="angka"><?php echo round(($harian+$uts+$uas)/3); ?></td>
+                <td class="angka praktek<?php echo $i ?>"><?php if($banyak > 0 && $nilai[3] != "0"){echo $pra=$nilai[3]; $banyak--;}else{$pra=0;} ?></td>
+                <td><?php echo parLulus(($harian+$uts+$uas)/3, $r->KKM, count($nilai), $pra); ?></td>
             </tr>
             <?php 
-                    $i++;
+                        $temp = $r->Kode_Mapel;
+                        $i++;
+                    }
                 }
             ?>
         </table>
         <footer><?php echo $footer['Isi'] ?></footer>
     </body>
     <?php
-        function parLulus($nilai, $kkm, $par){
-            if($nilai >= $kkm && $par == 4){
+        function parLulus($nilai, $kkm, $par, $pra){
+            if($nilai >= $kkm && $pra >= $kkm && $par == 4){
                 return "Lulus";
             }
             else{
                 return "Tidak Lulus";
             }
+        }
+        function sortNilai($mapel, $nilai_siswa){
+            $mp = explode(", ", $nilai_siswa['Mapel']);
+            $nilai = explode(", ", $nilai_siswa['Nilai_Siswa']);
+            $jenis = explode(", ", $nilai_siswa['Jenis_Nilai']);
+            $harian = "0"; $uts = "0"; $uas = "0"; $pra = "0"; $i = 0;
+            foreach($mp as $m){
+                if($m == $mapel){
+                    if($jenis[$i] == "Harian"){
+                        $harian = $nilai[$i];
+                    }
+                    else if($jenis[$i] == "Ujian Tengah Semester"){
+                        $uts = $nilai[$i];
+                    }
+                    else if($jenis[$i] == "Ujian Akhir Semester"){
+                        $uas = $nilai[$i];
+                    }
+                    else if($jenis[$i] == "Praktek"){
+                        $pra = $nilai[$i];
+                    }
+                }
+                $i++;
+            }
+            return $harian.", ".$uts.", ".$uas.", ".$pra;
         }
     ?>
 </html>

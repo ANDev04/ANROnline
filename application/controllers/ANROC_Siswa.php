@@ -36,24 +36,27 @@ class ANROC_Siswa extends CI_Controller{
     }
     function save(){
         if($this->input->post("type")=="insert"){
-            $data=array(
-                'NIS'=>$this->input->post('NIS'),
-                'NISN'=>$this->input->post('NISN'),
-                'nama_siswa'=>$this->input->post('Nama_Siswa'),
-                'jenis_kelamin'=>$this->input->post('Jenis_Kelamin'),
-                'tempat_lahir'=>$this->input->post('Tempat_Lahir'),
-                'tanggal_lahir'=>$this->input->post('Tanggal_Lahir'),
-                'agama'=>$this->input->post('Agama'),
-                'kelas'=>$this->input->post('Kelas'),
-                'no_telp'=>$this->input->post('No_Telp'),
-                'alamat'=>$this->input->post('Alamat'),
-                'status'=>$this->input->post('Status')
-            );
-            $this->ANRO_Model->create("ANR_Siswa",$data);
-            $siswa=$this->ANRO_Model->read("anr_siswa",$data)->result();
-            foreach($siswa as $sis){
-                $tahun_masuk=$sis->tahun_masuk;
-                $tahun_keluar=$sis->tahun_keluar;
+            $cek = $this->ANRO_Model->read("anr_siswa", array('NIS' => $this->input->post('NIS'), 'NISN'=>$this->input->post('NISN')))->num_rows();
+            if(!$cek > 0){
+                $data=array(
+                    'NIS'=>$this->input->post('NIS'),
+                    'NISN'=>$this->input->post('NISN'),
+                    'nama_siswa'=>$this->input->post('Nama_Siswa'),
+                    'jenis_kelamin'=>$this->input->post('Jenis_Kelamin'),
+                    'tempat_lahir'=>$this->input->post('Tempat_Lahir'),
+                    'tanggal_lahir'=>$this->input->post('Tanggal_Lahir'),
+                    'agama'=>$this->input->post('Agama'),
+                    'kelas'=>$this->input->post('Kelas'),
+                    'no_telp'=>$this->input->post('No_Telp'),
+                    'alamat'=>$this->input->post('Alamat'),
+                    'status'=>$this->input->post('Status')
+                );
+                $this->ANRO_Model->create("ANR_Siswa",$data);
+                $siswa=$this->ANRO_Model->read("anr_siswa",$data)->result();
+                foreach($siswa as $sis){
+                    $tahun_masuk=$sis->tahun_masuk;
+                    $tahun_keluar=$sis->tahun_keluar;
+                }
             }
             
         }

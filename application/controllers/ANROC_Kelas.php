@@ -84,10 +84,10 @@ class ANROC_Kelas extends CI_Controller{
     function Kelas($Kode_Kelas){
         $data['resource']=$this->ANRO_Model->read("anr_kelas",array("Kode_Kelas" => $Kode_Kelas))->result();
         $data['siswa']=$this->ANRO_Model->read("anr_siswa_kelas",array("anr_kelas.Kode_Kelas" => $Kode_Kelas));
-        $data['title']="Data Kelas";
+        $data['title']="ANROnline | Data Kelas";
         $this->load->view("ANROV_Header",$data);
         $this->load->view("Kelas/ANROV_DataKelas",$data);
-        $this->load->view("ANROV_Footer",$data);
+        $this->load->view("ANROV_Footer",$data); 
     }
 }
 ?>

@@ -3,10 +3,15 @@
         <div class="row">
             <div class="z-depth-3 col s12">
                 <blockquote>
-                    <h4><?php foreach($resource as $res){
-                        $Kode_Kelas = $res->Kode_Kelas;
-                        echo $res->Tingkat_Kelas.'-'.$res->Nama_Kelas." (".$res->Tahun_Masuk."/".$res->Tahun_Keluar.")";
-                    } ?>
+                    <h4>
+                    <?php
+                        $kuota = 0;
+                        foreach($resource as $res){
+                            $Kode_Kelas = $res->Kode_Kelas;
+                            $kuota = $res->Kuota;
+                            echo $res->Tingkat_Kelas.'-'.$res->Nama_Kelas." (".$res->Tahun_Masuk."/".$res->Tahun_Keluar.")";
+                        } 
+                    ?>
                     </h4>
                 </blockquote>
             </div>
@@ -29,6 +34,7 @@
                     <td colspan="5">Tidak Ada Data Untuk ditampilkan</td>
                 <?php
                     }
+                    $banyak = 0;
                     foreach($siswa->result() as $res){
                 ?>
                     <input type="hidden" id="id_siswa" value="<?php echo $res->ID_SISWA ?>">
@@ -47,6 +53,7 @@
                         <td><a href="#"><i class="material-icons" id="hapus">delete</i></a></td>
                     </tr>
                 <?php 
+                        $banyak++;
                     }
                 ?>
                   </tbody>          
@@ -56,7 +63,7 @@
         <div class="row">
             <div class="col s12 right-align">
                 <a class="btn-floating btn-large waves-effect waves-light red "><i class="material-icons right">open_in_browser</i></a>
-                <a class="btn-floating btn-large waves-effect waves-light red " href="<?php echo base_url("ANROC_SiswaKelas/create/".$res->Kode_Kelas) ?>"><i class="material-icons right">add</i></a>
+                <a class="btn-floating btn-large waves-effect waves-light red <?php if($banyak >= $kuota){echo "disabled";} ?>" href="<?php echo base_url("ANROC_SiswaKelas/create/".$res->Kode_Kelas) ?>"><i class="material-icons right">add</i></a>
             </div>
         </div>
     </div>
