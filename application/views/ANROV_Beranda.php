@@ -23,7 +23,7 @@
                             <p>Data Pelajaran</p>
                         </div>
                         <div class="card-action green lighten-2">
-                            <a class="white-text" href="<?php echo base_url("ANROC_Siswa") ?>">Lihat Data Pelajaran</a>
+                            <a class="white-text" href="<?php echo base_url("ANROC_Mapel") ?>">Lihat Data Pelajaran</a>
                         </div>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                             <p>Data Guru</p>
                         </div>
                         <div class="card-action orange lighten-2">
-                            <a class="white-text" href="<?php echo base_url("ANROC_Siswa") ?>">Lihat Data Siswa</a>
+                            <a class="white-text" href="<?php echo base_url("ANROC_Guru") ?>">Lihat Data Guru</a>
                         </div>
                     </div>
                 </div>
@@ -42,10 +42,10 @@
                     <div class="card">
                         <div class="card-content center-align purple lighten-3">
                             <h1 class="purple-text"><?php echo $kelas ?></h1>
-                            <p>Data Siswa</p>
+                            <p>Data Kelas</p>
                         </div>
                         <div class="card-action purple lighten-2">
-                            <a class="white-text" href="<?php echo base_url("ANROC_Siswa") ?>">Lihat Data Siswa</a>
+                            <a class="white-text" href="<?php echo base_url("ANROC_Kelas") ?>">Lihat Data Kelas</a>
                         </div>
                     </div>
                 </div>
