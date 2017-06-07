@@ -11,5 +11,10 @@
         $('select').material_select();
     });
 </script>
+<script>
+	$(window).load(function() {
+		$(".se-pre-con").fadeOut(5000);
+	});
+</script>
 </body>
 </html>

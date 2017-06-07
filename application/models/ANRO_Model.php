@@ -82,14 +82,8 @@ class ANRO_Model extends CI_Model{
         else{       
             $kode = 1;     
         }
-        if($kode<10){
-            $param=3;
-        }else if($kode>=10 && $kode<100){
-            $param=2;
-        }else{
-            $param=1;
-        }
-        $kodemax = str_pad($kode, $param, '0',STR_PAD_LEFT);  
+      
+        $kodemax = str_pad($kode, 2, '0',STR_PAD_LEFT);  
         $kodejadi = $awal.$kodemax;     
         return $kodejadi;  
     }
