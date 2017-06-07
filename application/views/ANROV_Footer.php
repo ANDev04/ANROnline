@@ -16,7 +16,7 @@
 </script>
 <script>
 	$(window).load(function() {
-		$(".se-pre-con").fadeOut(5000);
+		$(".se-pre-con").fadeOut("slow");
 	});
 </script>
 </body>
