@@ -70,16 +70,19 @@
 </main>
 <script>
 $('#hapus').on('click', function(){
-				$.ajax({
-					type : 'POST', 
-					url  : '<?php echo site_url('ANROC_SiswaKelas/hapus/'.$Kode_Kelas); ?>', 
-					data : {
-						ID_Siswa : $("#id_siswa").val()
-					},
-                    success : function(notif){
-                        location.reload()
-                        Materialize.toast(notif, 4000)
-					}
-				}); 
-			});
+    var cek = confirm('Apakah Anda yakin ingin menghapus data?');
+    if(cek == TRUE){
+        $.ajax({
+            type : 'POST', 
+            url  : '<?php echo site_url('ANROC_SiswaKelas/hapus/'.$Kode_Kelas); ?>', 
+            data : {
+                ID_Siswa : $("#id_siswa").val()
+            },
+            success : function(notif){
+                location.reload()
+                Materialize.toast(notif, 4000)
+            }
+        }); 
+    }
+});
 </script>
