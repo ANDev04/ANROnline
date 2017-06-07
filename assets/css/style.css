@@ -10,3 +10,6 @@ main {
 .content{
     font-size: 20px;
 }
+.uploadbtn{
+    display: none;
+}

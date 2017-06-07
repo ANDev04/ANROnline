@@ -6,6 +6,9 @@
   </div>
 </footer>
 <script>
+    $('.uploadtr').on('click', function(){
+        $('.uploadbtn').trigger('click'); 
+    });
     $(document).ready(function() {
         $("select").select2();
         $('select').material_select();
