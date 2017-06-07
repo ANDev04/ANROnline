@@ -41,6 +41,15 @@ class ANROC_PDF extends CI_Controller{
             redirect(base_url("ANROC_PDF"));
         }
     }
+    public function preview(){
+        
+        $isi=$this->ANRO_Model->read("anr_config",array("ID_Config"=>$this->input->post('kode')))->result();
+        foreach($isi as $html){
+            echo "<div class='modal-content'>";
+            echo $html->Isi;
+            echo "</div>";
+        };
+    }
     public function config(){
         $data['title'] = "ANROnline | Konfigurasi PDF";
         $data['resource'] = $this->ANRO_Model->read("anr_config")->result();

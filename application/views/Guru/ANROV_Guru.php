@@ -35,6 +35,9 @@
                 <?php 
                     }
                 ?>
+                     <tr>
+                            <td colspan="6" class="center-align">Tidak Ada Data</td>
+                        </tr>
                 </table>
             </div>
         </div>
