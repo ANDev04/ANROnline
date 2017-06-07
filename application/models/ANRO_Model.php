@@ -82,7 +82,6 @@ class ANRO_Model extends CI_Model{
         else{       
             $kode = 1;     
         }
-      
         $kodemax = str_pad($kode, 2, '0',STR_PAD_LEFT);  
         $kodejadi = $awal.$kodemax;     
         return $kodejadi;  
