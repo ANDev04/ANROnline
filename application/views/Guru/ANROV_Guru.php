@@ -1,4 +1,4 @@
-<main>
+<main id="content">
     <div class="container">
         <div class="row">
             <div class="col s12 z-depth-3">
