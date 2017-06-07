@@ -42,3 +42,8 @@
         </div>
     </div>
 </main>
+<script>
+    <?php if(isset($_GET['success'])&&isset($_GET['error'])){ ?>
+    counter(1, '<?php echo base_url("ANROC_Nilai")?>');
+    <?php } ?>
+</script>
