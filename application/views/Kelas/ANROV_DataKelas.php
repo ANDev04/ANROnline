@@ -71,7 +71,7 @@
 <script>
 $('#hapus').on('click', function(){
     var cek = confirm('Apakah Anda yakin ingin menghapus data?');
-    if(cek == TRUE){
+    if(cek == true){
         $.ajax({
             type : 'POST', 
             url  : '<?php echo site_url('ANROC_SiswaKelas/hapus/'.$Kode_Kelas); ?>', 
