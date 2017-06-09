@@ -71,15 +71,19 @@ class ANRO_Model extends CI_Model{
         
     }
     public function CKode($table, $data, $awal){
-        $banyak = $this->db->get($table)->num_rows();
-        if($banyak<10){
-            $awal=$awal."00";
+        $this->db->select('RIGHT('.$table.'.'.$data.',3) as kode', FALSE);
+        $this->db->order_by($data,'DESC');    
+        $this->db->limit(1);     
+        $query = $this->db->get($table);
+        if($query->num_rows() <> 0){  
+            $data = $query->row();      
+            $kode = intval($data->kode) + 1;     
         }
-        else if($banyak<100){
-            $awal=$awal."0";
+        else{       
+            $kode = 1;     
         }
-        $jumlah = $banyak+1;
-        $kodejadi=$awal.$jumlah;
+        $kodemax = str_pad($kode, 3, '0',STR_PAD_LEFT);  
+        $kodejadi = $awal.$kodemax;     
         return $kodejadi;  
     }
     
