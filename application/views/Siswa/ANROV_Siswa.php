@@ -17,9 +17,39 @@
                             <th colspan="2">Aksi</th>
                         </tr>
                         <tr>
+                            <?php
+                                $key="";
+                                $kelas="";
+                                $x="";
+                                $xi="";
+                                $xii="";
+                                if(isset($_GET['key'])){
+                                    $key=$_GET['key'];
+                                }
+                                if(isset($_GET['kelas'])){
+                                    $kelas=$_GET['kelas'];
+                                    if($kelas=="X"){
+                                        $x="selected";
+                                    }else if($kelas=="XI"){
+                                        $xi=="selected";
+                                    }else if($kelas=="XII"){
+                                        $xii=="selected";
+                                    }
+                                }
+                               
+                            ?>
                             <form action="<?=base_url()?>ANROC_Siswa/cari" method="get">
-                                <th><input type="text" name="keys" onchange="this.form.submit()" value="<?php $keys="";
-                                  echo $keys  ?>"></th>
+                                <th><input type="text" value="<?php echo $key ?>" name="key"></th>
+                                <input type="text" id="kelas" name="kelas" value=""<?php echo $kelas ?>"">
+                                <th>
+                                   <select id="kls" onchange="kelas()">
+                                       <option value="" selected>Pilih Tingkat Kelas</option>
+                                       <option value="X" <?php echo $x?>>X</option>
+                                       <option value="XI" <?php echo $xi ?>>XI</option>
+                                       <option value="XII" <?php echo $xii ?>>XII</option>
+                                    </select>                                   
+                                </th>
+                                <th><button type="submit">Go</button></th>
                             </form>
                         </tr>
                     </thead>
@@ -70,6 +100,11 @@
 </main>
 
 <script>
+    function kelas(){
+        var selectnya = document.getElementById("kls");
+        var kelas=selectnya.options[selectnya.selectedIndex].value;
+        document.getElementById("kelas").value=kelas;
+    }
     <?php if(isset($_GET['success'])&&isset($_GET['error'])){ ?>
     counter(1, '<?php echo base_url("ANROC_Siswa")?>');
     <?php } ?>

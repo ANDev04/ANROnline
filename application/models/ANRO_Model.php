@@ -65,17 +65,33 @@ class ANRO_Model extends CI_Model{
         $this->db->where($where);
         $this->db->update($table,$data);
     }
-    public function page($table,$kelas,$batas=null,$offset,$key=null){
+    public function search($table,$where){
         $this->db->from($table);
+        $this->db->or_like($where);
+        return $this->db->get();
+    }
+    public function page($table,$batas=null,$offset,$kelas=null,$key=null){
+        $sql="SELECT * FROM ".$table;
+        $kelas="Kelas='".$kelas."'";
+        $key="NIS LIKE '%".$key."%' OR NISN LIKE '%".$key."%' OR NAMA LIKE '%".$key."%'";
+        
       
-        if($batas != null){
+            
+      
+        
+        if($kelas==NULL && $key==NULL){
+            $this->db->from($table);
+            $query = $this->db->get();
+            if($batas != null){
             $this->db->limit($batas,$offset);
         }
-        if ($key != null) {
+        if ($key != null && $kelas==NULL) {
             $this->db->or_like($key);
+            $query=$this->db->get();
         }
-       
-        $query = $this->db->get();
+        }else{
+            $query = $this->db->query($sql." WHERE ".$kelas);
+        }
 
         return $query;
     }

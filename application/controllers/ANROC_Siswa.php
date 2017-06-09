@@ -1,7 +1,6 @@
 <?php
 class ANROC_Siswa extends CI_Controller{
     function index(){
-        $kelas=array("Kode_Kelas"=>$this->input->get('kelas'));
         $page=$this->input->get('per_page');
         $batas=2; //jlh data yang ditampilkan per halaman
         if(!$page):     //jika page bernilai kosong maka batas akhirna akan di set 0
@@ -43,7 +42,7 @@ class ANROC_Siswa extends CI_Controller{
         $this->pagination->initialize($config);
         $data['jlhpage']=$page;
         $data['title'] = 'ANROnline | Data Siswa'; //judul title
-        $data['resource'] = $this->ANRO_Model->page("anr_siswa",$kelas,$batas,$offset)->result(); //query model semua barang
+        $data['resource'] = $this->ANRO_Model->page("anr_siswa",$batas,$offset)->result(); //query model semua barang
         $this->load->view("ANROV_Header",$data);
         $this->load->view('Siswa/ANROV_Siswa',$data);
         $this->load->view("ANROV_Footer",$data);
@@ -52,14 +51,17 @@ class ANROC_Siswa extends CI_Controller{
     {
         $key= $this->input->get('key'); //method get key
         $page=$this->input->get('per_page');  //method get per_page
- 
+        $kelas="";
+        if($this->input->get('kelas')!=""){
+            $kelas=$this->input->get('kelas');
+        }
+        $where=array('kelas'=>$kelas);
         $search=array(
             'nis'=> $key,
             'nisn'=> $key,
-            'nama_siswa'=>$key,
-            'kelas'=>$key
+            'nama_siswa'=> $key
         ); //array pencarian yang akan dibawa ke model
- 
+        $id=$key;
         $batas=5; //jlh data yang ditampilkan per halaman
         if(!$page):     //jika page bernilai kosong maka batas akhirna akan di set 0
            $offset = 0;
@@ -68,8 +70,8 @@ class ANROC_Siswa extends CI_Controller{
         endif;
  
         $config['page_query_string'] = TRUE; //mengaktifkan pengambilan method get pada url default
-        $config['base_url'] = base_url().'barang/?key='.$key;   //url yang muncul ketika tombol pada paging diklik
-        $config['total_rows'] = $this->ANRO_Model->read("anr_siswa",$search)->num_rows(); // jlh total barang
+        $config['base_url'] = base_url().'ANROC_Siswa/cari  ?key='.$key.'&kelas='.$kelas;   //url yang muncul ketika tombol pada paging diklik
+        $config['total_rows'] = $this->ANRO_Model->search("anr_siswa",$search)->num_rows();// jlh total barang
         $config['per_page'] = $batas; //batas sesuai dengan variabel batas
  
         $config['uri_segment'] = $page; //merupakan posisi pagination dalam url pada kesempatan ini saya menggunakan method get untuk menentukan posisi pada url yaitu per_page
@@ -102,7 +104,7 @@ class ANROC_Siswa extends CI_Controller{
         $data['jlhpage']=$page;
  
         $data['title'] = 'ANROnline | Data Siswa'; //judul title
-        $data['resource'] = $this->ANRO_Model->page("anr_siswa",$batas,$offset,$search)->result(); //query model semua barang
+        $data['resource'] = $this->ANRO_Model->page("anr_siswa",$batas,$offset,$kelas,$id)->result(); //query model semua barang
  
         $this->load->view("ANROV_Header",$data);
         $this->load->view('Siswa/ANROV_Siswa',$data);
