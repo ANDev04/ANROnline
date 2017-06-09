@@ -56,7 +56,7 @@ class ANRO_Model extends CI_Model{
     public function delete($table,$where){
         $del=$this->db->delete($table,$where);
         if($del){
-        return true;
+            return true;
         }else{
             return false;
         }
@@ -65,10 +65,19 @@ class ANRO_Model extends CI_Model{
         $this->db->where($where);
         $this->db->update($table,$data);
     }
-    public function search($table,$data){
-        $this->db->like($data);
-        return $this->db->get($table);
-        
+    public function page($table,$kelas,$batas=null,$offset,$key=null){
+        $this->db->from($table);
+      
+        if($batas != null){
+            $this->db->limit($batas,$offset);
+        }
+        if ($key != null) {
+            $this->db->or_like($key);
+        }
+       
+        $query = $this->db->get();
+
+        return $query;
     }
     public function CKode($table, $data, $awal){
         $banyak = $this->db->get($table)->num_rows();

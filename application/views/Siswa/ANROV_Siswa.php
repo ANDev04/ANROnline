@@ -16,6 +16,12 @@
                             <th>Kelas</th>
                             <th colspan="2">Aksi</th>
                         </tr>
+                        <tr>
+                            <form action="<?=base_url()?>ANROC_Siswa/cari" method="get">
+                                <th><input type="text" name="keys" onchange="this.form.submit()" value="<?php $keys="";
+                                  echo $keys  ?>"></th>
+                            </form>
+                        </tr>
                     </thead>
                     <tbody>
                 <?php
@@ -44,6 +50,9 @@
                             <td colspan="6" class="center-align">Tidak Ada Data</td>
                         </tr>
                     </tbody>
+                    <tfooter>
+                        <tr><td><?php echo $this->pagination->create_links(); ?></td></tr>
+                    </tfooter>
                 </table>
             </div>
         </div>
