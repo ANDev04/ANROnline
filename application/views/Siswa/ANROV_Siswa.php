@@ -7,43 +7,23 @@
         </div>
         <div class="row">
             <div class="col s12 z-depth-3">
-                <table class="responsive-table bordered">
+                <table id="siswa" class="responsive-table bordered">
                     <thead>
                         <tr>
-                            <th>NIS/NISN</th>
+                            <th>NIS</th>
+                            <th>NISN</th>
                             <th>Nama Siswa</th>
                             <th>Jenis Kelamin</th>
                             <th>Kelas</th>
-                            <th colspan="2">Aksi</th>
                         </tr>
                     </thead>
-                    <tbody>
-                <?php
-                    foreach($resource as $res){
-                ?>
-                        <tr>
-                            <td><?php echo $res->NIS."/".$res->NISN ?></td>
-                            <td><a href="<?php echo base_url()."ANROC_Siswa/Profile/".$res->ID_SISWA ?>"><?php echo $res->Nama_Siswa ?></a></td>
-                            <?php 
-                                if($res->Jenis_Kelamin=="L"){
-                                    $jk="Laki - Laki";
-                                }
-                                else{
-                                    $jk="Perempuan";
-                                }
-                            ?>
-                            <td><?php echo $jk?></td>
-                            <td><?php echo $res->Kelas ?></td>
-                            <td><a href="<?php echo base_url()."ANROC_Siswa/Edit/".$res->ID_SISWA ?>"><i class="material-icons">edit</i></a></td>
-                            <td><a href="<?php echo base_url()."ANROC_Siswa/Hapus/".$res->ID_SISWA ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data?')"><i class="material-icons">delete</i></a></td>
-                        </tr>
-                <?php 
-                    }
-                ?>
-                        <tr>
-                            <td colspan="6" class="center-align">Tidak Ada Data</td>
-                        </tr>
-                    </tbody>
+                    <tfoot>
+                        <th>NIS</th>
+                        <th>NISN</th>
+                        <th>Nama Siswa</th>
+                        <th>Jenis Kelamin</th>
+                        <th>Kelas</th>
+                    </tfoot>
                 </table>
             </div>
         </div>
@@ -59,8 +39,43 @@
         </div>
     </div>
 </main>
-
 <script>
+    $(document).ready(function() {
+        // Setup - add a text input to each footer cell
+        // No. 1
+        $('#siswa tfoot th').each( function () {
+            var title = $(this).text();
+            var inp   = '<input type="text" class="form-control" placeholder="Search '+ title +'" />';
+            $(this).html(inp);
+        } );
+
+        // DataTable
+        // No. 2
+        var table = $('#siswa').DataTable({
+                        "ajax": {
+                            "url": "<?php echo base_url('ANROC_Siswa/dt');?>",
+                            "type": "POST"
+                        },
+                        "processing": true,
+                        "serverSide": true
+                    });
+
+        // Apply the search
+        // No. 3
+
+        table.columns().every( function () {
+            var that = this;
+
+            $( 'input', this.footer() ).on( 'keyup change', function () {
+                if ( that.search() !== this.value ) {
+                    that
+                        .search( this.value )
+                        .draw();
+                }
+            } );
+        } );
+    } );
+    
     <?php if(isset($_GET['success'])&&isset($_GET['error'])){ ?>
     counter(1, '<?php echo base_url("ANROC_Siswa")?>');
     <?php } ?>
