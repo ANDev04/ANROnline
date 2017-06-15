@@ -16,6 +16,16 @@
                             <th>Kelas</th>
                             <th colspan="2">Aksi</th>
                         </tr>
+                          <tr>
+                            <th colspan="5">
+                                <select name="tingkat_kelas" id="tingkat_kelas">
+                                    <option value="Semua">Semua Tingkat</option>
+                                    <option value="X">Tingkat X</option>
+                                    <option value="XI">Tingkat XI</option>
+                                    <option value="XII">Tingkat XII</option>
+                                </select>
+                            </th>
+                        </tr>
                     </thead>
                     <tbody>
                 <?php
@@ -64,4 +74,17 @@
     <?php if(isset($_GET['success'])&&isset($_GET['error'])){ ?>
     counter(1, '<?php echo base_url("ANROC_Siswa")?>');
     <?php } ?>
+    
+    $('select[name="tingkat_kelas"]').on('change', function(){
+				$.ajax({
+					type : 'POST', 
+					url  : '<?php echo site_url('ANROC_Siswa/tingkat_kelas/'); ?>', 
+					data : {
+						kelas : $(this).val()
+					},
+                    success : function(html){
+                        $("tbody").html(html)
+					}
+				}); 
+			});
 </script>

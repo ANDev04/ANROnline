@@ -26,6 +26,7 @@
                             <th>Jenis Kelamin</th>
                             <th colspan="2">Aksi</th>
                         </tr>
+                      
                     </thead>
                     <tbody>
                 <?php

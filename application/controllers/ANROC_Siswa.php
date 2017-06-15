@@ -7,6 +7,13 @@ class ANROC_Siswa extends CI_Controller{
         $this->load->view("Siswa/ANROV_Siswa",$data);
         $this->load->view("ANROV_Footer",$data);
     }
+    function page(){
+        $data['resource']=$this->ANRO_Model->page("anr_siswa","10","2","X","A")->result();
+        $this->load->view("ANROV_Header");
+        $this->load->view("Siswa/ANROV_Siswa",$data);
+        $this->load->view("ANROV_Footer");
+        
+    }
     function profile($id_siswa){
         $data['resource']=$this->ANRO_Model->read("anr_siswa",array('id_siswa'=>$id_siswa))->result();
         $data['kelas']= $this->ANRO_Model->read("anr_siswa_kelas",array('anr_siswa.id_siswa'=>$id_siswa))->result();
@@ -25,6 +32,31 @@ class ANROC_Siswa extends CI_Controller{
         $this->load->view("ANROV_Header",$data);
         $this->load->view("Siswa/ANROV_addSiswa",$data);
         $this->load->view("ANROV_Footer",$data);
+    }
+    function tingkat_kelas(){
+        $tingkat_kelas=$_POST['kelas'];
+        if($tingkat_kelas=="Semua"){
+            $isi_table=$this->ANRO_Model->read("anr_siswa")->result();
+        }else{
+            $isi_table=$this->ANRO_Model->read("anr_siswa",array("Kelas"=>$tingkat_kelas))->result();
+            }
+            foreach($isi_table as $isi){
+                $jk;
+                if($isi->Jenis_Kelamin=="L"){
+                    $jk="Laki-Laki";
+                }
+                else{
+                    $jk="Perempuan";
+                }
+                echo "<tr>";
+                    echo "<td>".$isi->NIS."/".$isi->NISN."</td>";
+                    echo "<td>".$isi->Nama_Siswa."</td>";
+                    echo "<td>".$jk."</td>";
+                    echo "<td>".$isi->Kelas."</td>";
+                    echo "<td><a href=".base_url("ANROC_Siswa/Edit/$isi->ID_SISWA")."><i class='material-icons'>edit</i></a></td>";
+                    echo "<td><a href=".base_url("ANROC_Siswa/Hapus/$isi->ID_SISWA")."onclick='return confirm('Apakah Anda yakin ingin menghapus data?')'><i class='material-icons'>delete</i></a></td>";
+                echo "</tr>";
+        }
     }
      function edit($id_siswa){
         $data['title']="ANROnline | Edit Data Siswa";
