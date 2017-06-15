@@ -2,18 +2,14 @@
 <html>
     <head>
         <title><?php echo $title ?></title>
-        <link href="<?php echo base_url("assets/css/materialize.min.css") ?>" rel=stylesheet>
-        <link href="<?php echo base_url("assets/css/select2-materialize.css") ?>" rel=stylesheet>
-        <link href="<?php echo base_url("assets/css/style.css") ?>" rel=stylesheet>
-        <link href="<?php echo base_url("assets/css/materialize-icon.css") ?>" rel=stylesheet>
-        <link href="<?php echo base_url("assets/css/dataTables.material.min.css") ?>" rel=stylesheet>
-        <link href="<?php echo base_url("assets/css/dataTables.material.min.css") ?>" rel=stylesheet>
         <script src="<?php echo base_url("assets/js/jquery.min.js") ?>"></script>
         <script src="<?php echo base_url("assets/js/materialize.min.js") ?>"></script>
         <script src="<?php echo base_url("assets/js/select2.min.js") ?>"></script>
         <script src="<?php echo base_url("assets/js/validasi.js") ?>"></script>
-        <script src="<?php echo base_url('assets/js/jquery.dataTables.min.js');?>"></script>
-        <script src="<?php echo base_url('assets/js/dataTables.material.min.js');?>"></script>
+        <link href="<?php echo base_url("assets/css/materialize.min.css") ?>" rel=stylesheet>
+        <link href="<?php echo base_url("assets/css/select2-materialize.css") ?>" rel=stylesheet>
+        <link href="<?php echo base_url("assets/css/style.css") ?>" rel=stylesheet>
+        <link href="<?php echo base_url("assets/css/materialize-icon.css") ?>" rel=stylesheet>
         <style>
             .no-js #loader { display: none;  }
             .js #loader { display: block; position: absolute; left: 100px; top: 0; }

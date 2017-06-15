@@ -5,7 +5,6 @@
     </div>
   </div>
 </footer>
-
 <script>
     $('.uploadtr').on('click', function(){
         $('.uploadbtn').trigger('click'); 

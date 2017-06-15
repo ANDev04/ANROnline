@@ -7,32 +7,6 @@ class ANROC_Siswa extends CI_Controller{
         $this->load->view("Siswa/ANROV_Siswa",$data);
         $this->load->view("ANROV_Footer",$data);
     }
-    function dt(){
-            	/** AJAX Handle */
-    	if(
-    		isset($_SERVER['HTTP_X_REQUESTED_WITH']) && 
-    		!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && 
-    		strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'
-    		)
-    	{
-            $datatables  = $_POST;
-            $datatables['table']    = 'anr_siswa';
-    		$datatables['id-table'] = 'ID_SISWA';
-            /**
-             * Kolom yang ditampilkan
-             */
-	    	$datatables['col-display'] = array(
-            	    		               'NIS',
-            	    		               'NISN',
-            	    		               'Nama_Siswa',
-            	    		               'Jenis_Kelamin',
-            	    		               'Kelas'
-            	    		             );
-	    	$this->ANRO_Model->datatables($datatables);
-    	}
-    	return;
-    }
-    
     function profile($id_siswa){
         $data['resource']=$this->ANRO_Model->read("anr_siswa",array('id_siswa'=>$id_siswa))->result();
         $data['kelas']= $this->ANRO_Model->read("anr_siswa_kelas",array('anr_siswa.id_siswa'=>$id_siswa))->result();
@@ -114,4 +88,5 @@ class ANROC_Siswa extends CI_Controller{
         
     }
 }
+
 ?>
