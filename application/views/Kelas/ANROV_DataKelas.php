@@ -1,7 +1,7 @@
 <main>
     <div class="container">
-        <div class="row">
-            <div class="z-depth-3 col s12">
+        <div class="row z-depth-2">
+            <div class="col s12">
                 <blockquote>
                     <h4>
                     <?php
@@ -14,10 +14,9 @@
                     ?>
                     </h4>
                 </blockquote>
+                <hr>
             </div>
-        </div>
-        <div class="row">
-            <div class="z-depth-3 col s12">
+            <div class="col s12">
                 <table class="responsive-table centered">
                     <thead>
                         <tr>

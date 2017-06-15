@@ -1,12 +1,11 @@
-<main id="isi">
+<main>
     <div class="container">
-        <div class="row">
-            <div class="col s12 z-depth-3">
+        <div class="row z-depth-2">
+            <div class="col s12">
                 <blockquote><h3>Profil Siswa</h3></blockquote>
+                <hr>
             </div>
-        </div>
-        <div class="row">
-            <div class="col s12 z-depth-3">
+            <div class="col s12">
                 <table class="responsive-table bordered">
                     <?php foreach($resource as $res){ ?>
                     <tr>

@@ -53,7 +53,17 @@
             <nav>
                 <div class="nav-wrapper">
                     <a href="<?php echo base_url() ?>" class="brand-logo"><i class="material-icons">book</i>ANROnline</a>
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="<?php echo base_url("ANROC_Siswa") ?>">Data Siswa</a></li>
+                        <li><a href="<?php echo base_url("ANROC_Kelas") ?>">Data Kelas</a></li>
+                        <li><a href="<?php echo base_url("ANROC_Guru") ?>">Data Guru</a></li>
+                        <li><a href="<?php echo base_url("ANROC_Jurusan") ?>">Data Jurusan</a></li>
+                        <li><a href="<?php echo base_url("ANROC_Mapel") ?>">Data Mata Pelajaran</a></li>
+                        <li><a href="<?php echo base_url("ANROC_Nilai") ?>">Data Nilai</a></li>
+                        <li><a href="<?php echo base_url("ANROC_PDF") ?>">Cetak PDF</a></li>
+                    </ul>
+                    <ul id="nav-mobile" class="side-nav">
                         <li><a href="<?php echo base_url("ANROC_Siswa") ?>">Data Siswa</a></li>
                         <li><a href="<?php echo base_url("ANROC_Kelas") ?>">Data Kelas</a></li>
                         <li><a href="<?php echo base_url("ANROC_Guru") ?>">Data Guru</a></li>
