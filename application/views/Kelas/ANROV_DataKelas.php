@@ -37,7 +37,6 @@
                     $banyak = 0;
                     foreach($siswa->result() as $res){
                 ?>
-                    <input type="hidden" id="id_siswa" value="<?php echo $res->ID_SISWA ?>">
                     <tr>
                         <td><?php echo $res->NIS."/".$res->NISN ?></td>
                         <td><a href="<?php echo base_url()."ANROC_Siswa/Profile/".$res->ID_SISWA ?>"><?php echo $res->Nama_Siswa ?></a></td>
@@ -50,7 +49,7 @@
                             }
                         ?>
                         <td><?php echo $jk?></td>
-                        <td><a href="#"><i class="material-icons" id="hapus">delete</i></a></td>
+                        <td><button class="btn" name="hapus" id="hapus" value="<?php echo $res->ID_SISWA ?>"><i class="material-icons">delete</i></button></td>
                     </tr>
                 <?php 
                         $banyak++;
@@ -64,19 +63,19 @@
             <div class="col s12 right-align">
                 <a class="btn-floating btn-large waves-effect waves-light red "><i class="material-icons right">open_in_browser</i></a>
                 <a class="btn-floating btn-large waves-effect waves-light red <?php if($banyak >= $kuota){echo "disabled";} ?>" href="<?php echo base_url("ANROC_SiswaKelas/create/".$res->Kode_Kelas) ?>"><i class="material-icons right">add</i></a>
-            </div>
+            </div>s
         </div>
     </div>
 </main>
 <script>
-$('#hapus').on('click', function(){
+$('button[name="hapus"]').on('click', function(){
     var cek = confirm('Apakah Anda yakin ingin menghapus data?');
     if(cek == true){
         $.ajax({
             type : 'POST', 
             url  : '<?php echo site_url('ANROC_SiswaKelas/hapus/'.$Kode_Kelas); ?>', 
             data : {
-                ID_Siswa : $("#id_siswa").val()
+                ID_Siswa : $(this).val()
             },
             success : function(notif){
                 location.reload()
