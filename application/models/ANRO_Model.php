@@ -100,8 +100,8 @@ class ANRO_Model extends CI_Model{
         $this->db->from('anr_nilai');
         $this->db->where($where);
         return $this->db->get();
-    }  
-    public function page($table, $batas=null, $offset, $kelas=null, $key=null){
+    } 
+    public function page($table, $batas=null, $offset=null, $kelas=null, $key=null){
         $sql="SELECT * FROM ".$table;
         if (($kelas != null) || ($key != null)) {
             $sql .= " WHERE ";
@@ -113,6 +113,10 @@ class ANRO_Model extends CI_Model{
                 $sql .= "(anr_siswa.NIS LIKE '%".$key."%' OR anr_siswa.NISN LIKE '%".$key."%' OR anr_siswa.nama_siswa LIKE '%".$key."%') "; 
             }
             if($batas != null){
+                $sql .= " limit ". $offset .", ".$batas;
+            }
+        }else{
+             if($batas != null){
                 $sql .= " limit ". $offset .", ".$batas;
             }
         }

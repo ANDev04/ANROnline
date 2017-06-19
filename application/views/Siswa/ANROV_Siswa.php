@@ -3,11 +3,12 @@
         <div class="row">
             <div class="col s12 z-depth-3">
                 <blockquote><h3>Data Siswa</h3></blockquote>
+                <input type=hidden id="page" value="<?php echo $this->input->get('per_page') ?>">
             </div>
         </div>
         <div class="row">
             <div class="col s12 z-depth-3">
-                <table class="responsive-table bordered">
+                <table class="responsive-table bordered" id="isi">
                     <thead>
                         <tr>
                             <th>NIS/NISN</th>
@@ -17,14 +18,25 @@
                             <th colspan="2">Aksi</th>
                         </tr>
                           <tr>
-                            <th colspan="5">
+                            <form action="<?php echo base_url("ANROC_Siswa/") ?>" method="get">
+                            <th>
+                               <div class="input-field">
+                                  <input id="search" type="search" name="key" value="<?php echo $this->input->get('key') ?>">
+                                  <label class="label-icon" for="search">Cari</label>
+                                  <i class="material-icons" onclick="$('#search').val('')">close</i>
+                                </div>
+                            </th>
+                            <th colspan="4">
                                 <select name="tingkat_kelas" id="tingkat_kelas">
-                                    <option value="Semua">Semua Tingkat</option>
+                                    <option value="">Semua Tingkat</option>
                                     <option value="X">Tingkat X</option>
                                     <option value="XI">Tingkat XI</option>
                                     <option value="XII">Tingkat XII</option>
                                 </select>
+                                <input type=hidden name="kelas" value="<?php echo $this->input->get('kelas') ?>">
                             </th>
+                            <th><button type="submit" class="btn">Cari</button></th>
+                        </form>
                         </tr>
                     </thead>
                     <tbody>
@@ -50,10 +62,12 @@
                 <?php 
                     }
                 ?>
-                        <tr>
-                            <td colspan="6" class="center-align">Tidak Ada Data</td>
-                        </tr>
                     </tbody>
+                    <tfooter>
+                        <tr>
+                            <td><?php echo $this->pagination->create_links() ?></td>
+                        </tr>
+                    </tfooter>
                 </table>
             </div>
         </div>
@@ -74,17 +88,15 @@
     <?php if(isset($_GET['success'])&&isset($_GET['error'])){ ?>
     counter(1, '<?php echo base_url("ANROC_Siswa")?>');
     <?php } ?>
-    
-    $('select[name="tingkat_kelas"]').on('change', function(){
-				$.ajax({
-					type : 'POST', 
-					url  : '<?php echo site_url('ANROC_Siswa/tingkat_kelas/'); ?>', 
-					data : {
-						kelas : $(this).val()
-					},
-                    success : function(html){
-                        $("tbody").html(html)
-					}
-				}); 
-			});
+$('button[type="submit"]').on('click', function(){
+    var selected_value = $("#tingkat_kelas").val();
+    $("input[name='kelas']").val(selected_value);
+});
+$('select').ready(function(){
+    var isi = '<?php echo $this->input->get('kelas')?>';
+    if(isi !=""){
+        $('select').val(isi);
+    }    
+})
+
 </script>
