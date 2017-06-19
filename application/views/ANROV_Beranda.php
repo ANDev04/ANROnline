@@ -1,5 +1,12 @@
-    <main>
-        <div class="container">
+<main>
+    <div class="container">
+        <div class="section" style="padding:0;">
+            <div class="row">
+                <nav class="breadcrumb-nav col s12 truncate N/A transparent z-depth-0" style="height:20px; line-height: 20px; padding:0;">
+                    <a class="breadcrumb" href="#">Dashboard</a>
+                </nav>                   
+            </div>
+        </div>
             <div class="row z-depth-2">
                 <div class="col s12">
                     <blockquote><h3>Dashboard</h3></blockquote>

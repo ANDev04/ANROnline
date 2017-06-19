@@ -1,5 +1,16 @@
+
 <main>
     <div class="container">
+        <div class="section" style="padding:0;">
+            <div class="row">
+                <nav class="breadcrumb-nav col s12 truncate N/A transparent z-depth-0" style="height:20px; line-height: 20px; padding:0;">
+                    <a class="breadcrumb" href="<?php echo base_url() ?>">Dashboard</a>
+                    <a class="breadcrumb" href="<?php echo base_url("ANROC_Kelas")?>">Data Kelas</a>
+                    <a class="breadcrumb" href="javascript:history.back()"><?php echo $Nama_Kelas; ?></a>
+                    <a class="breadcrumb" href="#">Tambah Siswa ke Kelas</a>
+                </nav>                   
+            </div>
+        </div>
         <div class="row z-depth-2">
             <div class="col s12">
                 <blockquote><h3><?php echo $Nama_Kelas ?></h3></blockquote>

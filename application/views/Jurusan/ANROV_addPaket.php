@@ -1,12 +1,21 @@
 <main>
     <div class="container">
-        <div class="row">
-           <div class="col s12 z-depth-3">
-                <blockquote><h3>Tambah Data Paket</h3></blockquote>
+        <div class="section" style="padding:0;">
+            <div class="row">
+                <nav class="breadcrumb-nav col s12 truncate N/A transparent z-depth-0" style="height:20px; line-height: 20px; padding:0;">
+                    <a class="breadcrumb" href="<?php echo base_url() ?>">Dashboard</a>
+                    <a class="breadcrumb" href="<?php echo base_url("ANROC_Jurusan")?>">Data Jurusan</a>
+                    <a class="breadcrumb" href="<?php echo base_url("ANROC_Jurusan/Paket_Keahlian"); ?>">Data Paket Keahlian</a>
+                    <a class="breadcrumb" href="#">Tambah Data Paket Keahlian</a>
+                </nav>                   
             </div>
         </div>
-        <div class="row">
-            <div class="col s12 z-depth-3">
+        <div class="row z-depth-2">
+            <div class="col s12">
+                <blockquote><h3>Tambah Data Paket Keahlian</h3></blockquote>
+                <hr>
+            </div>
+            <div class="col s12">
                 <form onsubmit="return validasi(this, 'paket')" action="<?php echo base_url("ANROC_Paket/save") ?>" method="post">
                     <table>
                         <tr>

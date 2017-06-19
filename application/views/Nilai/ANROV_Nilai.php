@@ -1,5 +1,13 @@
 <main>
     <div class="container">
+        <div class="section" style="padding:0;">
+            <div class="row">
+                <nav class="breadcrumb-nav col s12 truncate N/A transparent z-depth-0" style="height:20px; line-height: 20px; padding:0;">
+                    <a class="breadcrumb" href="<?php echo base_url() ?>">Dashboard</a>
+                    <a class="breadcrumb" href="#">Data Nilai</a>
+                </nav>                   
+            </div>
+        </div>
         <div class="row z-depth-2">
             <div class="col s12">
                 <blockquote><h3>Data Nilai</h3></blockquote>
@@ -17,15 +25,19 @@
                     </tr>
                     <?php foreach($resource as $res){?>
                     <tr>
-                        <td><?php echo $res->NIS."/".$res->NISN." - ".$res->Nama_Siswa ?></td>
+                        <td><a href="<?php echo base_url("ANROC_Siswa/Profile/".$res->ID_SISWA) ?>"><?php echo $res->NIS."/".$res->NISN." - ".$res->Nama_Siswa ?></a></td>
                         <td><?php echo $res->Nama_Mapel ?></td>
                         <td><?php echo $res->Jenis_Nilai ?></td>
                         <td><?php echo $res->Nilai ?></td>
-                        <td><?php echo $res->Tingkat_Kelas."-".$res->Nama_Kelas." (".$res->Tahun_Masuk."/".$res->Tahun_Keluar.")" ?></td>
+                        <td><a href="<?php echo base_url("ANROC_Kelas/Kelas/".$res->Kode_Kelas) ?>"><?php echo $res->Tingkat_Kelas."-".$res->Nama_Kelas." (".$res->Tahun_Masuk."/".$res->Tahun_Keluar.")" ?></a></td>
                         <td><a href="<?php echo base_url("ANROC_Nilai/edit/".$res->ID_NILAI) ?>"><i class="material-icons">edit</i></a></td>
                         <td><a href="<?php echo base_url("ANROC_Nilai/delete/".$res->ID_NILAI) ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data?')"><i class="material-icons">delete</i></a></td>
                     </tr>
                     <?php } ?>
+                    
+                    <tr>
+                        <td colspan="6" class="center-align">Tidak Ada Data</td>
+                    </tr>
                 </table>
             </div>
         </div>

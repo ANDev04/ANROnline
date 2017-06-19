@@ -14,3 +14,15 @@ main {
 .uploadbtn{
     display: none;
 }
+
+.breadcrumb:before {
+    color: gray;
+}
+
+.breadcrumb{
+   color: gray;
+}
+
+.breadcrumb:last-child {
+   color: lightgray;
+}
