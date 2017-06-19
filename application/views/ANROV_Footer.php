@@ -9,12 +9,13 @@
     $('.uploadtr').on('click', function(){
         $('.uploadbtn').trigger('click'); 
     });
+    
     $(document).ready(function() {
         $("select").select2();
         $('select').material_select();
+        $(".button-collapse").sideNav();
     });
-</script>
-<script>
+    
 	$(window).load(function() {
 		$(".se-pre-con").fadeOut("slow");
 	});

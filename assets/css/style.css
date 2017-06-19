@@ -5,6 +5,7 @@ body {
   }
 
 main {
+    margin-top: 30px;
     flex: 1 0 auto;
 }
 .content{
@@ -12,4 +13,16 @@ main {
 }
 .uploadbtn{
     display: none;
+}
+
+.breadcrumb:before {
+    color: gray;
+}
+
+.breadcrumb{
+   color: gray;
+}
+
+.breadcrumb:last-child {
+   color: lightgray;
 }

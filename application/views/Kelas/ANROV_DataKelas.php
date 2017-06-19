@@ -1,23 +1,30 @@
+<?php
+    $kuota = 0;
+    foreach($resource as $res){
+        $Kode_Kelas = $res->Kode_Kelas;
+        $kuota = $res->Kuota;
+        $nama_kelas = $res->Tingkat_Kelas.'-'.$res->Nama_Kelas." (".$res->Tahun_Masuk."/".$res->Tahun_Keluar.")";
+    } 
+?>
 <main>
     <div class="container">
-        <div class="row">
-            <div class="z-depth-3 col s12">
-                <blockquote>
-                    <h4>
-                    <?php
-                        $kuota = 0;
-                        foreach($resource as $res){
-                            $Kode_Kelas = $res->Kode_Kelas;
-                            $kuota = $res->Kuota;
-                            echo $res->Tingkat_Kelas.'-'.$res->Nama_Kelas." (".$res->Tahun_Masuk."/".$res->Tahun_Keluar.")";
-                        } 
-                    ?>
-                    </h4>
-                </blockquote>
+        <div class="section" style="padding:0;">
+            <div class="row">
+                <nav class="breadcrumb-nav col s12 truncate N/A transparent z-depth-0" style="height:20px; line-height: 20px; padding:0;">
+                    <a class="breadcrumb" href="<?php echo base_url() ?>">Dashboard</a>
+                    <a class="breadcrumb" href="<?php echo base_url("ANROC_Kelas")?>">Data Kelas</a>
+                    <a class="breadcrumb" href="#"><?php echo $nama_kelas; ?></a>
+                </nav>                   
             </div>
         </div>
-        <div class="row">
-            <div class="z-depth-3 col s12">
+        <div class="row z-depth-2">
+            <div class="col s12">
+                <blockquote>
+                    <h4><?php echo $nama_kelas; ?></h4>
+                </blockquote>
+                <hr>
+            </div>
+            <div class="col s12">
                 <table class="responsive-table centered">
                     <thead>
                         <tr>

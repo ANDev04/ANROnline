@@ -1,14 +1,20 @@
 <main>
     <div class="container">
-        <div class="row">
-            <div class="col s12 z-depth-3">
-                <blockquote><h3>Data Siswa</h3></blockquote>
-                <input type=hidden id="page" value="<?php echo $this->input->get('per_page') ?>">
+        <div class="section" style="padding:0;">
+            <div class="row">
+                <nav class="breadcrumb-nav col s12 truncate N/A transparent z-depth-0" style="height:20px; line-height: 20px; padding:0;">
+                    <a class="breadcrumb" href="<?php echo base_url() ?>">Dashboard</a>
+                    <a class="breadcrumb" href="#">Data Siswa</a>
+                </nav>                   
             </div>
         </div>
-        <div class="row">
-            <div class="col s12 z-depth-3">
-                <table class="responsive-table bordered" id="isi">
+        <div class="row z-depth-2">
+            <div class="col s12">
+                <blockquote><h3>Data Siswa</h3></blockquote>
+                <hr>
+            </div>
+            <div class="col s12">
+                <table class="responsive-table bordered">
                     <thead>
                         <tr>
                             <th>NIS/NISN</th>
