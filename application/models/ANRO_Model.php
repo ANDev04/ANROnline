@@ -88,8 +88,20 @@ class ANRO_Model extends CI_Model{
     }
     
     function insertExel($table, $data, $banyak){
-        if($this->db->insert($table, $data)){
-            return $banyak;
+        if($table == "anr_siswa"){
+            $banyak1 = strlen($data['NIS']);
+            $banyak2 = strlen($data['NISN']);
+        }
+        if($table == "anr_guru"){
+            $banyak1 = strlen($data['NIP']);
+            $banyak2 = strlen($data['NUPTK']);
+        }
+        if($banyak1 == 9 && $banyak2 == 10){
+            if($this->db->insert($table, $data)){
+                return $banyak;
+            }else{
+                return $banyak += 1;
+            }
         }else{
             return $banyak += 1;
         }

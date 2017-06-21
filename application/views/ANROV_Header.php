@@ -24,16 +24,6 @@
             }
         </style>
         <script>
-            function counter(time, url){
-                var interval = setInterval(function(){
-                    time = time - 1;
-
-                    if(time == 0){
-                        clearInterval(interval);
-                        window.location = url;
-                    }
-                }, 1000);
-            }
             $( document ).ready(function(){
                 <?php
                     if(isset($_GET['success'])&&isset($_GET['error'])){
