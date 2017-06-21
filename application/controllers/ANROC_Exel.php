@@ -219,19 +219,15 @@ class ANROC_Exel extends CI_Controller{
                                 $banyak = $this->ANRO_Model->insertExel("anr_nilai", $data, $banyak);
                             }else{
                                 $banyak++;
-                                $pesan = $pesan."d";
                             }
                         }else{
                             $banyak++;
-                            $pesan = $pesan."c";
                         }
                     }else{
                         $banyak++;
-                        $pesan = $pesan."b";
                     }
                 }else{
                     $banyak++;
-                    $pesan = $pesan."a";
                 }
             }
             else{

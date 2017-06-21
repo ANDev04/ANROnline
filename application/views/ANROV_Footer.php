@@ -1,10 +1,45 @@
-<footer class="page-footer">
-    <div class="footer-copyright">
-        <div class="container center">
-            © 2017 ANDev04
+<script>
+    $( document ).ready(function(){
+        $('.modal').modal();
+        <?php
+            if(isset($_GET['success'])&&isset($_GET['error'])){
+                $success = $_GET['success'];
+                $error = $_GET['error'];
+                $hasil1 = "Data Berhasil di Import : ".$success;
+                $hasil2 = "Data Gagal di Import : ".$error;
+        ?>
+        $('#conn').modal('open');
+        <?php
+            }
+        ?>
+    });
+</script>
+
+    <div id="conn" class="modal" style="width: 500px;">
+        <div class="modal-content" style="padding: 0;">
+            <h4 class="center-align #0d47a1 blue darken-4 white-text" style="padding: 15px;">Konfirmasi</h4>
+            <p class="center-align">
+                <div class="row">
+                    <div class="col s12 center">
+                        <i class="large material-icons">done_all</i>
+                    </div>
+                </div>
+            </p>
+            <p class="center-align" style="min-height: 40px; padding: 10px; padding-left: 15px;"><?php echo $hasil1; ?><br><?php echo $hasil2; ?></p>
+        </div>
+        <div class="modal-footer">
+            <a href="javascript:window.history.replaceState(null, null, window.location.pathname);" class="modal-action modal-close waves-effect waves-green btn-flat">Oke</a>
         </div>
     </div>
-</footer>
+
+    <footer class="page-footer">
+        <div class="footer-copyright">
+            <div class="container center">
+                © 2017 ANDev04
+            </div>
+        </div>
+    </footer>
+
 <script>
     $('.uploadtr').on('click', function(){
         $('.uploadbtn').trigger('click'); 

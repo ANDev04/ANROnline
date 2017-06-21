@@ -96,6 +96,10 @@ class ANRO_Model extends CI_Model{
             $banyak1 = strlen($data['NIP']);
             $banyak2 = strlen($data['NUPTK']);
         }
+        else{
+            $banyak1 = 9;
+            $banyak2 = 10;
+        }
         if($banyak1 == 9 && $banyak2 == 10){
             if($this->db->insert($table, $data)){
                 return $banyak;

@@ -22,21 +22,7 @@
                 z-index: 9999;
                 background: url(<?php echo base_url("assets/images/Preloader_7.gif") ?>) center no-repeat white;
             }
-        </style>
-        <script>
-            $( document ).ready(function(){
-                <?php
-                    if(isset($_GET['success'])&&isset($_GET['error'])){
-                        $success = $_GET['success'];
-                        $error = $_GET['error'];
-                ?>
-                        Materialize.toast("Data Berhasil di Import : <?php echo $success ?>", 4000);
-                        Materialize.toast("Data Gagal di Import : <?php echo $error ?>", 4000);
-                <?php
-                    }
-                ?>
-            });
-        </script>    
+        </style>    
     </head>
     <body>
         <header>

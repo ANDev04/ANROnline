@@ -29,11 +29,13 @@
                     </thead>
                     <tbody>
                 <?php
+                    if($banyak >= $kuota){
+                         redirect("ANROC_Kelas/kelas/".$Kode_Kelas);
+                    }
                     foreach($resource as $res){
-                          $cek=$this->ANRO_Model->read("anr_siswa_kelas",array("anr_siswa_kelas.Kode_Kelas"=>$Kode_Kelas,"anr_siswa_kelas.ID_Siswa"=>$res->ID_SISWA))->num_rows();
+                        $cek=$this->ANRO_Model->read("anr_siswa_kelas",array("anr_siswa_kelas.Kode_Kelas"=>$Kode_Kelas,"anr_siswa_kelas.ID_Siswa"=>$res->ID_SISWA))->num_rows();
                         if($cek==0){
                 ?>  
-                        
                     <tr>
                         <td><?php echo $res->NIS."/".$res->NISN ?></td>
                         <td><a href="<?php echo base_url()."ANROC_Siswa/Profile/".$res->ID_SISWA ?>"><?php echo $res->Nama_Siswa ?></a></td>
@@ -44,36 +46,33 @@
                             else{
                                 $jk="Perempuan";
                             }
-                          
                         ?>
                         <td><?php echo $jk?></td>
                         <td><?php echo $res->Kelas?></td>
-                       
                         <td><button class="btn" name="Tambah" id="tambah" value="<?php echo $res->ID_SISWA ?>"><i class=material-icons>add</i></button></td>
                         <?php } ?>
                     </tr>
                 <?php 
                     }
                 ?>
-                  </tbody>          
+                    </tbody>          
                 </table>
             </div>
+        </div>
     </div>
-</div>
 </main>
-
- <script type="text/javascript">
-			$('button[name="Tambah"]').on('click', function(){
-				$.ajax({
-					type : 'POST', 
-					url  : '<?php echo site_url('ANROC_SiswaKelas/tambah/'.$Kode_Kelas); ?>', 
-					data : {
-						ID_Siswa : $(this).val()
-					},
-                    success : function(notif){
-                        location.reload()
-                        Materialize.toast(notif, 4000)
-					}
-				}); 
-			});
+<script type="text/javascript">
+    $('button[name="Tambah"]').on('click', function(){
+        $.ajax({
+            type : 'POST', 
+            url  : '<?php echo site_url('ANROC_SiswaKelas/tambah/'.$Kode_Kelas); ?>', 
+            data : {
+                ID_Siswa : $(this).val()
+            },
+            success : function(notif){
+                location.reload()
+                Materialize.toast(notif, 4000)
+            }
+        }); 
+    });
 </script>

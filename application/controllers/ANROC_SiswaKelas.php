@@ -17,10 +17,16 @@
                 foreach($data['kelas'] as $kelas){
                     $data['Kode_Kelas']=$kelas->Kode_Kelas;
                     $data['Nama_Kelas']=$kelas->Tingkat_Kelas.'-'.$kelas->Nama_Kelas;
+                    $data['kuota']=$kelas->Kuota;
                 }
-                $this->load->view("ANROV_Header",$data);
-                $this->load->view("Siswa_Kelas/ANROV_addSiswaKelas",$data);
-                $this->load->view("ANROV_Footer",$data);
+                $data['banyak']=$this->ANRO_Model->read("anr_siswa_kelas",array('anr_siswa_kelas.Kode_Kelas'=>$Kode_Kelas))->num_rows();
+                if($data['banyak'] <= $data['kuota']){
+                    $this->load->view("ANROV_Header",$data);
+                    $this->load->view("Siswa_Kelas/ANROV_addSiswaKelas",$data);
+                    $this->load->view("ANROV_Footer",$data);
+                }else{
+                     redirect("ANROC_Kelas/kelas/".$data['Kode_Kelas']);
+                }
             }
         }
         function tambah($Kode_Kelas){
@@ -30,9 +36,6 @@
             );
             $this->ANRO_Model->create("anr_siswa_kelas",$data);
             echo "Success";
-        }
-        function pindah($ID_SISWA_KELAS){
-            
         }
         function hapus($Kode_Kelas){
             $sql = $this->ANRO_Model->delete("anr_siswa_kelas",array("ID_SISWA"=>$this->input->post("ID_Siswa"),"Kode_Kelas"=>$Kode_Kelas));
