@@ -1,8 +1,19 @@
 <?php
 class ANROC_Guru extends CI_Controller{
     function index(){
+        $halaman=$this->input->get('per_page');
+        if(empty($halaman)){
+            $halaman=0;
+        }
+        $this->config->load('pagination', TRUE);
+        $settings = $this->config->item('pagination');
+        $settings['total_rows'] = $this->ANRO_Model->page("anr_guru")->num_rows();
+        $settings['base_url']= base_url('ANROC_Guru/');
+        $settings['per_page']=10;
+        $settings['uri_segment']=3;
+        $this->pagination->initialize($settings);   
         $data['title']="ANROnline | DATA Guru";
-        $data['resource']=$this->ANRO_Model->read("anr_guru")->result();
+        $data['resource']=$this->ANRO_Model->page("anr_guru",$settings['per_page'],$halaman)->result();
         $this->load->view("ANROV_Header",$data);
         $this->load->view("Guru/ANROV_Guru",$data);
         $this->load->view("ANROV_Footer",$data);

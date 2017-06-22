@@ -43,8 +43,8 @@
                     }
                 ?>
                      <tr>
-                            <td colspan="6" class="center-align">Tidak Ada Data</td>
-                        </tr>
+                        <td><?php echo $this->pagination->create_links() ?></td>
+                    </tr>
                 </table>
             </div>
         </div>

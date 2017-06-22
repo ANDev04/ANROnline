@@ -24,16 +24,7 @@ class ANRO_Model extends CI_Model{
             }
             $this->db->join('anr_program_keahlian', 'anr_program_keahlian.id_program_keahlian = anr_paket_keahlian.id_program_keahlian');
             $query = $this->db->get();
-            return $query;    
-        }else if($table=="anr_mapel"){
-            $this->db->select('*');
-            $this->db->from('anr_mapel');
-            if(!empty($where)){
-                $this->db->where($where);
-            }
-            $this->db->join('anr_guru', 'anr_guru.ID_Guru = anr_mapel.Guru');
-            $query = $this->db->get();
-            return $query;    
+            return $query;        
         }else if($table=="anr_siswa_kelas"){
             $this->db->select('*');
             $this->db->from('anr_siswa_kelas');
@@ -101,24 +92,26 @@ class ANRO_Model extends CI_Model{
         $this->db->where($where);
         return $this->db->get();
     } 
-    public function page($table, $batas=null, $offset=null, $kelas=null, $key=null){
+    public function page($table, $batas=null, $offset=null, $where=null, $key=null){
         $sql="SELECT * FROM ".$table;
-        if (($kelas != null) || ($key != null)) {
-            $sql .= " WHERE ";
-            if ($kelas != null){
-                $sql .= "Kelas='".$kelas."' ";
-            }
-            if ($key != null){
-                $sql .= ($kelas != null) ? "AND " : "";
-                $sql .= "(anr_siswa.NIS LIKE '%".$key."%' OR anr_siswa.NISN LIKE '%".$key."%' OR anr_siswa.nama_siswa LIKE '%".$key."%') "; 
-            }
-            if($batas != null){
-                $sql .= " limit ". $offset .", ".$batas;
-            }
-        }else{
-             if($batas != null){
-                $sql .= " limit ". $offset .", ".$batas;
-            }
+            if (($where != null) || ($key != null)) {
+                $sql .= " WHERE ";
+                if($where!= null){
+                    $kondisi=implode(" AND ", $where);
+                    $sql .=$kondisi;
+                }
+                if ($key != null){
+                    $sql .= ($where != null) ? " AND " : "";
+                    if($table=="anr_siswa"){
+                        $sql .= "(anr_siswa.NIS LIKE '%".$key."%' OR anr_siswa.NISN LIKE '%".$key."%' OR anr_siswa.nama_siswa LIKE '%".$key."%') "; 
+                    }else if($table=="anr_kelas"){
+                        $sql .= "(Nama_Kelas LIKE '%".$key."%') "; 
+                    }
+                }
+            
+        }
+        if($batas != null){
+            $sql .= " limit ". $offset .", ".$batas;
         }
         $query = $this->db->query($sql);
         return $query;

@@ -16,6 +16,27 @@
             <div class="col s12">
                  <table class="responsive-table bordered">
                     <tr>
+                       <form action="<?php echo base_url("ANROC_Kelas/") ?>" method="get">
+                            <th>
+                               <div class="input-field">
+                                  <input id="search" type="search" name="key" value="<?php echo $this->input->get('key') ?>">
+                                  <label class="label-icon" for="search">Cari</label>
+                                  <i class="material-icons" onclick="$('#search').val('')">close</i>
+                                </div>
+                            </th>
+                            <th colspan="4">
+                                <select name="tingkat_kelas" id="tingkat_kelas">
+                                    <option value="">Semua Tingkat</option>
+                                    <option value="X">Tingkat X</option>
+                                    <option value="XI">Tingkat XI</option>
+                                    <option value="XII">Tingkat XII</option>
+                                </select>
+                                <input type=hidden name="kelas" value="<?php echo $this->input->get('kelas') ?>">
+                            </th>
+                            <th><button type="submit" class="btn">Cari</button></th>
+                        </form>
+                    </tr>
+                    <tr>
                         <th>Kode Kelas</th>
                         <th>Kelas</th>
                         <th>Kuota</th>
@@ -46,9 +67,9 @@
                 <?php 
                     }
                 ?>
-                      <tr>
-                            <td colspan="6" class="center-align">Tidak Ada Data</td>
-                        </tr>
+                    <tr>
+                        <td><?php echo $this->pagination->create_links() ?></td>
+                    </tr>
                 </table>
             </div>
         </div>
@@ -68,4 +89,8 @@
     <?php if(isset($_GET['success'])&&isset($_GET['error'])){ ?>
     counter(1, '<?php echo base_url("ANROC_Kelas")?>');
     <?php } ?>
+    $('button[type="submit"]').on('click', function(){
+    var selected_value = $("#tingkat_kelas").val();
+    $("input[name='kelas']").val(selected_value);
+});
 </script>

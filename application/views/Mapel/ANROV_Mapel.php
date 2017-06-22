@@ -32,9 +32,9 @@
                         <td><a href="<?php echo base_url("ANROC_Mapel/delete/".$res->Kode_Mapel) ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data?')"><i class="material-icons">delete</i></a></td>
                     </tr>
                     <?php } ?>
-                     <tr>
-                            <td colspan="6" class="center-align">Tidak Ada Data</td>
-                        </tr>
+                    <tr>
+                        <td><?php echo $this->pagination->create_links() ?></td>
+                    </tr>
                 </table>
             </div>
         </div>

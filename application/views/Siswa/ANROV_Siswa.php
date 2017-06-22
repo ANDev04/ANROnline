@@ -17,13 +17,6 @@
                 <table class="responsive-table bordered">
                     <thead>
                         <tr>
-                            <th>NIS/NISN</th>
-                            <th>Nama Siswa</th>
-                            <th>Jenis Kelamin</th>
-                            <th>Kelas</th>
-                            <th colspan="2">Aksi</th>
-                        </tr>
-                          <tr>
                             <form action="<?php echo base_url("ANROC_Siswa/") ?>" method="get">
                             <th>
                                <div class="input-field">
@@ -32,7 +25,23 @@
                                   <i class="material-icons" onclick="$('#search').val('')">close</i>
                                 </div>
                             </th>
-                            <th colspan="4">
+                            <th>
+                                <select name="status_siswa" id="status_siswa">
+                                    <option value="">Semua Status</option>
+                                    <option value="Aktif">Aktif</option>
+                                    <option value="Tidak Aktif">Tidak Aktif</option>
+                                </select>
+                                <input type="hidden" name="status" value="<?php echo $this->input->get('status') ?>">
+                            </th>
+                            <th>
+                                <select name="jenis_kelamin" id="jenis_kelamin">
+                                    <option value="">Semua Jenis Kelamin</option>
+                                    <option value="L">Laki-Laki</option>
+                                    <option value="P">Perempuan</option>
+                                </select>
+                                <input type="hidden" name="jk" value="<?php echo $this->input->get('jk') ?>">
+                            </th>
+                            <th colspan="2">
                                 <select name="tingkat_kelas" id="tingkat_kelas">
                                     <option value="">Semua Tingkat</option>
                                     <option value="X">Tingkat X</option>
@@ -43,6 +52,14 @@
                             </th>
                             <th><button type="submit" class="btn">Cari</button></th>
                         </form>
+                        </tr>
+                        <tr>
+                            <th>NIS/NISN</th>
+                            <th>Nama Siswa</th>
+                            <th>Jenis Kelamin</th>
+                            <th>Kelas</th>
+                            <th>Status</th>
+                            <th colspan="2">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -62,6 +79,7 @@
                             ?>
                             <td><?php echo $jk?></td>
                             <td><?php echo $res->Kelas ?></td>
+                            <td><?php echo $res->Status ?></td>
                             <td><a href="<?php echo base_url()."ANROC_Siswa/Edit/".$res->ID_SISWA ?>"><i class="material-icons">edit</i></a></td>
                             <td><a href="<?php echo base_url()."ANROC_Siswa/Hapus/".$res->ID_SISWA ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data?')"><i class="material-icons">delete</i></a></td>
                         </tr>
@@ -71,7 +89,7 @@
                     </tbody>
                     <tfooter>
                         <tr>
-                            <td><?php echo $this->pagination->create_links() ?></td>
+                            <td colspan="6" class="center-align"><?php echo $this->pagination->create_links() ?></td>
                         </tr>
                     </tfooter>
                 </table>
@@ -97,12 +115,24 @@
 $('button[type="submit"]').on('click', function(){
     var selected_value = $("#tingkat_kelas").val();
     $("input[name='kelas']").val(selected_value);
+    var selected_status = $("#status_siswa").val();
+    $("input[name='status']").val(selected_status);
+    var selected_jk = $("#jenis_kelamin").val();
+    $("input[name='jk']").val(selected_jk);
 });
 $('select').ready(function(){
     var isi = '<?php echo $this->input->get('kelas')?>';
     if(isi !=""){
-        $('select').val(isi);
-    }    
+        $('select[name="tingkat_kelas"]').val(isi);
+    } 
+    var status = '<?php echo $this->input->get('status') ?>';
+    if(status !=""){
+        $('select[name="status_siswa"]').val(status);
+    }
+    var jk = '<?php echo $this->input->get('jk') ?>';
+    if(jk != ""){
+        $('select[name="jenis_kelamin"]').val(jk);
+    }
 })
 
 </script>
