@@ -52,29 +52,30 @@ class ANROC_Kelas extends CI_Controller{
     function hapus($kode_kelas){
         $where=array('kode_kelas'=>$kode_kelas);
         $this->ANRO_Model->delete("ANR_Kelas",$where);
+        $this->ANRO_Model->delete("anr_siswa_kelas",$where);
         redirect("ANROC_Kelas");
         
     }
     function jurusan(){
         if($this->input->post('tingkat_kelas')=="X"){
             $resource = $this->ANRO_Model->read("anr_program_keahlian")->result();
-            echo '<option selected value="Pilih" disabled> Pilih Jurusan</option>';
+            echo '<option selected value="Pilih" disabled selected>Pilih Jurusan</option>';
             foreach ($resource as $res){
-            echo '<option value="'.$res->program_keahlian.'">'.$res->program_keahlian.'</option>'; 
+                echo '<option value="'.$res->program_keahlian.'">'.$res->program_keahlian.'</option>'; 
             }
         }else{
             $resource = $this->ANRO_Model->read("anr_paket_keahlian")->result();
-            echo '<option selected value="Pilih" disabled> Pilih Jurusan</option>';
+            echo '<option selected value="Pilih" disabled selected>Pilih Jurusan</option>';
             foreach ($resource as $res){
-            echo '<option>'.$res->paket_keahlian.'</option>'; 
+                echo '<option>'.$res->paket_keahlian.'</option>'; 
             }
         }
     }
     function Cek_Kelas(){
         $nama_kelas = $this->input->post("jurusan")."-".$this->input->post("nomer");
-        $cek=$this->ANRO_Model->read("ANR_Kelas",array("Nama_Kelas"=>$nama_kelas))->num_rows();
+        $cek=$this->ANRO_Model->read("ANR_Kelas",array("Nama_Kelas"=>$nama_kelas, 'Tahun_Masuk'=>$this->input->post("tahun_masuk"), 'Tahun_Keluar'=>$this->input->post("tahun_keluar")))->num_rows();
         if($cek>0){
-            $angka = $this->input->post("nomer") + 1;
+            $angka = "";
             echo $angka;
         }
         else{
