@@ -41,7 +41,7 @@
                                 </select>
                                 <input type="hidden" name="jk" value="<?php echo $this->input->get('jk') ?>">
                             </th>
-                            <th colspan="2">
+                            <th>
                                 <select name="tingkat_kelas" id="tingkat_kelas">
                                     <option value="">Semua Tingkat</option>
                                     <option value="X">Tingkat X</option>

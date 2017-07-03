@@ -4,15 +4,23 @@ class ANROC_Kelas extends CI_Controller{
         $halaman=$this->input->get('per_page');
         $kelas=$this->input->get('kelas');
         $key=$this->input->get('key');
+        $tahun_ajar=$this->input->get('tahun_ajar');
         $tingkat_kelas=$this->input->get('kelas');
         if(empty($halaman)){
             $halaman=0;
         }
         $this->config->load('pagination', TRUE);
         $settings = $this->config->item('pagination');
+        if(!empty($tahun_ajar)){
+            $ajaran=explode("/",$tahun_ajar);
+        }
         $where=array();
         if(!empty($kelas)){
             array_push($where,"Tingkat_Kelas='".$tingkat_kelas."'");
+        }
+        if(!empty($ajaran)){
+            array_push($where,"Tahun_Masuk='".$ajaran[0]."'");
+            array_push($where,"Tahun_Keluar='".$ajaran[1]."'");
         }
         $settings['total_rows'] = $this->ANRO_Model->page("anr_kelas",null,null,$where,$key)->num_rows();
         $settings['base_url']= base_url('ANROC_Kelas/?key='.$key.'&?kelas='.$kelas);
@@ -20,8 +28,8 @@ class ANROC_Kelas extends CI_Controller{
         $settings['uri_segment']=3;
         $this->pagination->initialize($settings);   
         $data['title']="ANROnline | DATA KELAS";
-        $data['resource']=$this->ANRO_Model->page("anr_kelas",$settings['per_page'],$halaman,null,$key);
-        
+        $data['resource']=$this->ANRO_Model->page("anr_kelas",$settings['per_page'],$halaman,$where,$key);
+        $data['tahun_ajaran']=$this->ANRO_Model->get_ajaran("anr_kelas","Tahun_Masuk, Tahun_Keluar");
         $this->load->view("ANROV_Header",$data);
         $this->load->view("Kelas/ANROV_Kelas",$data);
         $this->load->view("ANROV_Footer",$data);

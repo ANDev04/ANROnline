@@ -44,6 +44,13 @@ class ANRO_Model extends CI_Model{
             }
         }
     }
+    public function get_ajaran($table,$select,$where=null){
+        $sql="SELECT DISTINCT ".$select." from ".$table;
+        if($where != null){
+            $sql.=" WHERE ".$where;
+        }
+        return $this->db->query($sql);
+    }
     public function delete($table,$where){
         $del=$this->db->delete($table,$where);
         if($del){
@@ -106,6 +113,8 @@ class ANRO_Model extends CI_Model{
                         $sql .= "(anr_siswa.NIS LIKE '%".$key."%' OR anr_siswa.NISN LIKE '%".$key."%' OR anr_siswa.nama_siswa LIKE '%".$key."%') "; 
                     }else if($table=="anr_kelas"){
                         $sql .= "(Nama_Kelas LIKE '%".$key."%') "; 
+                    }else if($table="anr_guru"){
+                        $sql .= "(NIP LIKE '%".$key."%' OR NIP LIKE '%".$key."%' OR Nama_Guru LIKE '%".$key."%')";
                     }
                 }
             
