@@ -16,9 +16,38 @@
             <div class="col s12">
                 <table class="responsive-table bordered">
                     <tr>
+                       <form action="<?php echo base_url("ANROC_Guru/") ?>" method="get">
+                            <th>
+                               <div class="input-field">
+                                  <input id="search" type="search" name="key" value="<?php echo $this->input->get('key') ?>">
+                                  <label class="label-icon" for="search">Cari</label>
+                                  <i class="material-icons" onclick="$('#search').val('')">close</i>
+                                </div>
+                            </th>
+                            <th>
+                                <select name="status_guru" id="status_guru">
+                                    <option value="">Semua Status</option>
+                                    <option value="Aktif">Aktif</option>
+                                    <option value="Tidak Aktif">Tidak Aktif</option>
+                                </select>
+                                <input type="hidden" name="status" value="<?php echo $this->input->get('status') ?>">
+                            </th>
+                            <th>
+                                <select name="jenis_kelamin" id="jenis_kelamin">
+                                    <option value="">Semua Jenis Kelamin</option>
+                                    <option value="L">Laki-Laki</option>
+                                    <option value="P">Perempuan</option>
+                                </select>
+                                <input type="hidden" name="jk" value="<?php echo $this->input->get('jk') ?>">
+                            </th>
+                            <th colspan="2"><button type="submit" class="btn">Cari</button></th>
+                        </form>
+                    </tr>
+                    <tr>
                         <th>NIP/NUPTK</th>
                         <th>Nama Guru</th>
                         <th>Jenis Kelamin</th>
+                        <th>Status</th>
                         <th colspan="2">Aksi</th>
                     </tr>
                 <?php
@@ -36,6 +65,7 @@
                             }
                         ?>
                         <td><?php echo $jk?></td>
+                        <td><?php echo $res->Status ?></td>
                         <td><a href="<?php echo base_url()."ANROC_Guru/Edit/".$res->ID_Guru ?>"><i class="material-icons">edit</i></a></td>
                         <td><a href="<?php echo base_url()."ANROC_Guru/Hapus/".$res->ID_Guru ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data?')"><i class="material-icons">delete</i></a></td>
                     </tr>
@@ -43,8 +73,8 @@
                     }
                 ?>
                      <tr>
-                            <td colspan="6" class="center-align">Tidak Ada Data</td>
-                        </tr>
+                        <td><?php echo $this->pagination->create_links() ?></td>
+                    </tr>
                 </table>
             </div>
         </div>
@@ -60,3 +90,25 @@
         </div>
     </div>
 </main>
+<script>
+<?php if(isset($_GET['success'])&&isset($_GET['error'])){ ?>
+    counter(1, '<?php echo base_url("ANROC_Guru")?>');
+<?php } ?>
+$('button[type="submit"]').on('click', function(){
+    var selected_status = $("#status_guru").val();
+    $("input[name='status']").val(selected_status);
+    var selected_jk = $("#jenis_kelamin").val();
+    $("input[name='jk']").val(selected_jk);
+});
+$('select').ready(function(){
+    var isi = '<?php echo $this->input->get('kelas')?>';
+    var status = '<?php echo $this->input->get('status') ?>';
+    if(status !=""){
+        $('select[name="status_guru"]').val(status);
+    }
+    var jk = '<?php echo $this->input->get('jk') ?>';
+    if(jk != ""){
+        $('select[name="jenis_kelamin"]').val(jk);
+    }
+})
+</script>

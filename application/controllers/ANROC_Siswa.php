@@ -4,19 +4,35 @@ class ANROC_Siswa extends CI_Controller{
         $key=$this->input->get('key');
         $kelas=$this->input->get('kelas');
         $halaman=$this->input->get('per_page');
+        $status=$this->input->get('status');
+        $jenis_kelamin=$this->input->get('jk');
+        $where=array();
+        if($kelas != null || $jenis_kelamin != null || $status != null){
+            if($kelas != null){
+                array_push($where, "Kelas ='".$kelas."'");
+            }
+            if($jenis_kelamin != null){
+                array_push($where, "Jenis_Kelamin ='".$jenis_kelamin."'");
+            }
+            if($status != null){
+                array_push($where, "Status ='".$status."'");
+            }
+            
+        }
         if(empty($halaman)){
             $halaman=0;
         }
         $data['title']= "ANROnline | Data Siswa";
         $this->config->load('pagination', TRUE);
         $settings = $this->config->item('pagination');
-        $settings['total_rows'] = $this->ANRO_Model->page("anr_siswa",NULL,NULL,$kelas,$key)->num_rows();
+        $settings['total_rows'] = $this->ANRO_Model->page("anr_siswa",NULL,NULL,$where,$key)->num_rows();
         $settings['base_url']= base_url('ANROC_Siswa/?key='.$key.'&kelas='.$kelas);
         $settings['per_page']=35;
         $settings['uri_segment']=3;
       
         $this->pagination->initialize($settings);   
-        $data['resource']=$this->ANRO_Model->page("anr_siswa",$settings['per_page'],$halaman,$kelas,$key)->result();
+        $data['resource']=$this->ANRO_Model->page("anr_siswa",$settings['per_page'],$halaman,$where,$key)->result();
+        $data['test']=implode("AND",$where);
         $this->load->view("ANROV_Header",$data);
         $this->load->view("Siswa/ANROV_Siswa",$data);
         $this->load->view("ANROV_Footer");
