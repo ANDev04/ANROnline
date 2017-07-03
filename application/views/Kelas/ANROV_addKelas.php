@@ -85,25 +85,31 @@
     $('input[type="number"]').on('change', function(){
         if(document.getElementById("tingkat_kelas").value != "Pilih"){
             if(document.getElementById("jurusan").value != "Pilih"){
-                $.ajax({
-                    type : 'POST', 
-                    url  : '<?php echo site_url('ANROC_Kelas/Cek_Kelas'); ?>', 
-                    data : {
-                        nomer : $('#nomer').val(),
-                        tingkat_kelas : $('#tingkat_kelas').val(),
-                        jurusan : $('#jurusan').val(),
-                        tahun_masuk : $('#tahun_masuk').val(),
-                        tahun_keluar : $('#tahun_keluar').val()
-                    }, 
-                    success : function(add){
-                        var nomer=$('input[name="nomer"]').val();
-                        if(parseInt(add)!=nomer){
-                            Materialize.toast("Kelas Sudah Ada", 4000);
+                if(document.getElementById("nomer").value != ""){
+                    $.ajax({
+                        type : 'POST', 
+                        url  : '<?php echo site_url('ANROC_Kelas/Cek_Kelas'); ?>', 
+                        data : {
+                            nomer : $('#nomer').val(),
+                            tingkat_kelas : $('#tingkat_kelas').val(),
+                            jurusan : $('#jurusan').val(),
+                            tahun_masuk : $('#tahun_masuk').val(),
+                            tahun_keluar : $('#tahun_keluar').val()
+                        }, 
+                        success : function(add){
+                            var nomer=$('input[name="nomer"]').val();
+                            if(parseInt(add)!=nomer){
+                                Materialize.toast("Kelas Sudah Ada", 4000);
+                            }
+                            $total = parseInt(add);
+                            $('input[name="nomer"]').val($total); 
                         }
-                        $total = parseInt(add);
-                        $('input[name="nomer"]').val($total); 
-                    }
-                });
+                    });
+                }
+                else{
+                    Materialize.toast("Pilih Nomer Kelas Terlebih Dahulu!", 4000);
+                    $('input[name="nomer"]').val("");
+                }
             }
             else{
                 Materialize.toast("Pilih Jurusan Terlebih Dahulu!", 4000);

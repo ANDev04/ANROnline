@@ -74,4 +74,12 @@ class ANROC_Mapel extends CI_Controller{
         }
         redirect(base_url("ANROC_Mapel"));
     }
+    function view($Kode_Mapel){
+        $data['resource']=$this->ANRO_Model->read("anr_mapel",array("Kode_Mapel" => $Kode_Mapel))->row_array();
+        $data['guru']=$this->ANRO_Model->read("anr_guru_mapel",array("anr_mapel.Kode_Mapel" => $Kode_Mapel));
+        $data['title']="ANROnline | Data Mapel";
+        $this->load->view("ANROV_Header",$data);
+        $this->load->view("Mapel/ANROV_DataMapel",$data);
+        $this->load->view("ANROV_Footer",$data); 
+    }
 }

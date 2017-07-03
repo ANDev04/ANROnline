@@ -36,7 +36,7 @@ class ANROC_Guru extends CI_Controller{
         foreach($data['resource'] as $res){
             $nama=$res->Nama_Guru;
         }
-        $data['mapel']=$this->ANRO_Model->read("anr_mapel",array('Guru'=>$id))->result();
+        $data['mapel']=$this->ANRO_Model->read("anr_guru_mapel",array('anr_guru_mapel.id_guru'=>$id))->result();
         $data['title']="ANROnline | ".$nama;
         $this->load->view("ANROV_Header",$data);
         $this->load->view("Guru/ANROV_Profile",$data);

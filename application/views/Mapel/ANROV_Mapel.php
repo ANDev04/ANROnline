@@ -19,15 +19,13 @@
                         <th>Kode Mata Pelajaran</th>
                         <th>Nama Mata Pelajaran</th>
                         <th>KKM</th>
-                        <th>Guru</th>
                         <th colspan="2">Aksi</th>
                     </tr>
                     <?php foreach($resource as $res){?>
                     <tr>
                         <td><?php echo $res->Kode_Mapel?></td>
-                        <td><?php echo $res->Nama_Mapel?></td>
+                        <td><a href="<?php echo base_url()."ANROC_Mapel/view/".$res->Kode_Mapel ?>"><?php echo $res->Nama_Mapel?></a></td>
                         <td><?php echo $res->KKM ?></td>
-                        <td><a href="<?php echo base_url("ANROC_Guru/profile/".$res->ID_Guru) ?>"><?php echo $res->Nama_Guru?></a></td>
                         <td><a href="<?php echo base_url("ANROC_Mapel/edit/".$res->Kode_Mapel) ?>"><i class="material-icons">edit</i></a></td>
                         <td><a href="<?php echo base_url("ANROC_Mapel/delete/".$res->Kode_Mapel) ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data?')"><i class="material-icons">delete</i></a></td>
                     </tr>
