@@ -12,7 +12,7 @@
                 redirect("ANROC_Kelas");
             }else{
                 $data['title']="ANROnline | Mendaftarkan Siswa Ke Kelas";
-                $data['resource']=$this->ANRO_Model->read("anr_siswa",array('Status'=>"Aktif"))->result();
+                $data['resource']=$this->ANRO_Model->read("anr_siswa",array('Status'=>"Aktif"));
                 $data['kelas']=$this->ANRO_Model->read("anr_kelas",array('Kode_Kelas'=>$Kode_Kelas))->result();
                 foreach($data['kelas'] as $kelas){
                     $data['Kode_Kelas']=$kelas->Kode_Kelas;

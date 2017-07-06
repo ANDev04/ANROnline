@@ -1,26 +1,18 @@
-<?php
-    $kuota = 0;
-    foreach($resource as $res){
-        $Kode_Kelas = $res->Kode_Kelas;
-        $kuota = $res->Kuota;
-        $nama_kelas = $res->Tingkat_Kelas.'-'.$res->Nama_Kelas." (".$res->Tahun_Masuk."/".$res->Tahun_Keluar.")";
-    } 
-?>
 <main>
     <div class="container">
         <div class="section" style="padding:0;">
             <div class="row">
                 <nav class="breadcrumb-nav col s12 truncate N/A transparent z-depth-0" style="height:20px; line-height: 20px; padding:0;">
                     <a class="breadcrumb" href="<?php echo base_url() ?>">Dashboard</a>
-                    <a class="breadcrumb" href="<?php echo base_url("ANROC_Kelas")?>">Data Kelas</a>
-                    <a class="breadcrumb" href="#"><?php echo $nama_kelas; ?></a>
+                    <a class="breadcrumb" href="<?php echo base_url("ANROC_Mapel")?>">Data Mata Pelajaran</a>
+                    <a class="breadcrumb" href="#"><?php echo $resource['Nama_Mapel']; ?></a>
                 </nav>                   
             </div>
         </div>
         <div class="row z-depth-2">
             <div class="col s12">
                 <blockquote>
-                    <h4><?php echo $nama_kelas; ?></h4>
+                    <h4>Mata Pelajaran <?php echo $resource['Nama_Mapel']; ?></h4>
                 </blockquote>
                 <hr>
             </div>
@@ -28,26 +20,25 @@
                 <table class="responsive-table centered">
                     <thead>
                         <tr>
-                            <th>NIS/NISN</th>
-                            <th>Nama Siswa</th>
+                            <th>NIP/NUPTK</th>
+                            <th>Nama Guru</th>
                             <th>Jenis Kelamin</th>
-                            <th colspan="2">Aksi</th>
+                            <th>Aksi</th>
                         </tr>
-                      
                     </thead>
                     <tbody>
                 <?php
-                    if($siswa->num_rows()==0){
+                    if($guru->num_rows()==0){
                 ?>
-                    <td colspan="5">Tidak Ada Data Untuk ditampilkan</td>
+                    <td colspan="4">Tidak Ada Data Untuk ditampilkan</td>
                 <?php
                     }
                     $banyak = 0;
-                    foreach($siswa->result() as $res){
+                    foreach($guru->result() as $res){
                 ?>
                     <tr>
-                        <td><?php echo $res->NIS."/".$res->NISN ?></td>
-                        <td><a href="<?php echo base_url()."ANROC_Siswa/Profile/".$res->ID_SISWA ?>"><?php echo $res->Nama_Siswa ?></a></td>
+                        <td><?php echo $res->NIP."/".$res->NUPTK ?></td>
+                        <td><a href="<?php echo base_url()."ANROC_Guru/Profile/".$res->ID_Guru ?>"><?php echo $res->Nama_Guru ?></a></td>
                         <?php 
                             if($res->Jenis_Kelamin=="L"){
                                 $jk="Laki - Laki";
@@ -57,7 +48,7 @@
                             }
                         ?>
                         <td><?php echo $jk?></td>
-                        <td><button class="btn" name="hapus" id="hapus" value="<?php echo $res->ID_SISWA ?>"><i class="material-icons">delete</i></button></td>
+                        <td><button class="btn" name="hapus" id="hapus" value="<?php echo $res->ID_Guru ?>"><i class="material-icons">delete</i></button></td>
                     </tr>
                 <?php 
                         $banyak++;
@@ -69,20 +60,20 @@
         </div>
         <div class="row">
             <div class="col s12 right-align">
-                <a class="btn-floating btn-large waves-effect waves-light red <?php if($banyak >= $kuota){echo "disabled";} ?>" href="<?php echo base_url("ANROC_SiswaKelas/create/".$res->Kode_Kelas) ?>"><i class="material-icons right">add</i></a>
-            </div>s
+                <a class="btn-floating btn-large waves-effect waves-light red" href="<?php echo base_url("ANROC_GuruMapel/create/".$resource['Kode_Mapel']) ?>"><i class="material-icons right">add</i></a>
+            </div>
         </div>
     </div>
-</main>
+</main> 
 <script>
 $('button[name="hapus"]').on('click', function(){
     var cek = confirm('Apakah Anda yakin ingin menghapus data?');
     if(cek == true){
         $.ajax({
             type : 'POST', 
-            url  : '<?php echo site_url('ANROC_SiswaKelas/hapus/'.$Kode_Kelas); ?>', 
+            url  : '<?php echo site_url('ANROC_GuruMapel/hapus/'.$resource['Kode_Mapel']); ?>', 
             data : {
-                ID_Siswa : $(this).val()
+                id_guru : $(this).val()
             },
             success : function(notif){
                 location.reload()

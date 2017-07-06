@@ -35,6 +35,16 @@ class ANRO_Model extends CI_Model{
             $this->db->join('anr_kelas', 'anr_kelas.Kode_Kelas = anr_siswa_kelas.Kode_Kelas');
             $query = $this->db->get();
             return $query;    
+        }else if($table=="anr_guru_mapel"){
+            $this->db->select('*');
+            $this->db->from('anr_guru_mapel');
+            if(!empty($where)){
+                $this->db->where($where);
+            }
+            $this->db->join('anr_guru', 'anr_guru.ID_Guru = anr_guru_mapel.id_guru');
+            $this->db->join('anr_mapel', 'anr_mapel.Kode_Mapel = anr_guru_mapel.kode_mapel');
+            $query = $this->db->get();
+            return $query;    
         }else{
             if(!empty($where)){
                 return $this->db->get_where($table, $where);    
