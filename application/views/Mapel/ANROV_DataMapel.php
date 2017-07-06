@@ -64,14 +64,14 @@
             </div>
         </div>
     </div>
-</main>
+</main> 
 <script>
 $('button[name="hapus"]').on('click', function(){
     var cek = confirm('Apakah Anda yakin ingin menghapus data?');
     if(cek == true){
         $.ajax({
             type : 'POST', 
-            url  : '<?php echo site_url('ANROC_GuruMapel/hapus/'.$Kode_Mapel); ?>', 
+            url  : '<?php echo site_url('ANROC_GuruMapel/hapus/'.$resource['Kode_Mapel']); ?>', 
             data : {
                 id_guru : $(this).val()
             },

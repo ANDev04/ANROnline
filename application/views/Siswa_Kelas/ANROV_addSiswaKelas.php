@@ -32,7 +32,8 @@
                     if($banyak >= $kuota){
                          redirect("ANROC_Kelas/kelas/".$Kode_Kelas);
                     }
-                    foreach($resource as $res){
+                    $banyak = 0;
+                    foreach($resource->result() as $res){
                         $cek=$this->ANRO_Model->read("anr_siswa_kelas",array("anr_siswa_kelas.Kode_Kelas"=>$Kode_Kelas,"anr_siswa_kelas.ID_Siswa"=>$res->ID_SISWA))->num_rows();
                         if($cek==0){
                 ?>  
@@ -50,9 +51,14 @@
                         <td><?php echo $jk?></td>
                         <td><?php echo $res->Kelas?></td>
                         <td><button class="btn" name="Tambah" id="tambah" value="<?php echo $res->ID_SISWA ?>"><i class=material-icons>add</i></button></td>
-                        <?php } ?>
+                        <?php }else{ $banyak++; } ?>
                     </tr>
                 <?php 
+                    }
+                    if($banyak == $resource->num_rows()){
+                ?>
+                        <td colspan="4">Tidak Ada Data Untuk dimasukan.</td>
+                <?php
                     }
                 ?>
                     </tbody>          

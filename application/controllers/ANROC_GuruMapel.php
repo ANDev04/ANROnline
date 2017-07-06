@@ -12,7 +12,7 @@
                 redirect("ANROC_Mapel");
             }else{
                 $data['title']="ANROnline | Tambah Guru Mengajar";
-                $data['resource']=$this->ANRO_Model->read("anr_guru",array('Status'=>"Aktif"))->result();
+                $data['resource']=$this->ANRO_Model->read("anr_guru",array('Status'=>"Aktif"));
                 $data['mapel']=$this->ANRO_Model->read("anr_mapel",array('Kode_Mapel'=>$Kode_Mapel))->result();
                 foreach($data['mapel'] as $mapel){
                     $data['Kode_Mapel']=$mapel->Kode_Mapel;
@@ -33,7 +33,7 @@
             echo "Success";
         }
         function hapus($Kode_Mapel){
-            $sql = $this->ANRO_Model->delete("anr_guru_mapel",array("id_guru"=>$this->input->post("id_guru"),"kode_kelas"=>$Kode_Mapel));
+            $sql = $this->ANRO_Model->delete("anr_guru_mapel",array("id_guru"=>$this->input->post("id_guru"),"kode_mapel"=>$Kode_Mapel));
             if($sql){
                 echo "Success";
             }else{

@@ -28,7 +28,8 @@
                     </thead>
                     <tbody>
                 <?php
-                    foreach($resource as $res){
+                    $banyak = 0;
+                    foreach($resource->result() as $res){
                         $cek=$this->ANRO_Model->read("anr_guru_mapel",array("anr_guru_mapel.Kode_Mapel"=>$Kode_Mapel,"anr_guru_mapel.ID_Guru"=>$res->ID_Guru))->num_rows();
                         if($cek==0){
                 ?>  
@@ -45,9 +46,14 @@
                         ?>
                         <td><?php echo $jk?></td>
                         <td><button class="btn" name="Tambah" id="tambah" value="<?php echo $res->ID_Guru ?>"><i class=material-icons>add</i></button></td>
-                        <?php } ?>
+                        <?php }else{ $banyak++; } ?>
                     </tr>
                 <?php 
+                    }
+                    if($banyak == $resource->num_rows()){
+                ?>
+                        <td colspan="4">Tidak Ada Data Untuk dimasukan.</td>
+                <?php
                     }
                 ?>
                     </tbody>          
