@@ -34,18 +34,6 @@
                             <td><input type="number" name="kkm" min="0" max="100"></td>
                         </tr>
                         <tr>
-                            <td>Guru</td>
-                            
-                            <td>
-                                <select name="guru">
-                                    <option value="Pilih" disabled selected>Pilih Guru</option>
-                                    <?php foreach($resource as $res){?>
-                                    <option value="<?php echo $res->ID_Guru ?>"><?php echo $res->NIP." / ".$res->NUPTK." ".$res->Nama_Guru ?></option>
-                                    <?php } ?>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
                             <td colspan="2" class="right-align"><button class="btn" type="submit" name="type" value="insert">Submit</button></td>
                         </tr>
                     </table>

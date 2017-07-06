@@ -58,8 +58,7 @@ class ANROC_Mapel extends CI_Controller{
             $data = array(
                 'Kode_Mapel' => $this->input->post('kode_mapel'),
                 'Nama_Mapel' => $this->input->post('nama'),
-                'KKM' => $this->input->post('kkm'),
-                'Guru' => $this->input->post('guru')
+                'KKM' => $this->input->post('kkm')
             );
             $this->ANRO_Model->create("anr_mapel", $data);
         }
@@ -67,8 +66,7 @@ class ANROC_Mapel extends CI_Controller{
             $kode_mapel = array('Kode_Mapel' => $this->input->post('kode_mapel'));
             $data = array(
                 'Nama_Mapel' => $this->input->post('nama'),
-                'KKM' => $this->input->post('kkm'),
-                'Guru' => $this->input->post('guru')                  
+                'KKM' => $this->input->post('kkm')                  
             );
             $this->ANRO_Model->update($kode_mapel, $data, "anr_mapel");
         }

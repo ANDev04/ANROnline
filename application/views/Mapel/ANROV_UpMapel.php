@@ -34,20 +34,6 @@
                             <td><input type="number" name="kkm" min="0" max="100" value="<?php echo $resource['KKM']?>"></td>
                         </tr>
                         <tr>
-                            <td>Guru</td>
-                            
-                            <td>
-                                <select name="guru">
-                                    <option value="" disabled selected>Pilih Guru</option>
-                                    <?php foreach($guru as $res){ if($resource['Guru'] == $res->ID_Guru){?>
-                                    <option value="<?php echo $res->ID_Guru ?>" selected><?php echo $res->NIP." / ".$res->NUPTK." - ".$res->Nama_Guru ?></option>
-                                    <?php }else{ ?>
-                                    <option value="<?php echo $res->ID_Guru ?>"><?php echo $res->NIP." / ".$res->NUPTK." - ".$res->Nama_Guru ?></option>
-                                    <?php } } ?>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
                             <td colspan="2" class="right-align"><button class="btn" type="submit" name="type" value="update">Submit</button></td>
                         </tr>
                     </table>
