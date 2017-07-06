@@ -34,7 +34,7 @@ class ANROC_Jurusan extends CI_Controller{
         $program=$this->input->get("program");
         $where=array();
         if(!empty($program)){
-            array_push($where,"anr_paket_keahlian.id_program_keahlian='".$program."'");
+            array_push($where,"anr_program_keahlian.id_program_keahlian='".$program."'");
         }
         if(empty($halaman)){
             $halaman=0;
