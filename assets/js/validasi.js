@@ -127,7 +127,7 @@ function validasi(form, jenis){
         }
     }
     else if(jenis == "program"){
-        if(form.program_keahlian.value == ""){
+        if(form.program_keahlian[0].value == ""){
             Materialize.toast("Program Keahlian! Belum Terisi", 4000);
             return(false);
         }

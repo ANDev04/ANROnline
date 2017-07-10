@@ -16,10 +16,14 @@
         }
         function save(){
             if($this->input->post("type")=="insert"){
-                $data=array(
-                    'program_keahlian'=>$this->input->post('program_keahlian')
-                );
-                $this->ANRO_Model->create("anr_program_keahlian",$data);
+                foreach($this->input->post('program_keahlian') as $pro){
+                    if($pro != ""){
+                        $data=array(
+                            'program_keahlian'=>$pro
+                        );
+                        $this->ANRO_Model->create("anr_program_keahlian",$data);
+                    }
+                }
             }
             else if($this->input->post("type")=="update"){
                 $where=array("id_program_keahlian"=>$this->input->post("id_program_keahlian"));
