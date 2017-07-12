@@ -100,7 +100,7 @@ class ANRO_Model extends CI_Model{
             $banyak1 = strlen($data['NIS']);
             $banyak2 = strlen($data['NISN']);
         }
-        if($table == "anr_guru"){
+        else if($table == "anr_guru"){
             $banyak1 = strlen($data['NIP']);
             $banyak2 = strlen($data['NUPTK']);
         }
@@ -108,6 +108,7 @@ class ANRO_Model extends CI_Model{
             $banyak1 = 9;
             $banyak2 = 10;
         }
+        
         if($banyak1 == 9 && $banyak2 == 10){
             if($this->db->insert($table, $data)){
                 return $banyak;
