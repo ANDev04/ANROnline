@@ -14,48 +14,56 @@
                 <hr>
             </div>
             <div class="col s12">
-                 <table class="responsive-table bordered">
-                    <tr>
-                       <form action="<?php echo base_url("ANROC_Kelas/") ?>" method="get">
-                            <th>
-                               <div class="input-field">
-                                  <input id="search" type="search" name="key" value="<?php echo $this->input->get('key') ?>">
-                                  <label class="label-icon" for="search">Cari</label>
-                                  <i class="material-icons" onclick="$('#search').val('')">close</i>
-                                </div>
-                            </th>
-                            <th colspan="2">
-                                <select name="tingkat_kelas" id="tingkat_kelas">
-                                    <option value="">Semua Tingkat</option>
-                                    <option value="X">Tingkat X</option>
-                                    <option value="XI">Tingkat XI</option>
-                                    <option value="XII">Tingkat XII</option>
-                                </select>
-                                <input type=hidden name="kelas" value="<?php echo $this->input->get('kelas') ?>">
-                            </th>
-                           <th colspan="2">
-                                <select name="tahun_ajaran" id="tahun_ajaran">
-                                    <option value="">Semua Angkatan</option>
-                                    <?php 
-                                    foreach($tahun_ajaran->result() as $TA){
-                                    ?>
-                                    <option value="<?php echo $TA->Tahun_Masuk."/".$TA->Tahun_Keluar ?>"><?php echo $TA->Tahun_Masuk."/".$TA->Tahun_Keluar ?></option>
-                                    <?php
-                                    }
-                                    ?>
-                                </select>
-                               <input type="hidden" name="tahun_ajar" value="<?php echo $this->input->get("tahun_ajar") ?>">
-                           </th>
-                            <th><button type="submit" class="btn">Cari</button></th>
-                        </form>
-                    </tr>
-                    <tr>
-                        <th>Kode Kelas</th>
-                        <th>Kelas</th>
-                        <th>Kuota</th>
-                        <th>Tahun Ajar</th>
-                        <th colspan="2">Aksi</th>
-                    </tr>
+                <form autocomplete="off" action="<?php echo base_url("ANROC_Kelas/") ?>" method="get">
+                <div class="row">
+                    <div class="col l5 s12">
+                        <div class="input-field">
+                          <input id="search" type="search" name="key" value="<?php echo $this->input->get('key') ?>">
+                          <label class="label-icon" for="search">Cari</label>
+                          <i class="material-icons" onclick="$('#search').val('')">close</i>
+                        </div>
+                    </div>
+                    <div class="col l2 s6" style="padding-top:20.5px;">
+                        <select name="tingkat_kelas" id="tingkat_kelas">
+                            <option value="">Semua Tingkat</option>
+                            <option value="X">Tingkat X</option>
+                            <option value="XI">Tingkat XI</option>
+                            <option value="XII">Tingkat XII</option>
+                        </select>
+                        <input type=hidden name="kelas" value="<?php echo $this->input->get('kelas') ?>">
+                    </div>
+                    <div class="col l3 s6" style="padding-top:20.5px;">
+                        <select name="tahun_ajaran" id="tahun_ajaran">
+                            <option value="">Semua Angkatan</option>
+                            <?php 
+                            foreach($tahun_ajaran->result() as $TA){
+                            ?>
+                            <option value="<?php echo $TA->Tahun_Masuk."/".$TA->Tahun_Keluar ?>"><?php echo $TA->Tahun_Masuk."/".$TA->Tahun_Keluar ?></option>
+                            <?php
+                            }
+                            ?>
+                        </select>
+                       <input type="hidden" name="tahun_ajar" value="<?php echo $this->input->get("tahun_ajar") ?>">
+                    </div>
+                    <div class="col l2 s12" style="padding-top:25px;">
+                        <button type="submit" class="btn" style=" width:100%;">Cari</button>
+                    </div>
+                </div>
+                </form>
+                <hr>
+            </div>
+            <div class="col s12">
+                <table class="responsive-table bordered highlight centered">
+                    <thead>
+                        <tr>
+                            <th>Kode Kelas</th>
+                            <th>Kelas</th>
+                            <th>Kuota</th>
+                            <th>Tahun Ajar</th>
+                            <th colspan="2">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                 <?php
                     foreach($resource->result() as $res){
                         $kelas=explode("-",$res->Nama_Kelas);
@@ -80,10 +88,11 @@
                 <?php 
                     }
                 ?>
-                    <tr>
-                        <td><?php echo $this->pagination->create_links() ?></td>
-                    </tr>
+                    </tbody>
                 </table>
+                <div class="col s12 center">
+                    <?php echo $this->pagination->create_links() ?>
+                </div>
             </div>
         </div>
          <div class="row">

@@ -29,13 +29,18 @@ class ANROC_Siswa extends CI_Controller{
         $settings['base_url']= base_url('ANROC_Siswa/?key='.$key.'&kelas='.$kelas);
         $settings['per_page']=35;
         $settings['uri_segment']=3;
+        
+        $settings['first_link'] = '<i class="material-icons">skip_previous</i>';
+        $settings['last_link'] = '<i class="material-icons">skip_next</i>';
+        $settings['next_link'] = '<i class="material-icons">chevron_right</i>';
+        $settings['prev_link'] = '<i class="material-icons">chevron_left</i>';
       
         $this->pagination->initialize($settings);   
         $data['resource']=$this->ANRO_Model->page("anr_siswa",$settings['per_page'],$halaman,$where,$key)->result();
         $data['test']=implode("AND",$where);
         $this->load->view("ANROV_Header",$data);
         $this->load->view("Siswa/ANROV_Siswa",$data);
-        $this->load->view("ANROV_Footer");
+        $this->load->view("ANROV_Footer");    
     }
     function page(){
         $key=$this->input->get('key');

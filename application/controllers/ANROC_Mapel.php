@@ -12,10 +12,16 @@ class ANROC_Mapel extends CI_Controller{
         }
         $this->config->load('pagination', TRUE);
         $settings = $this->config->item('pagination');
-        $settings['total_rows'] = $this->ANRO_Model->page("anr_guru")->num_rows();
-        $settings['base_url']= base_url('ANROC_Guru/');
+        $settings['total_rows'] = $this->ANRO_Model->page("anr_mapel")->num_rows();
+        $settings['base_url']= base_url('ANROC_Mapel/');
         $settings['per_page']=10;
         $settings['uri_segment']=3;
+        
+        $settings['first_link'] = '<i class="material-icons">skip_previous</i>';
+        $settings['last_link'] = '<i class="material-icons">skip_next</i>';
+        $settings['next_link'] = '<i class="material-icons">chevron_right</i>';
+        $settings['prev_link'] = '<i class="material-icons">chevron_left</i>';
+        
         $this->pagination->initialize($settings);  
         $data['title'] = "ANROnline | Data Mata Pelajaran";
         $data['resource'] = $this->ANRO_Model->page("anr_mapel",$settings['per_page'],$halaman)->result();

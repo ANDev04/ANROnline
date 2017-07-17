@@ -1,32 +1,19 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 class ANROC_Exel extends CI_Controller{
     
-    public function __construct(){
-        parent::__construct();
-    }
-    public function import($table=""){
-        if(!empty($table)){
-            $data['title'] = "ANROnline | Import Data";
-            $data['table'] = $table;
-            $this->load->view("ANROV_Header", $data);
-            $this->load->view('Exel/ANROV_Exel', $data);
-            $this->load->view("ANROV_Footer", $data);
-        }else{
-            redirect(base_url("ANROC_Beranda"));
-        }
-    }
     function save(){
         $fileName = $_FILES['file']['name'];
          
         $config['upload_path'] = './assets/'; 
         $config['file_name'] = $fileName;
-        $config['allowed_types'] = 'xls|xlsx|csv';
+        $config['allowed_types'] = 'xlsm|xlsx|csv';
         $config['max_size'] = 10000;
          
         $this->load->library('upload', $config);
          
         if(! $this->upload->do_upload('file')){
-            $this->upload->display_errors();
+            echo $this->upload->display_errors();
+            die;
         }
         
         $data = $this->upload->data();
@@ -48,7 +35,7 @@ class ANROC_Exel extends CI_Controller{
         $table = $this->input->post('table');
         
         for ($row = 1; $row <= $highestRow; $row++){   
-            $rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row, NULL, TRUE, FALSE);
+            $rowData = $sheet->rangeToArray('B' . $row . ':' . $highestColumn . $row, NULL, TRUE, FALSE);
             $this->db->db_debug = false;
             
             if($table == "anr_siswa"){
@@ -108,16 +95,21 @@ class ANROC_Exel extends CI_Controller{
             }
             else if($table == "anr_guru"){
                 $direct = "ANROC_Guru";
-                $cek = $this->ANRO_Model->read("anr_guru", array('NIP' => $rowData[0][0], 'NUPTK' => $rowData[0][1]))->num_rows();
+                $cek = $this->ANRO_Model->read("anr_guru", array('NIP' => $rowData[0][0]))->num_rows();
                 if(!$cek > 0){
-                    $data = array(
-                        'NIP' => $rowData[0][0], 
-                        'NUPTK' => $rowData[0][1],
-                        'Nama_Guru' => $rowData[0][2],
-                        'Jenis_Kelamin' => $rowData[0][3],
-                        'Status' => $rowData[0][4]
-                    );
-                    $banyak = $this->ANRO_Model->insertExel("anr_guru", $data, $banyak);
+                    $cek = $this->ANRO_Model->read("anr_guru", array('NUPTK' => $rowData[0][1]))->num_rows();
+                    if(!$cek > 0){
+                        $data = array(
+                            'NIP' => $rowData[0][0], 
+                            'NUPTK' => $rowData[0][1],
+                            'Nama_Guru' => $rowData[0][2],
+                            'Jenis_Kelamin' => $rowData[0][3],
+                            'Status' => $rowData[0][4]
+                        );
+                        $banyak = $this->ANRO_Model->insertExel("anr_guru", $data, $banyak);
+                    }else{
+                        $banyak++;
+                    }
                 }else{
                     $banyak++;
                 }

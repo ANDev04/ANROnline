@@ -14,45 +14,50 @@
                 <hr>
             </div>
             <div class="col s12">
-                <table class="responsive-table bordered">
+                <form autocomplete="off" action="<?php echo base_url("ANROC_Siswa/") ?>" method="get">
+                <div class="row">
+                    <div class="col l3 s12">
+                        <div class="input-field">
+                            <input id="search" type="search" name="key" value="<?php echo $this->input->get('key') ?>">
+                            <label class="label-icon" for="search">Cari</label>
+                            <i class="material-icons" onclick="$('#search').val('')">close</i>
+                        </div>
+                    </div>
+                    <div class="col l2 s4" style="padding-top:20.5px;">
+                        <select name="status_siswa" id="status_siswa">
+                            <option value="">Semua Status</option>
+                            <option value="Aktif">Aktif</option>
+                            <option value="Tidak Aktif">Tidak Aktif</option>
+                        </select>
+                        <input type="hidden" name="status" value="<?php echo $this->input->get('status') ?>">
+                    </div>
+                    <div class="col l3 s4" style="padding-top:20.5px;">
+                        <select name="jenis_kelamin" id="jenis_kelamin">
+                            <option value="">Semua Jenis Kelamin</option>
+                            <option value="L">Laki-Laki</option>
+                            <option value="P">Perempuan</option>
+                        </select>
+                        <input type="hidden" name="jk" value="<?php echo $this->input->get('jk') ?>">
+                    </div>
+                    <div class="col l2 s4" style="padding-top:20.5px;">
+                        <select name="tingkat_kelas" id="tingkat_kelas">
+                            <option value="">Semua Tingkat</option>
+                            <option value="X">Tingkat X</option>
+                            <option value="XI">Tingkat XI</option>
+                            <option value="XII">Tingkat XII</option>
+                        </select>
+                        <input type=hidden name="kelas" value="<?php echo $this->input->get('kelas') ?>">
+                    </div>
+                    <div class="col l2 s12" style="padding-top:25px;">
+                        <button type="submit" class="btn" style=" width:100%;">Cari</button>
+                    </div>
+                </div>
+                </form>
+                <hr>
+            </div>
+            <div class="col s12">
+                <table class="responsive-table bordered highlight centered">
                     <thead>
-                        <tr>
-                            <form action="<?php echo base_url("ANROC_Siswa/") ?>" method="get">
-                            <th>
-                                <div class="input-field">
-                                    <input id="search" type="search" name="key" value="<?php echo $this->input->get('key') ?>">
-                                    <label class="label-icon" for="search">Cari</label>
-                                    <i class="material-icons" onclick="$('#search').val('')">close</i>
-                                </div>
-                            </th>
-                            <th>
-                                <select name="status_siswa" id="status_siswa">
-                                    <option value="">Semua Status</option>
-                                    <option value="Aktif">Aktif</option>
-                                    <option value="Tidak Aktif">Tidak Aktif</option>
-                                </select>
-                                <input type="hidden" name="status" value="<?php echo $this->input->get('status') ?>">
-                            </th>
-                            <th>
-                                <select name="jenis_kelamin" id="jenis_kelamin">
-                                    <option value="">Semua Jenis Kelamin</option>
-                                    <option value="L">Laki-Laki</option>
-                                    <option value="P">Perempuan</option>
-                                </select>
-                                <input type="hidden" name="jk" value="<?php echo $this->input->get('jk') ?>">
-                            </th>
-                            <th>
-                                <select name="tingkat_kelas" id="tingkat_kelas">
-                                    <option value="">Semua Tingkat</option>
-                                    <option value="X">Tingkat X</option>
-                                    <option value="XI">Tingkat XI</option>
-                                    <option value="XII">Tingkat XII</option>
-                                </select>
-                                <input type=hidden name="kelas" value="<?php echo $this->input->get('kelas') ?>">
-                            </th>
-                            <th colspan="3"><button type="submit" class="btn">Cari</button></th>
-                            </form>
-                        </tr>
                         <tr>
                             <th>NIS/NISN</th>
                             <th>Nama Siswa</th>
@@ -83,16 +88,14 @@
                             <td><a href="<?php echo base_url()."ANROC_Siswa/Edit/".$res->ID_SISWA ?>"><i class="material-icons">edit</i></a></td>
                             <td><a href="<?php echo base_url()."ANROC_Siswa/Hapus/".$res->ID_SISWA ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data?')"><i class="material-icons">delete</i></a></td>
                         </tr>
-                <?php 
+                <?php
                     }
                 ?>
                     </tbody>
-                    <tfooter>
-                        <tr>
-                            <td colspan="6" class="center-align"><?php echo $this->pagination->create_links() ?></td>
-                        </tr>
-                    </tfooter>
                 </table>
+                <div class="col s12 center">
+                    <?php echo $this->pagination->create_links() ?>
+                </div>
             </div>
         </div>
         <div class="row">

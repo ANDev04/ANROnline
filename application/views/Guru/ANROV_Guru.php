@@ -14,42 +14,50 @@
                 <hr>
             </div>
             <div class="col s12">
-                <table class="responsive-table bordered">
-                    <tr>
-                       <form action="<?php echo base_url("ANROC_Guru/") ?>" method="get">
-                            <th>
-                               <div class="input-field">
-                                  <input id="search" type="search" name="key" value="<?php echo $this->input->get('key') ?>">
-                                  <label class="label-icon" for="search">Cari</label>
-                                  <i class="material-icons" onclick="$('#search').val('')">close</i>
-                                </div>
-                            </th>
-                            <th>
-                                <select name="status_guru" id="status_guru">
-                                    <option value="">Semua Status</option>
-                                    <option value="Aktif">Aktif</option>
-                                    <option value="Tidak Aktif">Tidak Aktif</option>
-                                </select>
-                                <input type="hidden" name="status" value="<?php echo $this->input->get('status') ?>">
-                            </th>
-                            <th>
-                                <select name="jenis_kelamin" id="jenis_kelamin">
-                                    <option value="">Semua Jenis Kelamin</option>
-                                    <option value="L">Laki-Laki</option>
-                                    <option value="P">Perempuan</option>
-                                </select>
-                                <input type="hidden" name="jk" value="<?php echo $this->input->get('jk') ?>">
-                            </th>
-                            <th colspan="2"><button type="submit" class="btn">Cari</button></th>
-                        </form>
-                    </tr>
-                    <tr>
-                        <th>NIP/NUPTK</th>
-                        <th>Nama Guru</th>
-                        <th>Jenis Kelamin</th>
-                        <th>Status</th>
-                        <th colspan="2">Aksi</th>
-                    </tr>
+                <form autocomplete="off" action="<?php echo base_url("ANROC_Guru/") ?>" method="get">
+                <div class="row">
+                    <div class="col l5 s12">
+                        <div class="input-field">
+                          <input id="search" type="search" name="key" value="<?php echo $this->input->get('key') ?>">
+                          <label class="label-icon" for="search">Cari</label>
+                          <i class="material-icons" onclick="$('#search').val('')">close</i>
+                        </div>
+                    </div>
+                    <div class="col l2 s6" style="padding-top:20.5px;">
+                        <select name="status_guru" id="status_guru">
+                            <option value="">Semua Status</option>
+                            <option value="Aktif">Aktif</option>
+                            <option value="Tidak Aktif">Tidak Aktif</option>
+                        </select>
+                        <input type="hidden" name="status" value="<?php echo $this->input->get('status') ?>">
+                    </div>
+                    <div class="col l3 s6" style="padding-top:20.5px;">
+                        <select name="jenis_kelamin" id="jenis_kelamin">
+                            <option value="">Semua Jenis Kelamin</option>
+                            <option value="L">Laki-Laki</option>
+                            <option value="P">Perempuan</option>
+                        </select>
+                        <input type="hidden" name="jk" value="<?php echo $this->input->get('jk') ?>">
+                    </div>
+                    <div class="col l2 s12" style="padding-top:25px;">
+                        <button type="submit" class="btn" style=" width:100%;">Cari</button>
+                    </div>
+                </div>
+                </form>
+                <hr>
+            </div>
+            <div class="col s12">
+                <table class="responsive-table bordered highlight centered">
+                    <thead>
+                        <tr>
+                            <th>NIP/NUPTK</th>
+                            <th>Nama Guru</th>
+                            <th>Jenis Kelamin</th>
+                            <th>Status</th>
+                            <th colspan="2">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                 <?php
                     foreach($resource as $res){
                 ?>
@@ -72,10 +80,11 @@
                 <?php 
                     }
                 ?>
-                     <tr>
-                        <td><?php echo $this->pagination->create_links() ?></td>
-                    </tr>
+                    </tbody>
                 </table>
+                <div class="col s12 center">
+                    <?php echo $this->pagination->create_links() ?>
+                </div>
             </div>
         </div>
         <div class="row">

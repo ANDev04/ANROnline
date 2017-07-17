@@ -24,6 +24,12 @@ class ANROC_Guru extends CI_Controller{
         $settings['base_url']= base_url('ANROC_Guru/');
         $settings['per_page']=10;
         $settings['uri_segment']=3;
+        
+        $settings['first_link'] = '<i class="material-icons">skip_previous</i>';
+        $settings['last_link'] = '<i class="material-icons">skip_next</i>';
+        $settings['next_link'] = '<i class="material-icons">chevron_right</i>';
+        $settings['prev_link'] = '<i class="material-icons">chevron_left</i>';
+        
         $this->pagination->initialize($settings);   
         $data['title']="ANROnline | DATA Guru";
         $data['resource']=$this->ANRO_Model->page("anr_guru",$settings['per_page'],$halaman,$where,$key)->result();

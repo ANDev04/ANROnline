@@ -569,6 +569,9 @@ class CI_Pagination {
 			$output .= $this->first_tag_open.'<a href="'.$first_url.'"'.$attributes.$this->_attr_rel('start').'>'
 				.$this->first_link.'</a>'.$this->first_tag_close;
 		}
+        else{
+            $output .= '<li class="disabled"><a href="#">'.$this->first_link.'</a></li>';
+        }
 
 		// Render the "Previous" link.
 		if ($this->prev_link !== FALSE && $this->cur_page !== 1)
@@ -591,6 +594,9 @@ class CI_Pagination {
 			}
 
 		}
+        else{
+            $output .= '<li class="disabled"><a href="#">'.$this->prev_link.'</a></li>';
+        }
 
 		// Render the pages
 		if ($this->display_pages !== FALSE)
@@ -635,6 +641,9 @@ class CI_Pagination {
 			$output .= $this->next_tag_open.'<a href="'.$base_url.$this->prefix.$i.$this->suffix.'"'.$attributes
 				.$this->_attr_rel('next').'>'.$this->next_link.'</a>'.$this->next_tag_close;
 		}
+        else{
+            $output .= '<li class="disabled"><a href="#">'.$this->next_link.'</a></li>';
+        }
 
 		// Render the "Last" link
 		if ($this->last_link !== FALSE && ($this->cur_page + $this->num_links + ! $this->num_links) < $num_pages)
@@ -646,6 +655,9 @@ class CI_Pagination {
 			$output .= $this->last_tag_open.'<a href="'.$base_url.$this->prefix.$i.$this->suffix.'"'.$attributes.'>'
 				.$this->last_link.'</a>'.$this->last_tag_close;
 		}
+        else{
+            $output .= '<li class="disabled"><a href="#">'.$this->last_link.'</a></li>';
+        }
 
 		// Kill double slashes. Note: Sometimes we can end up with a double slash
 		// in the penultimate link so we'll kill all double slashes.

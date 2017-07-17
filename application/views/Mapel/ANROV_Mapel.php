@@ -14,26 +14,30 @@
                 <hr>
             </div>
             <div class="col s12">
-                <table class="responsive-table bordered">
-                    <tr>
-                        <th>Kode Mata Pelajaran</th>
-                        <th>Nama Mata Pelajaran</th>
-                        <th>KKM</th>
-                        <th colspan="2">Aksi</th>
-                    </tr>
+                <table class="responsive-table bordered highlight centered">
+                    <thead>
+                        <tr>
+                            <th>Kode Mata Pelajaran</th>
+                            <th>Nama Mata Pelajaran</th>
+                            <th>KKM</th>
+                            <th colspan="2">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                     <?php foreach($resource as $res){?>
-                    <tr>
-                        <td><?php echo $res->Kode_Mapel?></td>
-                        <td><a href="<?php echo base_url()."ANROC_Mapel/view/".$res->Kode_Mapel ?>"><?php echo $res->Nama_Mapel?></a></td>
-                        <td><?php echo $res->KKM ?></td>
-                        <td><a href="<?php echo base_url("ANROC_Mapel/edit/".$res->Kode_Mapel) ?>"><i class="material-icons">edit</i></a></td>
-                        <td><a href="<?php echo base_url("ANROC_Mapel/delete/".$res->Kode_Mapel) ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data?')"><i class="material-icons">delete</i></a></td>
-                    </tr>
+                        <tr>
+                            <td><?php echo $res->Kode_Mapel?></td>
+                            <td><a href="<?php echo base_url()."ANROC_Mapel/view/".$res->Kode_Mapel ?>"><?php echo $res->Nama_Mapel?></a></td>
+                            <td><?php echo $res->KKM ?></td>
+                            <td><a href="<?php echo base_url("ANROC_Mapel/edit/".$res->Kode_Mapel) ?>"><i class="material-icons">edit</i></a></td>
+                            <td><a href="<?php echo base_url("ANROC_Mapel/delete/".$res->Kode_Mapel) ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data?')"><i class="material-icons">delete</i></a></td>
+                        </tr>
                     <?php } ?>
-                    <tr>
-                        <td><?php echo $this->pagination->create_links() ?></td>
-                    </tr>
+                    </tbody>
                 </table>
+                <div class="col s12 center">
+                    <?php echo $this->pagination->create_links() ?>
+                </div>
             </div>
         </div>
          <div class="row">

@@ -15,7 +15,7 @@
             </div>
             <div class="col s12">
             <div class="row">
-                <div class="col s6">
+                <div class="col l6 s12">
                   <div class="card">
                     <div class="card-content black-text">
                       <span class="card-title">Program Keahlian</span>
@@ -26,7 +26,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col s6">
+                <div class="col l6 s12">
                   <div class="card blue-grey darken-1">
                     <div class="card-content white-text">
                       <span class="card-title">Paket Keahlian</span>

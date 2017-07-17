@@ -15,25 +15,29 @@
                 <hr>
             </div>
             <div class="col s12">
-                <table class="responsive-table bordered">
-                    <tr>
-                        <th>No</th>
-                        <th>Program Keahlian</th>
-                        <th>Paket Keahlian</th>
-                        <th colspan="2">Aksi</th>
-                    </tr>
+                <table class="responsive-table bordered highlight centered">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Program Keahlian</th>
+                            <th>Paket Keahlian</th>
+                            <th colspan="2">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                     <?php 
                         $i=1;
                         foreach($resource as $res){ 
                     ?>
-                    <tr>
-                        <td><?php echo $i ?></td>
-                        <td><?php echo $res->program_keahlian ?></td>
-                        <td><?php echo $res->paket_keahlian ?></td>
-                        <td><a href="<?php echo base_url("ANROC_Paket/edit/".$res->id_paket_keahlian) ?>"><i class="material-icons">edit</i></a></td>
-                        <td><a href="<?php echo base_url("ANROC_Paket/hapus/".$res->id_paket_keahlian) ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data?')"><i class="material-icons">delete</i></a></td>
-                    </tr>
+                        <tr>
+                            <td><?php echo $i ?></td>
+                            <td><?php echo $res->program_keahlian ?></td>
+                            <td><?php echo $res->paket_keahlian ?></td>
+                            <td><a href="<?php echo base_url("ANROC_Paket/edit/".$res->id_paket_keahlian) ?>"><i class="material-icons">edit</i></a></td>
+                            <td><a href="<?php echo base_url("ANROC_Paket/hapus/".$res->id_paket_keahlian) ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data?')"><i class="material-icons">delete</i></a></td>
+                        </tr>
                     <?php $i++;} ?>
+                    </tbody>
                 </table>
             </div>
         </div>
