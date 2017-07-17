@@ -24,16 +24,15 @@
                         </div>
                     </div>
                     <div class="col l2 s6" style="padding-top:20.5px;">
-                        <select name="tingkat_kelas" id="tingkat_kelas">
+                        <select name="kelas" id="tingkat_kelas">
                             <option value="">Semua Tingkat</option>
                             <option value="X">Tingkat X</option>
                             <option value="XI">Tingkat XI</option>
                             <option value="XII">Tingkat XII</option>
                         </select>
-                        <input type=hidden name="kelas" value="<?php echo $this->input->get('kelas') ?>">
                     </div>
                     <div class="col l3 s6" style="padding-top:20.5px;">
-                        <select name="tahun_ajaran" id="tahun_ajaran">
+                        <select name="tahun_ajar" id="tahun_ajaran">
                             <option value="">Semua Angkatan</option>
                             <?php 
                             foreach($tahun_ajaran->result() as $TA){
@@ -43,7 +42,6 @@
                             }
                             ?>
                         </select>
-                       <input type="hidden" name="tahun_ajar" value="<?php echo $this->input->get("tahun_ajar") ?>">
                     </div>
                     <div class="col l2 s12" style="padding-top:25px;">
                         <button type="submit" class="btn" style=" width:100%;">Cari</button>
@@ -111,20 +109,14 @@
     <?php if(isset($_GET['success'])&&isset($_GET['error'])){ ?>
     counter(1, '<?php echo base_url("ANROC_Kelas")?>');
     <?php } ?>
-$('button[type="submit"]').on('click', function(){
-    var selected_value = $("#tingkat_kelas").val();
-    $("input[name='kelas']").val(selected_value);
-    var selected_ajar = $("#tahun_ajaran").val();
-    $("input[name='tahun_ajar']").val(selected_ajar);
-});
 $('select').ready(function(){
     var isi = '<?php echo $this->input->get('kelas')?>';
     if(isi !=""){
-        $('select[name="tingkat_kelas"]').val(isi);
+        $('select[name="kelas"]').val(isi);
     } 
     var ajar = '<?php echo $this->input->get('tahun_ajar') ?>';
     if(ajar !=""){
-        $('select[name="tahun_ajaran"]').val(ajar);
+        $('select[name="tahun_ajar"]').val(ajar);
     }
 });
 </script>

@@ -24,20 +24,18 @@
                         </div>
                     </div>
                     <div class="col l2 s6" style="padding-top:20.5px;">
-                        <select name="status_guru" id="status_guru">
+                        <select name="status" id="status_guru">
                             <option value="">Semua Status</option>
                             <option value="Aktif">Aktif</option>
                             <option value="Tidak Aktif">Tidak Aktif</option>
                         </select>
-                        <input type="hidden" name="status" value="<?php echo $this->input->get('status') ?>">
                     </div>
                     <div class="col l3 s6" style="padding-top:20.5px;">
-                        <select name="jenis_kelamin" id="jenis_kelamin">
+                        <select name="jk" id="jenis_kelamin">
                             <option value="">Semua Jenis Kelamin</option>
                             <option value="L">Laki-Laki</option>
                             <option value="P">Perempuan</option>
                         </select>
-                        <input type="hidden" name="jk" value="<?php echo $this->input->get('jk') ?>">
                     </div>
                     <div class="col l2 s12" style="padding-top:25px;">
                         <button type="submit" class="btn" style=" width:100%;">Cari</button>
@@ -103,21 +101,14 @@
 <?php if(isset($_GET['success'])&&isset($_GET['error'])){ ?>
     counter(1, '<?php echo base_url("ANROC_Guru")?>');
 <?php } ?>
-$('button[type="submit"]').on('click', function(){
-    var selected_status = $("#status_guru").val();
-    $("input[name='status']").val(selected_status);
-    var selected_jk = $("#jenis_kelamin").val();
-    $("input[name='jk']").val(selected_jk);
-});
 $('select').ready(function(){
-    var isi = '<?php echo $this->input->get('kelas')?>';
     var status = '<?php echo $this->input->get('status') ?>';
     if(status !=""){
-        $('select[name="status_guru"]').val(status);
+        $('select[name="status"]').val(status);
     }
     var jk = '<?php echo $this->input->get('jk') ?>';
     if(jk != ""){
-        $('select[name="jenis_kelamin"]').val(jk);
+        $('select[name="jk"]').val(jk);
     }
 })
 </script>

@@ -14,6 +14,39 @@
                 <hr>
             </div>
             <div class="col s12">
+                <form autocomplete="off" action="<?php echo base_url("ANROC_Nilai/") ?>" method="get">
+                <div class="row">
+                    <div class="col l5 s12">
+                        <div class="input-field">
+                          <input id="search" type="search" name="key" value="<?php echo $this->input->get('key') ?>">
+                          <label class="label-icon" for="search">Cari</label>
+                          <i class="material-icons" onclick="$('#search').val('')">close</i>
+                        </div>
+                    </div>
+                    <div class="col l2 s6" style="padding-top:20.5px;">
+                        <select name="semester" id="semester">
+                            <option value="">Semua Semester</option>
+                            <option value="Ganjil">Ganjil</option>
+                            <option value="Genap">Genap</option>
+                        </select>
+                    </div>
+                    <div class="col l3 s6" style="padding-top:20.5px;">
+                        <select name="jenis_nilai" id="jenis_nilai">
+                            <option value="">Semua Jenis Nilai</option>
+                            <option value="Harian">Harian</option>
+                            <option value="Ujian Tengah Semester">Ujian Tengah Semester</option>
+                            <option value="Ujian Akhir Semester">Ujian Akhir Semester</option>
+                            <option value="Praktek">Praktek</option>
+                        </select>
+                    </div>
+                    <div class="col l2 s12" style="padding-top:25px;">
+                        <button type="submit" class="btn" style=" width:100%;">Cari</button>
+                    </div>
+                </div>
+                </form>
+                <hr>
+            </div>
+            <div class="col s12">
                 <table class="responsive-table bordered highlight centered">
                     <thead>
                         <tr>
@@ -21,6 +54,7 @@
                             <th>Nama Mata Pelajaran</th>
                             <th>Jenis Nilai</th>
                             <th>Nilai</th>
+                            <th>Semester</th>
                             <th>Kelas</th>
                             <th colspan="2">Aksi</th>
                         </tr>
@@ -32,16 +66,17 @@
                             <td><?php echo $res->Nama_Mapel ?></td>
                             <td><?php echo $res->Jenis_Nilai ?></td>
                             <td><?php echo $res->Nilai ?></td>
+                            <td><?php echo $res->Semester ?></td>
                             <td><a href="<?php echo base_url("ANROC_Kelas/Kelas/".$res->Kode_Kelas) ?>"><?php echo $res->Tingkat_Kelas."-".$res->Nama_Kelas." (".$res->Tahun_Masuk."/".$res->Tahun_Keluar.")" ?></a></td>
                             <td><a href="<?php echo base_url("ANROC_Nilai/edit/".$res->ID_NILAI) ?>"><i class="material-icons">edit</i></a></td>
                             <td><a href="<?php echo base_url("ANROC_Nilai/delete/".$res->ID_NILAI) ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data?')"><i class="material-icons">delete</i></a></td>
                         </tr>
                     <?php } ?>
                     </tbody>
-                    <tr>
-                        <td colspan="6" class="center-align">Tidak Ada Data</td>
-                    </tr>
                 </table>
+                 <div class="col s12 center">
+                    <?php echo $this->pagination->create_links() ?>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -56,3 +91,15 @@
         </div>
     </div>
 </main>
+<script>
+$('select').ready(function(){
+    var isi = '<?php echo $this->input->get('semester')?>';
+    if(isi !=""){
+        $('select[name="semester"]').val(isi);
+    } 
+    var jenis = '<?php echo $this->input->get('jenis_nilai') ?>';
+    if(jenis !=""){
+        $('select[name="jenis_nilai"]').val(jenis);
+    }
+});
+</script>

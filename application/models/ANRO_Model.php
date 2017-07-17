@@ -128,6 +128,12 @@ class ANRO_Model extends CI_Model{
     } 
     public function page($table, $batas=null, $offset=null, $where=null, $key=null){
         $sql="SELECT * FROM ".$table;
+        if($table=="anr_nilai"){
+            $sql .=" INNER JOIN anr_siswa ON anr_nilai.Siswa=anr_siswa.ID_SISWA";
+            $sql .=" INNER JOIN anr_mapel ON anr_nilai.Mapel=anr_mapel.Kode_Mapel";
+            $sql .=" INNER JOIN anr_kelas ON anr_nilai.Kelas=anr_kelas.Kode_Kelas";
+            
+        }
             if (($where != null) || ($key != null)) {
                 $sql .= " WHERE ";
                 if($where!= null){
@@ -137,11 +143,15 @@ class ANRO_Model extends CI_Model{
                 if ($key != null){
                     $sql .= ($where != null) ? " AND " : "";
                     if($table=="anr_siswa"){
-                        $sql .= "(anr_siswa.NIS LIKE '%".$key."%' OR anr_siswa.NISN LIKE '%".$key."%' OR anr_siswa.nama_siswa LIKE '%".$key."%') "; 
+                        $sql .= "(anr_siswa.NIS LIKE '%".$this->db->escape_like_str($key)."%' OR anr_siswa.NISN LIKE '%".$this->db->escape_like_str($key)."%' OR anr_siswa.nama_siswa LIKE '%".$this->db->escape_like_str($key)."%') "; 
                     }else if($table=="anr_kelas"){
-                        $sql .= "(Nama_Kelas LIKE '%".$key."%') "; 
-                    }else if($table="anr_guru"){
-                        $sql .= "(NIP LIKE '%".$key."%' OR NIP LIKE '%".$key."%' OR Nama_Guru LIKE '%".$key."%')";
+                        $sql .= "(Nama_Kelas LIKE '%".$this->db->escape_like_str($key)."%') "; 
+                    }else if($table=="anr_guru"){
+                        $sql .= "(NIP LIKE '%".$this->db->escape_like_str($key)."%' OR NIP LIKE '%".$this->db->escape_like_str($key)."%' OR Nama_Guru LIKE '%".$this->db->escape_like_str($key)."%')";
+                    }else if($table=="anr_mapel"){
+                        $sql .= "(Nama_Mapel LIKE '%".$this->db->escape_like_str($key)."%' OR Kode_Mapel LIKE '%".$this->db->escape_like_str($key)."%')";
+                    }else if($table=="anr_nilai"){
+                        $sql .= "(anr_siswa.NIS LIKE '%".$this->db->escape_like_str($key)."%' OR anr_siswa.NISN LIKE '%".$this->db->escape_like_str($key)."%' OR anr_siswa.nama_siswa LIKE '%".$this->db->escape_like_str($key)."%' OR anr_mapel.Nama_Mapel LIKE '%".$this->db->escape_like_str($key)."%' OR anr_kelas.Nama_Kelas LIKE '%".$this->db->escape_like_str($key)."%')";
                     }
                 }
             

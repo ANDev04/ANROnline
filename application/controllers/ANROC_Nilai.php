@@ -6,8 +6,37 @@ class ANROC_Nilai extends CI_Controller{
     }
     
     public function index(){
+        $halaman=$this->input->get('per_page');
+        $semester=$this->input->get('semester');
+        $key=$this->input->get('key');
+        $jenis_nilai=$this->input->get('jenis_nilai');
+        if(empty($halaman)){
+            $halaman=0;
+        }
+        $where=array();
+        if(!empty($semester or !empty($jenis_nilai))){
+            if($semester!=null){
+                array_push($where,"Semester = '".$semester."'");
+            }
+            if($jenis_nilai!=null){
+                array_push($where,"Jenis_Nilai = '".$jenis_nilai."'");
+            }
+        }
+        $this->config->load('pagination', TRUE);
+        $settings = $this->config->item('pagination');
+        $settings['total_rows'] = $this->ANRO_Model->page("anr_nilai",null,null,$where,$key)->num_rows();
+        $settings['base_url']= base_url('ANROC_Nilai/');
+        $settings['per_page']=10;
+        $settings['uri_segment']=3;
+        
+        $settings['first_link'] = '<i class="material-icons">first_page</i>';
+        $settings['last_link'] = '<i class="material-icons">last_page</i>';
+        $settings['next_link'] = '<i class="material-icons">chevron_right</i>';
+        $settings['prev_link'] = '<i class="material-icons">chevron_left</i>';
+        
+        $this->pagination->initialize($settings);  
         $data['title'] = "ANROnline | Data Nilai";
-        $data['resource'] = $this->ANRO_Model->read("anr_nilai")->result();
+        $data['resource'] = $this->ANRO_Model->page("anr_nilai",$settings['per_page'],$halaman,$where,$key)->result();
         $this->load->view("ANROV_Header", $data);
         $this->load->view("Nilai/ANROV_Nilai", $data);
         $this->load->view("ANROV_Footer", $data);

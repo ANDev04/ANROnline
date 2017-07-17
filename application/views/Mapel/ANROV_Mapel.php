@@ -14,6 +14,21 @@
                 <hr>
             </div>
             <div class="col s12">
+                <form method="get" autocomplete="off" action="<?php echo base_url('ANROC_Mapel/') ?>" >
+                <div class="row">
+                    <div class="col l10 s12 left-align">
+                        <div class="input-field">
+                          <input id="search" type="search" name="key" value="<?php echo $this->input->get('key') ?>">
+                          <label class="label-icon" for="search">Cari</label>
+                          <i class="material-icons" onclick="$('#search').val('')">close</i>
+                        </div>
+                     </div>
+                    <div class="col l2 s12 left-align" style="padding-top:25px;">
+                        <button type="submit" class="btn" style=" width:100%;">Cari</button>
+                    </div>
+                </div>
+                    <hr>
+                </form>
                 <table class="responsive-table bordered highlight centered">
                     <thead>
                         <tr>
