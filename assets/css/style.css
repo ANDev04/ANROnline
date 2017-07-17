@@ -26,3 +26,15 @@ main {
 .breadcrumb:last-child {
    color: lightgray;
 }
+input.mce-textbox{
+    width: auto;
+    background: #fff;
+    border: 1px solid #c5c5c5;
+    display: inline-block;
+    -webkit-transition: border linear .2s, box-shadow linear .2s;transition: border linear .2s, box-shadow linear .2s;
+    height: 28px;
+    resize: none;
+    padding: 0 4px 0 4px;
+    white-space: pre-wrap;
+    color: #333;
+}

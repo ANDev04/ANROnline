@@ -17,34 +17,35 @@
             </div>    
         <div class="col s12">
                 <form onsubmit="return validasi(this, 'Config')" autocomplete="off" method="post" action="<?php echo base_url("ANROC_PDF/save")?>">
+                    <div class="row">
+                        <div class="col s2" style="padding-top:30.5px;">Nama Konfigurasi</div>
+                        <div class="col s10">
+                            <div class="input-field">
+                                <input type="text" name="nama"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s2" style="padding-top:10.5px;">Nama Siswa</div>
+                        <div class="col s10">
+                            <select name="tipe">
+                                <option value="Pilih" disabled selected>Pilih Tipe</option>
+                                <option value="Header">Header</option>
+                                <option value="Footer">Footer</option>
+                            </select>
+                        </div>
+                    </div>
                     <table>
-                        <tr>
-                            <td>Nama Konfigurasi</td>
-                            
-                            <td><input type="text" name="nama"/></td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Tipe Konfigurasi</td>      
-                            <td>
-                                <div class="input-field">
-                                    <select name="tipe"  style="width:40%">
-                                        <option value="Pilih" disabled selected>Pilih Tipe</option>
-                                        <option value="Header">Header</option>
-                                        <option value="Footer">Footer</option>
-                                    </select>
-                                </div>
-                            </td>
-                        </tr>
                         <tr>
                             <td colspan="2"><textarea name="isi" id="wysiwyg"></textarea></td>
                         </tr>
-                        <tr>
-                            <td colspan="2" class="right-align"><button class="btn" type="submit" name="type" value="insert">Submit</button></td>
-                        </tr>
                     </table>
+                    <div class="row">
+                        <div class="col s12 right-align">
+                            <button class="btn" type="submit" name="type" value="insert"><i class="material-icons left">input</i>Submit</button>
+                        </div>
+                    </div>
                 </form>
-                 
             </div>
         </div>
     </div>

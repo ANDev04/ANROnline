@@ -16,49 +16,43 @@
             </div>    
         <div class="col s12">
                 <form onsubmit="return validasi(this, 'kelas')" action="<?php echo base_url("ANROC_Kelas/save") ?>" method="post">
-                    <table>
-                        <tr>
-                            <td>Tingkat Kelas</td>
-                            <td>
-                                <div class="input-field col s12">
-                                    <select id="tingkat_kelas" name="tingkat_kelas">
-                                        <option value="Pilih" disabled selected>Pilih Tingkat Kelas</option>
-                                        <option value="X">X</option>
-                                        <option value="XI">XI</option>
-                                        <option value="XII">XII</option>
-                                    </select>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Jurusan</td>
-                            <td>
-                                 <div class="input-field col s6">
-                                    <select id="jurusan" name="jurusan">
-                                        <option value="Pilih">Pilih Jurusan</option>
-                                    </select>
-                                </div>
-                                <div class="input-field col s6">
-                                    <input type="number" id="nomer" name="nomer" min="1" max="100" placeholder="Isi Nomor Kelas">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Kuota Kelas</td>
-                            <td> <div class="input-field col s12"><input type="number" placeholder="isi kuota kelas" name="kuota" min='1' max='50'></div></td>
-                        </tr>
-                        <tr>
-                            <td>Tahun Ajaran</td>
-                            <td>
-                                <div class="input-field col s5"><input id="tahun_masuk" type="number" name="tahun_masuk" value="2017" onchange="angkatan()"></div> 
-                                <div class="input-field col s2 center-align">s/d</div>
-                                <div class="input-field col s5"><input id="tahun_keluar" type="number" name="tahun_keluar" value="2018" readonly></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="right-align"><button type="submit" name="type" value="insert" class="btn">Submit</button></td>
-                        </tr>
-                    </table>
+                    <div class="row">
+                        <div class="col l2 s3" style="padding-top:25.5px;">Tingkat Kelas</div>
+                        <div class="input-field col l10 s9">
+                            <select id="tingkat_kelas" name="tingkat_kelas">
+                                <option value="Pilih" disabled selected>Pilih Tingkat Kelas</option>
+                                <option value="X">X</option>
+                                <option value="XI">XI</option>
+                                <option value="XII">XII</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col l2 s3" style="padding-top:25.5px;">Jurusan</div>
+                        <div class="input-field col l5 s4" style="padding-top:4px;">
+                            <select id="jurusan" name="jurusan">
+                                <option value="Pilih">Pilih Jurusan</option>
+                            </select>
+                        </div>
+                        <div class="input-field col l5 s5">
+                            <input type="number" id="nomer" name="nomer" min="1" max="100" placeholder="Isi Nomor Kelas">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col l2 s3" style="padding-top:25.5px;">Kuota Kelas</div>
+                        <div class="input-field col l10 s9">
+                            <input type="number" placeholder="isi kuota kelas" name="kuota" min='1' max='50'>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col l2 s3" style="padding-top:25.5px;">Tahun Ajaran</div>
+                        <div class="input-field col l4 s4"><input id="tahun_masuk" type="number" name="tahun_masuk" value="2017" onchange="angkatan()"></div> 
+                        <div class="input-field col l1 s1 center-align" style="padding-top:18.5px;">s/d</div>
+                        <div class="input-field col l5 s4"><input id="tahun_keluar" type="number" name="tahun_keluar" value="2018" readonly></div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 right-align"><button class="btn" type="submit" name="type" value="insert"><i class="material-icons left">input</i>Submit</button></div>
+                    </div>
                 </form>
             </div>
         </div>

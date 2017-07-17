@@ -109,6 +109,9 @@
     </div>
 </main>
     <script>
+        function angkatan(){
+            document.getElementById("tahun_keluar").value = parseInt(document.getElementById("tahun_masuk").value)+1;
+        }
         $('select[name="tingkat_kelas"]').on('change', function(){
 				$.ajax({
 					type : 'POST', 

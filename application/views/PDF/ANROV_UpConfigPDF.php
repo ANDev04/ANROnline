@@ -18,38 +18,40 @@
         <div class="col s12">
                 <form onsubmit="return validasi(this, 'Config')" autocomplete="off" method="post" action="<?php echo base_url("ANROC_PDF/save")?>">
                     <input type="hidden" name="id" value="<?php echo $resource['ID_Config'] ?>">
+                    <div class="row">
+                        <div class="col s2" style="padding-top:30.5px;">Nama Konfigurasi</div>
+                        <div class="col s10">
+                            <div class="input-field">
+                                <input type="text" name="nama" value="<?php echo $resource['Nama'] ?>"//>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s2" style="padding-top:10.5px;">Nama Siswa</div>
+                        <div class="col s10">
+                            <select name="tipe">
+                                <option value="Pilih" disabled selected>Pilih Tipe</option>
+                                <?php if($resource['Tipe'] == "Header"){?>
+                                <option value="Header" selected>Header</option>
+                                <option value="Footer">Footer</option>
+                                <?php } ?>
+                                <?php if($resource['Tipe'] == "Footer"){?>
+                                <option value="Header">Header</option>
+                                <option value="Footer" selected>Footer</option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
                     <table>
                         <tr>
-                            <td>Nama Konfigurasi</td>
-                           
-                            <td><input type="text" name="nama" value="<?php echo $resource['Nama'] ?>"/></td>
-                        </tr>
-                        <tr>
-                            <td>Tipe Konfigurasi</td>
-                           
-                            <td>
-                                <div class="input-field">
-                                    <select name="tipe"  style="width:40%">
-                                        <option value="Pilih" disabled selected>Pilih Tipe</option>
-                                        <?php if($resource['Tipe'] == "Header"){?>
-                                        <option value="Header" selected>Header</option>
-                                        <option value="Footer">Footer</option>
-                                        <?php } ?>
-                                        <?php if($resource['Tipe'] == "Footer"){?>
-                                        <option value="Header">Header</option>
-                                        <option value="Footer" selected>Footer</option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><textarea name="isi" id="wysiwyg"><?php echo $resource['Isi'] ?></textarea></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="right-align"><button class="btn" type="submit" name="type" value="update">Submit</button></td>
+                            <td colspan="2"><textarea name="isi" id="wysiwyg"></textarea></td>
                         </tr>
                     </table>
+                    <div class="row">
+                        <div class="col s12 right-align">
+                            <button class="btn" type="submit" name="type" value="update"><i class="material-icons left">edit</i>Update</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

@@ -10,75 +10,72 @@
         </div>
         <div class="row z-depth-2">
             <div class="col s12">
-                <blockquote><h3>PDF</h3></blockquote>
+                <blockquote><h3>Cetak PDF</h3></blockquote>
                 <hr>
             </div>
             <div class="col s12">
                  <form onsubmit="return validasi(this, 'PDF')" autocomplete="off" method="post" action="<?php echo base_url("ANROC_PDF/PDF") ?>">
-                    <table>
-                        <tr>
-                            <td>Nama Siswa</td>
-                            
-                            <td>
-                                <select name="id_siswa">
-                                    <option value="Pilih" disabled selected>Pilih Siswa</option>
-                                    <?php foreach($siswa as $b){?>
-                                    <option value="<?php echo $b->ID_SISWA ?>"><?php echo $b->NIS."/".$b->NISN." | ".$b->Nama_Siswa ?></option>
-                                    <?php } ?>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Kelas</td>
-                            
-                            <td>
-                                <select name="kode_kelas">
-                                    <option value="Pilih" disabled selected>Pilih Kelas</option>
-                                    <?php foreach($kelas as $b){?>
-                                    <option value="<?php echo $b->Kode_Kelas ?>"><?php echo $b->Tingkat_Kelas."-".$b->Nama_Kelas." (".$b->Tahun_Masuk."/".$b->Tahun_Keluar.")" ?></option>
-                                    <?php } ?>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Semester</td>
-                            
-                            <td>
-                                <input type="radio" name="semester" value="Ganjil" id="ganjil">
-                                <label for="ganjil">Ganjil</label>
-                                <input type="radio" name="semester" value="Genap" id="genap">
-                                <label for="genap">Genap</label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Header</td>
-                            
-                            <td>
-                                <select name="header">
-                                    <option value="Pilih" disabled selected>Pilih Configurasi Header</option>
-                                    <?php foreach($header as $b){?>
-                                    <option value="<?php echo $b->ID_Config ?>"><?php echo $b->ID_Config." - ".$b->Nama ?></option>
-                                    <?php } ?>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Footer</td>
-                            
-                            <td>
-                                <select name="footer">
-                                    <option value="Pilih" disabled selected>Pilih Configurasi Footer</option>
-                                    <?php foreach($footer as $b){?>
-                                    <option value="<?php echo $b->ID_Config ?>"><?php echo $b->ID_Config." - ".$b->Nama ?></option>
-                                    <?php } ?>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="left-align"><a class="btn waves-effect waves-light" href="<?php echo base_url("ANROC_PDF/config") ?>"><i class="material-icons left">settings</i>Konfigurasi</a></td>
-                            <td class="right-align"><button class="btn" type="submit" name="type">Submit</button></td>
-                        </tr>
-                    </table>
+                    <div class="row">
+                        <div class="col s2" style="padding-top:10.5px;">Nama Siswa</div>
+                        <div class="col s10">
+                            <select name="id_siswa">
+                                <option value="Pilih" disabled selected>Pilih Siswa</option>
+                                <?php foreach($siswa as $b){?>
+                                <option value="<?php echo $b->ID_SISWA ?>"><?php echo $b->NIS."/".$b->NISN." | ".$b->Nama_Siswa ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s2" style="padding-top:10.5px;">Kelas</div>
+                        <div class="col s10">
+                            <select name="kode_kelas">
+                                <option value="Pilih" disabled selected>Pilih Kelas</option>
+                                <?php foreach($kelas as $b){?>
+                                <option value="<?php echo $b->Kode_Kelas ?>"><?php echo $b->Tingkat_Kelas."-".$b->Nama_Kelas." (".$b->Tahun_Masuk."/".$b->Tahun_Keluar.")" ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s2">Semester</div>
+                        <div class="col s10">
+                            <input type="radio" name="semester" value="Ganjil" id="ganjil">
+                            <label for="ganjil">Ganjil</label>
+                            <input type="radio" name="semester" value="Genap" id="genap">
+                            <label for="genap">Genap</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s2" style="padding-top:10.5px;">Header</div> 
+                        <div class="col s10">
+                            <select name="header">
+                                <option value="Pilih" disabled selected>Pilih Configurasi Header</option>
+                                <?php foreach($header as $b){?>
+                                <option value="<?php echo $b->ID_Config ?>"><?php echo $b->ID_Config." - ".$b->Nama ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s2" style="padding-top:10.5px;">Footer</div> 
+                        <div class="col s10">
+                            <select name="footer">
+                                <option value="Pilih" disabled selected>Pilih Configurasi Footer</option>
+                                <?php foreach($footer as $b){?>
+                                <option value="<?php echo $b->ID_Config ?>"><?php echo $b->ID_Config." - ".$b->Nama ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row" style="padding-top:15px;">
+                        <div class="col s6 left-align">
+                            <a class="btn waves-effect waves-light" href="<?php echo base_url("ANROC_PDF/config") ?>"><i class="material-icons left">settings</i>Konfigurasi</a>
+                        </div>
+                        <div class="col s6 right-align">
+                            <button class="btn" type="submit" name="type"><i class="material-icons left">print</i>Cetak</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

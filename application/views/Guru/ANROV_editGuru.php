@@ -16,52 +16,56 @@
             </div>
             <div class="col s12">
                 <form onsubmit="return validasi(this, 'guru')" action="<?php echo base_url()."ANROC_Guru/Save" ?>" method="post">
-                    <table>
-                        <?php foreach($resource as $res){ 
-                            if($res->Jenis_Kelamin=="L"){
-                                $l="checked";
-                                $p="";
-                            }else{
-                                $p="checked";
-                                $l="";
-                            }
-                        ?>
-                        <input type="hidden" name="id_guru" value="<?php echo $res->ID_Guru ?>">
-                        <tr>
-                            <td>NIP</td>
-                            <td><input type="number" name="NIP" min="9" value="<?php echo $res->NIP ?>"></td>
-                        </tr>
-                        <tr>
-                            <td>NUPTK</td>
-                            <td><input type="number" name="NUPTK" min="9" value="<?php echo $res->NUPTK ?>"></td>
-                        </tr>
-                        <tr>
-                            <td>Nama Guru</td>
-                            <td><input type="text" name="Nama_Guru" value="<?php echo $res->Nama_Guru ?>"></td>
-                        </tr>
-                        <tr>
-                            <td>Jenis Kelamin</td>
-                            <td>
-                                <input type="radio" name="Jenis_Kelamin"  value="L" id="jk1" <?php echo $l ?>>
-                                <label for="jk1">Laki-Laki</label>
-                                <input type="radio" name="Jenis_Kelamin" value="P" id="jk2" <?php echo $p ?>>
-                                <label for="jk2">Perempuan</label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Status</td>
-                            <td>
-                                <input type="radio" name="Status" checked value="Aktif" id="aktif">
-                                <label for="aktif">Aktif</label>
-                                <input type="radio" name="Status" value="Tidak Aktif" id="tidak_aktif">
-                                <label for="tidak_aktif">Tidak Aktif</label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="right-align"><button class="btn" type="submit" name="type" value="update">Submit</button></td>
-                        </tr>
-                        <?php } ?>
-                    </table>
+                    <?php foreach($resource as $res){ 
+                        if($res->Jenis_Kelamin=="L"){
+                            $l="checked";
+                            $p="";
+                        }else{
+                            $p="checked";
+                            $l="";
+                        }
+                    ?>
+                    <input type="hidden" name="id_guru" value="<?php echo $res->ID_Guru ?>">
+                    <div class="row">
+                        <div class="col l2 s3" style="padding-top:20.5px;">NIP Guru</div>
+                        <div class="col l10 s9">
+                            <input type="number" name="NIP" value="<?php echo $res->NIP ?>">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col l2 s3" style="padding-top:20.5px;">NUPTK Guru</div>
+                        <div class="col l10 s9">
+                            <input type="number" name="NUPTK" value="<?php echo $res->NUPTK ?>">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col l2 s3" style="padding-top:20.5px;">Nama Guru</div>
+                        <div class="col l10 s9">
+                            <input type="text" name="Nama_Guru" value="<?php echo $res->Nama_Guru ?>">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col l2 s3">Jenis Kelamin</div>
+                        <div class="col l10 s9">
+                            <input type="radio" name="Jenis_Kelamin"  value="L" id="jk1" <?php echo $l ?>>
+                            <label for="jk1">Laki-Laki</label>
+                            <input type="radio" name="Jenis_Kelamin" value="P" id="jk2" <?php echo $p ?>>
+                            <label for="jk2">Perempuan</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col l2 s3">Status</div>
+                        <div class="col l10 s9">
+                            <input type="radio" name="Status" checked value="Aktif" id="aktif">
+                            <label for="aktif">Aktif</label>
+                            <input type="radio" name="Status" value="Tidak Aktif" id="tidak_aktif">
+                            <label for="tidak_aktif">Tidak Aktif</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 right-align"><button class="btn" type="submit" name="type" value="update"><i class="material-icons left">edit</i>Update</button></div>
+                    </div>
+                    <?php } ?>
                 </form>
             </div>
         </div>

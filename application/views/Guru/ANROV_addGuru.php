@@ -16,41 +16,45 @@
             </div>
             <div class="col s12">
                 <form onsubmit="return validasi(this, 'guru')" action="<?php echo base_url()."ANROC_Guru/Save" ?>" method="post">
-                    <table>
-                        <tr>
-                            <td>Masukkan NIP</td>
-                            <td><input type="number" name="NIP"></td>
-                        </tr>
-                        <tr>
-                            <td>Masukkan NUPTK</td>
-                            <td><input type="number" name="NUPTK"></td>
-                        </tr>
-                        <tr>
-                            <td>Masukkan Nama Guru</td>
-                            <td><input type="text" name="Nama_Guru"></td>
-                        </tr>
-                        <tr>
-                            <td>Jenis Kelamin</td>
-                            <td>
-                                <input type="radio" name="Jenis_Kelamin"  value="L" id="jk1">
-                                <label for="jk1">Laki-Laki</label>
-                                <input type="radio" name="Jenis_Kelamin" value="P" id="jk2">
-                                <label for="jk2">Perempuan</label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Status</td>
-                            <td>
-                                <input type="radio" name="Status" checked value="Aktif" id="aktif">
-                                <label for="aktif">Aktif</label>
-                                <input type="radio" name="Status" value="Tidak Aktif" id="tidak_aktif">
-                                <label for="tidak_aktif">Tidak Aktif</label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="right-align"><button class="btn" type="submit" name="type" value="insert">Submit</button></td>
-                        </tr>
-                    </table>
+                    <div class="row">
+                        <div class="col l2 s3" style="padding-top:20.5px;">NIP Guru</div>
+                        <div class="col l10 s9">
+                            <input type="number" name="NIP">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col l2 s3" style="padding-top:20.5px;">NUPTK Guru</div>
+                        <div class="col l10 s9">
+                            <input type="number" name="NUPTK">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col l2 s3" style="padding-top:20.5px;">Nama Guru</div>
+                        <div class="col l10 s9">
+                            <input type="text" name="Nama_Guru">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col l2 s3">Jenis Kelamin</div>
+                        <div class="col l10 s9">
+                            <input type="radio" name="Jenis_Kelamin"  value="L" id="jk1" >
+                            <label for="jk1">Laki-Laki</label>
+                            <input type="radio" name="Jenis_Kelamin" value="P" id="jk2" >
+                            <label for="jk2">Perempuan</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col l2 s3">Status</div>
+                        <div class="col l10 s9">
+                            <input type="radio" name="Status" checked value="Aktif" id="aktif">
+                            <label for="aktif">Aktif</label>
+                            <input type="radio" name="Status" value="Tidak Aktif" id="tidak_aktif">
+                            <label for="tidak_aktif">Tidak Aktif</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 right-align"><button class="btn" type="submit" name="type" value="insert"><i class="material-icons left">input</i>Submit</button></div>
+                    </div>
                 </form>
             </div>
         </div>

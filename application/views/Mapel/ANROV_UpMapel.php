@@ -17,26 +17,27 @@
         <div class="col s12">
                 <form onsubmit="return validasi(this, 'mapel')" autocomplete="off" method="post" action="<?php echo base_url("ANROC_Mapel/save") ?>">
                     <input type="hidden" name="kode_mapel" value="<?php echo $resource['Kode_Mapel']?>">
-                    <table>
-                        <tr>
-                            <td>Kode Mata Pelajaran</td>
-                            
+                    <div class="row">
+                        <div class="col l3 s3" style="padding-top:20.5px;">Kode Mata Pelajaran</div>
+                        <div class="col l9 s9">
                             <td><input type="text" name="kode_mapel" value="<?php echo $resource['Kode_Mapel']?>" disabled></td>
-                        </tr>
-                        <tr>
-                            <td>Nama Mata Pelajaran</td>
-                            
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col l3 s3" style="padding-top:20.5px;">Nama Mata Pelajaran</div>
+                        <div class="col l9 s9">
                             <td><input type="text" name="nama" value="<?php echo $resource['Nama_Mapel']?>"></td>
-                        </tr>
-                        <tr>
-                            <td>KKM</td>
-                            
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col l3 s3" style="padding-top:20.5px;">KKM</div>
+                        <div class="col l9 s9">
                             <td><input type="number" name="kkm" min="0" max="100" value="<?php echo $resource['KKM']?>"></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="right-align"><button class="btn" type="submit" name="type" value="update">Submit</button></td>
-                        </tr>
-                    </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 right-align"><button class="btn" type="submit" name="type" value="update"><i class="material-icons left">edit</i>Update</button></div>
+                    </div>
                 </form>
             </div>
         </div>

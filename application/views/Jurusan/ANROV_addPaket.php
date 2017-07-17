@@ -17,26 +17,26 @@
             </div>
             <div class="col s12">
                 <form onsubmit="return validasi(this, 'paket')" action="<?php echo base_url("ANROC_Paket/save") ?>" method="post">
-                    <table>
-                        <tr>
-                            <td>Program Keahlian</td>
-                            <td>
-                                <select name="id_program_keahlian">
-                                    <option value="Pilih" disabled selected>Pilih Program Keahlian</option>
-                                    <?php foreach($resource as $res){ ?>
-                                    <option value="<?php echo $res->id_program_keahlian ?>"><?php echo $res->program_keahlian ?></option>
-                                    <?php } ?>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Paket Keahlian</td>
+                    <div class="row">
+                        <div class="col l3 s3" style="padding-top:10.5px;">Program Keahlian</div>
+                        <div class="col l9 s9">
+                            <select name="id_program_keahlian">
+                                <option value="Pilih" disabled selected>Pilih Program Keahlian</option>
+                                <?php foreach($resource as $res){ ?>
+                                <option value="<?php echo $res->id_program_keahlian ?>"><?php echo $res->program_keahlian ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col l3 s3" style="padding-top:20.5px;">Paket Keahlian</div>
+                        <div class="col l9 s9">
                             <td><input type="text" name="paket_keahlian"></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="right-align"><button class="btn" type="submit" name="type" value="insert">Tambah Data</button></td>
-                        </tr>
-                    </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 right-align"><button class="btn" type="submit" name="type" value="insert"><i class="material-icons left">input</i>Submit</button></div>
+                    </div>
                 </form>
             </div>
          </div>
