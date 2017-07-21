@@ -128,23 +128,29 @@ class ANRO_Model extends CI_Model{
     } 
     public function page($table, $batas=null, $offset=null, $where=null, $key=null){
         $sql="SELECT * FROM ".$table;
+        if($table=="anr_paket_keahlian"){
+            $sql .= " INNER JOIN anr_program_keahlian ON anr_paket_keahlian.id_program_keahlian=anr_program_keahlian.id_program_keahlian";
+        }
             if (($where != null) || ($key != null)) {
                 $sql .= " WHERE ";
                 if($where!= null){
                     $kondisi=implode(" AND ", $where);
-                    $sql .=$kondisi;
+                    $sql .= ($kondisi);
                 }
                 if ($key != null){
                     $sql .= ($where != null) ? " AND " : "";
                     if($table=="anr_siswa"){
-                        $sql .= "(anr_siswa.NIS LIKE '%".$key."%' OR anr_siswa.NISN LIKE '%".$key."%' OR anr_siswa.nama_siswa LIKE '%".$key."%') "; 
+                        $sql .= "(anr_siswa.NIS LIKE '%".$this->db->escape_like_str($key)."%' OR anr_siswa.NISN LIKE '%".$this->db->escape_like_str($key)."%' OR anr_siswa.nama_siswa LIKE '%".$this->db->escape_like_str($key)."%') "; 
                     }else if($table=="anr_kelas"){
-                        $sql .= "(Nama_Kelas LIKE '%".$key."%') "; 
-                    }else if($table="anr_guru"){
-                        $sql .= "(NIP LIKE '%".$key."%' OR NIP LIKE '%".$key."%' OR Nama_Guru LIKE '%".$key."%')";
+                        $sql .= "(Nama_Kelas LIKE '%".$this->db->escape_like_str($key)."%') "; 
+                    }else if($table=="anr_guru"){
+                        $sql .= "(NIP LIKE '%".$this->db->escape_like_str($key)."%' OR NUPTK LIKE '%".$this->db->escape_like_str($key)."%' OR Nama_Guru LIKE '%".$this->db->escape_like_str($key)."%')";
+                    }else if($table=="anr_paket_keahlian"){
+                        $sql .= "(anr_paket_keahlian.paket_keahlian LIKE '%".$this->db->escape_like_str($key)."%')";
+                    }else if($table=="anr_program_keahlian"){
+                        $sql .="(anr_program_keahlian.program_keahlian LIKE '%".$this->db->escape_like_str($key)."%')";
                     }
                 }
-            
         }
         if($batas != null){
             $sql .= " limit ". $offset .", ".$batas;

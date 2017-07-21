@@ -15,16 +15,34 @@
                 <hr>
             </div>
             <div class="col s12">
-                <table class="responsive-table bordered highlight centered">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Program Keahlian</th>
-                            <th>Paket Keahlian</th>
-                            <th colspan="2">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <table class="responsive-table bordered">
+                    <tr>
+                       <form action="<?php echo base_url("ANROC_Jurusan/Paket_Keahlian") ?>" method="get">
+                            <th>
+                               <div class="input-field">
+                                  <input id="search" type="search" name="key" value="<?php echo $this->input->get('key') ?>">
+                                  <label class="label-icon" for="search">Cari</label>
+                                  <i class="material-icons" onclick="$('#search').val('')">close</i>
+                                </div>
+                            </th>
+                            <th colspan="2">
+                                <select name="program_keahlian" id="program_keahlian">
+                                    <option value="">Semua Program Keahlian</option>
+                                    <?php foreach($jurusan as $program){ ?>
+                                        <option value="<?php echo $program->id_program_keahlian ?>"><?php echo $program->program_keahlian ?></option>
+                                    <?php } ?>
+                                </select>
+                                <input type="hidden" name="program" value="<?php echo $this->input->get('status') ?>">
+                            </th>
+                            <th colspan="2"><button type="submit" class="btn">Cari</button></th>
+                        </form>
+                    </tr>
+                    <tr>
+                        <th>No</th>
+                        <th>Program Keahlian</th>
+                        <th>Paket Keahlian</th>
+                        <th colspan="2">Aksi</th>
+                    </tr>
                     <?php 
                         $i=1;
                         foreach($resource as $res){ 
@@ -37,8 +55,8 @@
                             <td><a href="<?php echo base_url("ANROC_Paket/hapus/".$res->id_paket_keahlian) ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data?')"><i class="material-icons">delete</i></a></td>
                         </tr>
                     <?php $i++;} ?>
-                    </tbody>
                 </table>
+                </div>
             </div>
         </div>
          <div class="row">
@@ -53,3 +71,15 @@
         </div>
     </div>
 </main>
+<script>
+$('button[type="submit"]').on('click', function(){
+    var selected_status = $("#program_keahlian").val();
+    $("input[name='program']").val(selected_status);
+});
+$('select').ready(function(){
+    var isi = '<?php echo $this->input->get('program')?>';
+    if(isi !=""){
+        $('select[name="program_keahlian"]').val(isi);
+    }
+})
+</script>
