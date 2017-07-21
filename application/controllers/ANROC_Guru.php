@@ -11,10 +11,10 @@ class ANROC_Guru extends CI_Controller{
         $where=array();
         if($jenis_kelamin != null || $status != null){
             if($jenis_kelamin != null){
-                array_push($where, "Jenis_Kelamin ='".$jenis_kelamin."'");
+                array_push($where, "Jenis_Kelamin ='".$this->db->escape_str($jenis_kelamin)."'");
             }
             if($status != null){
-                array_push($where, "Status ='".$status."'");
+                array_push($where, "Status ='".$this->db->escape_str($status)."'");
             }
             
         }

@@ -9,13 +9,13 @@ class ANROC_Siswa extends CI_Controller{
         $where=array();
         if($kelas != null || $jenis_kelamin != null || $status != null){
             if($kelas != null){
-                array_push($where, "Kelas ='".$kelas."'");
+                array_push($where, "Kelas ='".$this->db->escape_str($kelas)."'");
             }
             if($jenis_kelamin != null){
-                array_push($where, "Jenis_Kelamin ='".$jenis_kelamin."'");
+                array_push($where, "Jenis_Kelamin ='".$this->db->escape_str($jenis_kelamin)."'");
             }
             if($status != null){
-                array_push($where, "Status ='".$status."'");
+                array_push($where, "Status ='".$this->db->escape_str($status)."'");
             }
             
         }

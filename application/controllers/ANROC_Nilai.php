@@ -16,10 +16,10 @@ class ANROC_Nilai extends CI_Controller{
         $where=array();
         if(!empty($semester or !empty($jenis_nilai))){
             if($semester!=null){
-                array_push($where,"Semester = '".$semester."'");
+                array_push($where,"Semester = '".$this->db->escape_str($semester)."'");
             }
             if($jenis_nilai!=null){
-                array_push($where,"Jenis_Nilai = '".$jenis_nilai."'");
+                array_push($where,"Jenis_Nilai = '".$this->db->escape_str($jenis_nilai)."'");
             }
         }
         $this->config->load('pagination', TRUE);

@@ -34,8 +34,8 @@ class ANROC_Exel extends CI_Controller{
         $total = 0;
         $table = $this->input->post('table');
         
-        for ($row = 1; $row <= $highestRow; $row++){   
-            $rowData = $sheet->rangeToArray('B' . $row . ':' . $highestColumn . $row, NULL, TRUE, FALSE);
+        for ($row = 2; $row <= $highestRow; $row++){   
+            $rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row, NULL, TRUE, FALSE);
             $this->db->db_debug = false;
             
             if($table == "anr_siswa"){

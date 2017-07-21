@@ -16,11 +16,11 @@ class ANROC_Kelas extends CI_Controller{
         }
         $where=array();
         if(!empty($kelas)){
-            array_push($where,"Tingkat_Kelas='".$tingkat_kelas."'");
+            array_push($where,"Tingkat_Kelas='".$this->db->escape_str($tingkat_kelas)."'");
         }
         if(!empty($ajaran)){
-            array_push($where,"Tahun_Masuk='".$ajaran[0]."'");
-            array_push($where,"Tahun_Keluar='".$ajaran[1]."'");
+            array_push($where,"Tahun_Masuk='".$this->db->escape_str($ajaran[0])."'");
+            array_push($where,"Tahun_Keluar='".$this->db->escape_str($ajaran[1])."'");
         }
         $settings['total_rows'] = $this->ANRO_Model->page("anr_kelas",null,null,$where,$key)->num_rows();
         $settings['base_url']= base_url('ANROC_Kelas/?key='.$key.'&?kelas='.$kelas);
