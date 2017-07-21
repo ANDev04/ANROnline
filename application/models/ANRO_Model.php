@@ -132,13 +132,15 @@ class ANRO_Model extends CI_Model{
             $sql .=" INNER JOIN anr_siswa ON anr_nilai.Siswa=anr_siswa.ID_SISWA";
             $sql .=" INNER JOIN anr_mapel ON anr_nilai.Mapel=anr_mapel.Kode_Mapel";
             $sql .=" INNER JOIN anr_kelas ON anr_nilai.Kelas=anr_kelas.Kode_Kelas";
-            
+        }
+        if($table=="anr_paket_keahlian"){
+            $sql .= " INNER JOIN anr_program_keahlian ON anr_paket_keahlian.id_program_keahlian=anr_program_keahlian.id_program_keahlian";
         }
             if (($where != null) || ($key != null)) {
                 $sql .= " WHERE ";
                 if($where!= null){
                     $kondisi=implode(" AND ", $where);
-                    $sql .=$kondisi;
+                    $sql .= ($kondisi);
                 }
                 if ($key != null){
                     $sql .= ($where != null) ? " AND " : "";
@@ -152,9 +154,12 @@ class ANRO_Model extends CI_Model{
                         $sql .= "(Nama_Mapel LIKE '%".$this->db->escape_like_str($key)."%' OR Kode_Mapel LIKE '%".$this->db->escape_like_str($key)."%')";
                     }else if($table=="anr_nilai"){
                         $sql .= "(anr_siswa.NIS LIKE '%".$this->db->escape_like_str($key)."%' OR anr_siswa.NISN LIKE '%".$this->db->escape_like_str($key)."%' OR anr_siswa.nama_siswa LIKE '%".$this->db->escape_like_str($key)."%' OR anr_mapel.Nama_Mapel LIKE '%".$this->db->escape_like_str($key)."%' OR anr_kelas.Nama_Kelas LIKE '%".$this->db->escape_like_str($key)."%')";
+                    }else if($table=="anr_paket_keahlian"){
+                        $sql .= "(anr_paket_keahlian.paket_keahlian LIKE '%".$this->db->escape_like_str($key)."%')";
+                    }else if($table=="anr_program_keahlian"){
+                        $sql .="(anr_program_keahlian.program_keahlian LIKE '%".$this->db->escape_like_str($key)."%')";
                     }
                 }
-            
         }
         if($batas != null){
             $sql .= " limit ". $offset .", ".$batas;

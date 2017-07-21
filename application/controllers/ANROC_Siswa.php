@@ -37,7 +37,7 @@ class ANROC_Siswa extends CI_Controller{
       
         $this->pagination->initialize($settings);   
         $data['resource']=$this->ANRO_Model->page("anr_siswa",$settings['per_page'],$halaman,$where,$key)->result();
-        $data['test']=implode("AND",$where);
+        
         $this->load->view("ANROV_Header",$data);
         $this->load->view("Siswa/ANROV_Siswa",$data);
         $this->load->view("ANROV_Footer");    

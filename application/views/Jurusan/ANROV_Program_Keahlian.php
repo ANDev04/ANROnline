@@ -15,6 +15,23 @@
                 <hr>
             </div>
             <div class="col s12">
+                <form autocomplete="off" action="<?php echo base_url("ANROC_Jurusan/Program_Keahlian") ?>" method="get">
+                <div class="row">
+                    <div class="col l10 s12">
+                       <div class="input-field" >
+                            <input id="search" type="search" name="key" value="<?php echo $this->input->get('key') ?>">
+                            <label class="label-icon" for="search">Cari</label>
+                            <i class="material-icons" onclick="$('#search').val('')">close</i>
+                        </div>
+                    </div>
+                    <div class="col l2 s12" style="padding-top:25px;">
+                        <button type="submit" class="btn" style=" width:100%;">Cari</button>
+                    </div>
+                </div>
+                </form>
+                <hr>
+            </div>
+            <div class="col s12">
                 <table class="responsive-table bordered highlight centered">
                     <thead>
                         <tr>
