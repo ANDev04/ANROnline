@@ -60,8 +60,8 @@
                     ?>
                     <input type="hidden" name="id_siswa" value="<?php echo $res->ID_SISWA ?>">
                     <div class="row">
-                        <div class="col l2 s3" style="padding-top:20.5px;">NIS Siswa</div>
-                        <div class="col l10 s9">
+                        <div class="col l2 s3" style="padding-top:25.5px;">NIS Siswa</div>
+                        <div class="input-field col l10 s9">
                             <input type="number" name="NIS" value="<?php echo $res->NIS ?>">
                         </div>
                     </div>
@@ -121,8 +121,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col l2 s3" style="padding-top:10.5px;">Kelas Siswa</div>
-                        <div class="col l10 s9">
+                        <div class="col l2 s3" style="padding-top:22.5px;">Kelas Siswa</div>
+                        <div class="input-field col l10 s9">
                             <select name="Kelas">
                               <option value="X" <?php echo $x ?>>X</option>
                               <option value="XI" <?php echo $xi ?>>XI</option>

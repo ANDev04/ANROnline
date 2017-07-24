@@ -16,8 +16,8 @@
             <div class="col s12">
                  <form onsubmit="return validasi(this, 'PDF')" autocomplete="off" method="post" action="<?php echo base_url("ANROC_PDF/PDF") ?>">
                     <div class="row">
-                        <div class="col s2" style="padding-top:10.5px;">Nama Siswa</div>
-                        <div class="col s10">
+                        <div class="col s2" style="padding-top:21.5px;">Nama Siswa</div>
+                        <div class="input-field col s10">
                             <select name="id_siswa">
                                 <option value="Pilih" disabled selected>Pilih Siswa</option>
                                 <?php foreach($siswa as $b){?>
@@ -27,8 +27,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col s2" style="padding-top:10.5px;">Kelas</div>
-                        <div class="col s10">
+                        <div class="col s2" style="padding-top:21.5px;">Kelas</div>
+                        <div class="input-field col s10">
                             <select name="kode_kelas">
                                 <option value="Pilih" disabled selected>Pilih Kelas</option>
                                 <?php foreach($kelas as $b){?>
@@ -47,8 +47,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col s2" style="padding-top:10.5px;">Header</div> 
-                        <div class="col s10">
+                        <div class="col s2" style="padding-top:21.5px;">Header</div> 
+                        <div class="input-field col s10">
                             <select name="header">
                                 <option value="Pilih" disabled selected>Pilih Configurasi Header</option>
                                 <?php foreach($header as $b){?>
@@ -58,8 +58,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col s2" style="padding-top:10.5px;">Footer</div> 
-                        <div class="col s10">
+                        <div class="col s2" style="padding-top:21.5px;">Footer</div> 
+                        <div class="input-field col s10">
                             <select name="footer">
                                 <option value="Pilih" disabled selected>Pilih Configurasi Footer</option>
                                 <?php foreach($footer as $b){?>
@@ -69,7 +69,7 @@
                         </div>
                     </div>
                     <div class="row" style="padding-top:15px;">
-                        <div class="col s6 left-align">
+                        <div class="input-field col s6 left-align">
                             <a class="btn waves-effect waves-light" href="<?php echo base_url("ANROC_PDF/config") ?>"><i class="material-icons left">settings</i>Konfigurasi</a>
                         </div>
                         <div class="col s6 right-align">

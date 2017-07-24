@@ -17,8 +17,8 @@
         <div class="col s12">
             <form onsubmit="return validasi(this, 'siswa')" action="<?php echo base_url()."ANROC_Siswa/Save" ?>" method="post">
                 <div class="row">
-                    <div class="col l2 s3" style="padding-top:20.5px;">NIS Siswa</div>
-                    <div class="col l10 s9">
+                    <div class="col l2 s3" style="padding-top:25.5px;">NIS Siswa</div>
+                    <div class="input-field col l10 s9">
                         <input type="number" name="NIS">
                     </div>
                 </div>
@@ -71,8 +71,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col l2 s3" style="padding-top:10.5px;">Kelas Siswa</div>
-                    <div class="col l10 s9">
+                    <div class="col l2 s3" style="padding-top:22.5px;">Kelas Siswa</div>
+                    <div class="input-field col l10 s9">
                         <select name="Kelas" >
                           <option value="Pilih" disabled selected>Tingkat Kelas</option>
                           <option value="X">X</option>

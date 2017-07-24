@@ -232,6 +232,7 @@ class ANROC_Exel extends CI_Controller{
             }
             
             $total++;
+            
         }
         
         unlink($inputFileName);

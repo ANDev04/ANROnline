@@ -20,10 +20,8 @@
                     <input type="hidden" name="id" value="<?php echo $resource['ID_Config'] ?>">
                     <div class="row">
                         <div class="col s2" style="padding-top:30.5px;">Nama Konfigurasi</div>
-                        <div class="col s10">
-                            <div class="input-field">
-                                <input type="text" name="nama" value="<?php echo $resource['Nama'] ?>"//>
-                            </div>
+                        <div class="input-field col s10">
+                            <input type="text" name="nama" value="<?php echo $resource['Nama'] ?>"//>
                         </div>
                     </div>
                     <div class="row">
@@ -44,7 +42,7 @@
                     </div>
                     <table>
                         <tr>
-                            <td colspan="2"><textarea name="isi" id="wysiwyg"></textarea></td>
+                            <td colspan="2"><textarea name="isi" id="wysiwyg"><?php echo $resource['Isi']?></textarea></td>
                         </tr>
                     </table>
                     <div class="row">

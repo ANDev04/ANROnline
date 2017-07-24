@@ -19,10 +19,8 @@
                 <form onsubmit="return validasi(this, 'Config')" autocomplete="off" method="post" action="<?php echo base_url("ANROC_PDF/save")?>">
                     <div class="row">
                         <div class="col s2" style="padding-top:30.5px;">Nama Konfigurasi</div>
-                        <div class="col s10">
-                            <div class="input-field">
-                                <input type="text" name="nama"/>
-                            </div>
+                        <div class="input-field col s10">
+                            <input type="text" name="nama"/>
                         </div>
                     </div>
                     <div class="row">
