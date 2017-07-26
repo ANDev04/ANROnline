@@ -33,6 +33,14 @@ class ANROC_Exel extends CI_Controller{
         $banyak = 0;
         $total = 0;
         $table = $this->input->post('table');
+        if($table == "anr_siswa"){ $direct = "ANROC_Siswa"; }
+        else if($table == "anr_kelas"){ $direct = "ANROC_Kelas"; }
+        else if($table == "anr_guru"){ $direct = "ANROC_Guru"; }
+        else if($table == "anr_mapel"){ $direct = "ANROC_Mapel"; }
+        else if($table == "anr_program_keahlian"){ $direct = "ANROC_Jurusan/Program_Keahlian"; }
+        else if($table == "anr_paket_keahlian"){ $direct = "ANROC_Jurusan/Paket_Keahlian"; }
+        else if($table == "anr_config"){ $direct = "ANROC_PDF/config"; }
+        else if($table == "anr_nilai"){ $direct = "ANROC_Nilai"; }
         
         for ($row = 2; $row <= $highestRow; $row++){   
             $rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row, NULL, TRUE, FALSE);
@@ -40,7 +48,6 @@ class ANROC_Exel extends CI_Controller{
             
             if($rowData[0][0] != ""){
                 if($table == "anr_siswa"){
-                    $direct = "ANROC_Siswa";
                     $cek = $this->ANRO_Model->read("anr_siswa", array('NIS' => $rowData[0][0]))->num_rows();
                     if(!$cek > 0){
                         $cek = $this->ANRO_Model->read("anr_siswa", array('NISN' => $rowData[0][1]))->num_rows();
@@ -73,7 +80,6 @@ class ANROC_Exel extends CI_Controller{
                     }
                 }
                 else if($table == "anr_kelas"){
-                    $direct = "ANROC_Kelas";
                     $par = explode("-", $rowData[0][1]);
                     if($rowData[0][0] == "X"){
                         $cek = $this->ANRO_Model->read("anr_program_keahlian", array('program_keahlian' => $par[0]))->num_rows();
@@ -101,7 +107,6 @@ class ANROC_Exel extends CI_Controller{
                     }    
                 }
                 else if($table == "anr_guru"){
-                    $direct = "ANROC_Guru";
                     $cek = $this->ANRO_Model->read("anr_guru", array('NIP' => $rowData[0][0]))->num_rows();
                     if(!$cek > 0){
                         $cek = $this->ANRO_Model->read("anr_guru", array('NUPTK' => $rowData[0][1]))->num_rows();
@@ -122,7 +127,6 @@ class ANROC_Exel extends CI_Controller{
                     }
                 }
                 else if($table == "anr_mapel"){
-                    $direct = "ANROC_Mapel";
                     $kode = $this->ANRO_Model->CKode("anr_mapel", "Kode_Mapel", "M");
                     $cek = $this->ANRO_Model->read("anr_mapel", array('Nama_Mapel' => $rowData[0][0]))->num_rows();
                     if(!$cek > 0){
@@ -137,7 +141,6 @@ class ANROC_Exel extends CI_Controller{
                     }
                 }
                 else if($table == "anr_program_keahlian"){
-                    $direct = "ANROC_Jurusan/Program_Keahlian";
                     $cek = $this->ANRO_Model->read("anr_program_keahlian", array('program_keahlian' => $rowData[0][0]))->num_rows();
                     if(!$cek > 0){
                         $data = array(
@@ -149,7 +152,6 @@ class ANROC_Exel extends CI_Controller{
                     }
                 }
                 else if($table == "anr_paket_keahlian"){
-                    $direct = "ANROC_Jurusan/Paket_Keahlian";
                     $cek = $this->ANRO_Model->read("anr_program_keahlian", array('program_keahlian' => $rowData[0][0]))->num_rows();
                     if($cek > 0){
                         $pro = $this->ANRO_Model->read("anr_program_keahlian", array('program_keahlian' => $rowData[0][0]))->row_array();
@@ -168,7 +170,6 @@ class ANROC_Exel extends CI_Controller{
                     }
                 }
                 else if($table == "anr_config"){
-                    $direct = "ANROC_PDF/config";
                     if($rowData[0][1] == "Footer"){
                         $jenis = "F";
                     }
@@ -190,7 +191,6 @@ class ANROC_Exel extends CI_Controller{
                     }
                 }
                 else if($table == "anr_nilai"){
-                    $direct = "ANROC_Nilai";
                     $siswa = explode("/", $rowData[0][0]);
                     $cek = $this->ANRO_Model->read("anr_siswa", array('NIS' => $siswa[0], 'NISN' => $siswa[1]))->num_rows();
                     if($cek > 0){
