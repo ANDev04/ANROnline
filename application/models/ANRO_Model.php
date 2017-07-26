@@ -56,6 +56,9 @@ class ANRO_Model extends CI_Model{
     }
     public function get_ajaran($table,$select,$where=null){
         $sql="SELECT DISTINCT ".$select." from ".$table;
+        if($table=="anr_guru_mapel"){
+            $sql.=" INNER JOIN anr_mapel ON anr_mapel.Kode_Mapel = anr_guru_mapel.kode_mapel";
+        }
         if($where != null){
             $sql.=" WHERE ".$where;
         }

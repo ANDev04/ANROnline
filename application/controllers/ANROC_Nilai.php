@@ -45,7 +45,7 @@ class ANROC_Nilai extends CI_Controller{
     public function create(){
         $data['title'] = "ANROnline | Tambah Data Nilai";
         $data['siswa'] = $this->ANRO_Model->read("anr_siswa", array('Status' => "Aktif"))->result();
-        $data['mapel'] = $this->ANRO_Model->read("anr_mapel")->result();
+        $data['mapel'] = $this->ANRO_Model->get_ajaran("anr_guru_mapel", "*")->result();
         $data['kelas'] = $this->ANRO_Model->read("anr_kelas")->result();
         $this->load->view("ANROV_Header", $data);
         $this->load->view("Nilai/ANROV_AddNilai", $data);

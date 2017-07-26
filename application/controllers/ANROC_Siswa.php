@@ -27,7 +27,7 @@ class ANROC_Siswa extends CI_Controller{
         $settings = $this->config->item('pagination');
         $settings['total_rows'] = $this->ANRO_Model->page("anr_siswa",NULL,NULL,$where,$key)->num_rows();
         $settings['base_url']= base_url('ANROC_Siswa/?key='.$key.'&kelas='.$kelas);
-        $settings['per_page']=35;
+        $settings['per_page']=10;
         $settings['uri_segment']=3;
         
         $settings['first_link'] = '<i class="material-icons">first_page</i>';
