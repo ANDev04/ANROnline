@@ -41,25 +41,30 @@ class ANROC_Exel extends CI_Controller{
             if($rowData[0][0] != ""){
                 if($table == "anr_siswa"){
                     $direct = "ANROC_Siswa";
-                    $tl = explode("/", $rowData[0][5]);
                     $cek = $this->ANRO_Model->read("anr_siswa", array('NIS' => $rowData[0][0]))->num_rows();
                     if(!$cek > 0){
                         $cek = $this->ANRO_Model->read("anr_siswa", array('NISN' => $rowData[0][1]))->num_rows();
                         if(!$cek > 0){
-                            $data = array(
-                                'NIS' => $rowData[0][0], 
-                                'NISN' => $rowData[0][1], 
-                                'Nama_Siswa' => $rowData[0][2], 
-                                'Jenis_Kelamin' => $rowData[0][3], 
-                                'Tempat_Lahir' => $rowData[0][4],
-                                'Tanggal_Lahir' => $tl[2]."-".$tl[1]."-".$tl[0],
-                                'Agama' => $rowData[0][6],
-                                'Kelas' => $rowData[0][7],
-                                'No_Telp' => $rowData[0][8],
-                                'Alamat' => $rowData[0][9],
-                                'Status' => $rowData[0][10]
-                            );
-                            $banyak = $this->ANRO_Model->insertExel("anr_siswa", $data, $banyak);
+                            if($rowData[0][5] != ""){
+                                $tl = explode("/", $rowData[0][5]);
+                                $data = array(
+                                    'NIS' => $rowData[0][0], 
+                                    'NISN' => $rowData[0][1], 
+                                    'Nama_Siswa' => $rowData[0][2], 
+                                    'Jenis_Kelamin' => $rowData[0][3], 
+                                    'Tempat_Lahir' => $rowData[0][4],
+                                    'Tanggal_Lahir' => $tl[2]."-".$tl[1]."-".$tl[0],
+                                    'Agama' => $rowData[0][6],
+                                    'Kelas' => $rowData[0][7],
+                                    'No_Telp' => $rowData[0][8],
+                                    'Alamat' => $rowData[0][9],
+                                    'Status' => $rowData[0][10]
+                                );
+                                $banyak = $this->ANRO_Model->insertExel("anr_siswa", $data, $banyak);
+                            }
+                            else{
+                                $banyak++;  
+                            }
                         }else{
                             $banyak++;
                         }
