@@ -89,6 +89,7 @@ class ANROC_Guru extends CI_Controller{
     function hapus($id_guru){
         $where=array("id_guru"=>$id_guru);
         $this->ANRO_Model->delete("anr_guru",$where);
+        $this->ANRO_Model->delete("anr_guru_mapel",$where);
         redirect("ANROC_Guru");
         
     }

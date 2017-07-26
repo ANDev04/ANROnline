@@ -82,7 +82,7 @@
                         <td><?php echo $res->Kuota ?></td>
                         <td><?php echo $res->Tahun_Masuk."/".$res->Tahun_Keluar ?></td>
                         <td><a href="<?php echo base_url("ANROC_Kelas/edit/".$res->Kode_Kelas) ?>"><i class="material-icons">edit</i></a></td>
-                        <td><a href="<?php echo base_url("ANROC_Kelas/Hapus/".$res->Kode_Kelas) ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data?')"><i class="material-icons">delete</i></a></td>
+                        <td><a href="<?php echo base_url("ANROC_Kelas/Hapus/".$res->Kode_Kelas) ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data? Jika Anda menghapus data ini, maka data nilai akan ikut terhapus!')"><i class="material-icons">delete</i></a></td>
                     </tr>
                 <?php $banyak++; } if($banyak==0){echo '<td colspan="9">Tidak Ada Data Untuk ditampilkan</td>';} ?>
                     </tbody>

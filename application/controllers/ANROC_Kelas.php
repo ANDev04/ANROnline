@@ -86,6 +86,8 @@ class ANROC_Kelas extends CI_Controller{
         $where=array('kode_kelas'=>$kode_kelas);
         $this->ANRO_Model->delete("ANR_Kelas",$where);
         $this->ANRO_Model->delete("anr_siswa_kelas",$where);
+        $where1=array('Kelas'=>$kode_kelas);
+        $this->ANRO_Model->delete("anr_nilai",$where1);
         redirect("ANROC_Kelas");
         
     }

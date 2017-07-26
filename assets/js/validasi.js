@@ -1,7 +1,6 @@
 function validasi(form, jenis){
     var numbers=/^[0-9]+$/;
     if(jenis == "siswa"){
-        var date = new Date(form.Tanggal_Lahir.value);
         if(form.NIS.value == ""){
             Materialize.toast("NIS Belum Terisi!", 4000);
             form.NIS.focus();
@@ -36,7 +35,7 @@ function validasi(form, jenis){
             form.Tempat_Lahir.focus();
             return(false);
         }
-        if(isNaN(date.getFullYear())){
+        if(form.Tanggal_Lahir.value == ""){
             Materialize.toast("Tanggal Lahir Belum Terisi!", 4000);
             form.Tanggal_Lahir.focus();
             return(false);

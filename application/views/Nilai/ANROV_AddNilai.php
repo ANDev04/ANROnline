@@ -17,8 +17,8 @@
         <div class="col s12">
                 <form onsubmit="return validasi(this, 'nilai')" autocomplete="off" method="post" action="<?php echo base_url("ANROC_Nilai/save") ?>">
                     <div class="row">
-                        <div class="col l3 s3" style="padding-top:10.5px;">Nama Siswa</div>
-                        <div class="col l9 s9">
+                        <div class="col l3 s3" style="padding-top:20px;">Nama Siswa</div>
+                        <div class="input-field col l9 s9">
                             <select name="siswa">
                                 <option value="Pilih" disabled selected>Pilih Siswa</option>
                                 <?php foreach($siswa as $res){?>
@@ -28,8 +28,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col l3 s3" style="padding-top:10.5px;">Nama Mata Pelajaran</div>
-                        <div class="col l9 s9">
+                        <div class="col l3 s3" style="padding-top:20px;">Nama Mata Pelajaran</div>
+                        <div class="input-field col l9 s9">
                             <select name="mapel">
                                 <option value="Pilih" disabled selected>Pilih Mata Pelajaran</option>
                                 <?php foreach($mapel as $res){?>
@@ -39,8 +39,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col l3 s3" style="padding-top:10.5px;">Jenis Nilai</div>
-                        <div class="col l9 s9">
+                        <div class="col l3 s3" style="padding-top:20px;">Jenis Nilai</div>
+                        <div class="input-field col l9 s9">
                             <select name="jenis_nilai">
                                 <option value="Pilih" disabled selected>Pilih Jenis Nilai</option>
                                 <option value="Harian">Harian</option>
@@ -51,16 +51,16 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col l3 s3" style="padding-top:10.5px;">Kelas Siswa</div>
-                        <div class="col l9 s9">
+                        <div class="col l3 s3" style="padding-top:20px;">Kelas Siswa</div>
+                        <div class="input-field col l9 s9">
                             <select name="kelas">
                                 <option value="Pilih" disabled selected>Pilih Kelas</option>
                             </select>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col l3 s3" style="padding-top:20.5px;">Nilai Siswa</div>
-                        <div class="col l9 s9">
+                        <div class="col l3 s3" style="padding-top:20px;">Nilai Siswa</div>
+                        <div class="input-field col l9 s9">
                             <input type="number" name="nilai" min="0" max="100">
                         </div>
                     </div>

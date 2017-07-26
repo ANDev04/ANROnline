@@ -52,7 +52,7 @@
                 <div class="row">
                     <div class="col l2 s3" style="padding-top:20.5px;">Tanggal Lahir</div>
                     <div class="col l10 s9">
-                        <input type="date" name="Tanggal_Lahir" >
+                        <input type="text" name="Tanggal_Lahir" id="datepicker" placeholder="dd/mm/yyyy">
                     </div>
                 </div>
                 <div class="row">
@@ -110,9 +110,8 @@
         </div>
     </div>
 </main>
-    <script>
-     $('.datepicker').pickadate({
-        selectMonths: true, // Creates a dropdown to control month
-        selectYears: 34 // Creates a dropdown of 15 years to control year
-      });
-    </script>
+<script>
+    $(function(){
+        $("#datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
+    });
+</script>
