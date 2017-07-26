@@ -1,7 +1,7 @@
 function validasi(form, jenis){
     var numbers=/^[0-9]+$/;
+    var date = new Date(form.Tanggal_Lahir.value);
     if(jenis == "siswa"){
-        var date = new Date(form.Tanggal_Lahir.value);
         if(form.NIS.value == ""){
             Materialize.toast("NIS Belum Terisi!", 4000);
             form.NIS.focus();
@@ -129,6 +129,12 @@ function validasi(form, jenis){
         if(form.paket_keahlian.value == ""){
             Materialize.toast("Paket Keahlian Belum Terisi!", 4000);
             form.paket_keahlian.focus();
+            return(false);
+        }
+    }
+    else if(jenis == "program"){
+        if(form.program_keahlian[0].value == ""){
+            Materialize.toast("Program Keahlian! Belum Terisi", 4000);
             return(false);
         }
     }

@@ -38,7 +38,7 @@ class ANROC_PDF extends CI_Controller{
             pdf_create($html, $filename, $paper, $orientation);
         }
         else{
-            redirect(base_url("ANROC_PDF"));
+            redirect(base_url("ANROC_PDF?messenger=2"));
         }
     }
     public function preview(){

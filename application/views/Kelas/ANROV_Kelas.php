@@ -63,6 +63,7 @@
                     </thead>
                     <tbody>
                 <?php
+                    $banyak = 0;
                     foreach($resource->result() as $res){
                         $kelas=explode("-",$res->Nama_Kelas);
                         $where=array(
@@ -83,9 +84,7 @@
                         <td><a href="<?php echo base_url("ANROC_Kelas/edit/".$res->Kode_Kelas) ?>"><i class="material-icons">edit</i></a></td>
                         <td><a href="<?php echo base_url("ANROC_Kelas/Hapus/".$res->Kode_Kelas) ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data?')"><i class="material-icons">delete</i></a></td>
                     </tr>
-                <?php 
-                    }
-                ?>
+                <?php $banyak++; } if($banyak==0){echo '<td colspan="9">Tidak Ada Data Untuk ditampilkan</td>';} ?>
                     </tbody>
                 </table>
                 <div class="col s12 center">

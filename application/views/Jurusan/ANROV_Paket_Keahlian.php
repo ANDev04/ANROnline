@@ -62,7 +62,7 @@
                             <td><a href="<?php echo base_url("ANROC_Paket/edit/".$res->id_paket_keahlian) ?>"><i class="material-icons">edit</i></a></td>
                             <td><a href="<?php echo base_url("ANROC_Paket/hapus/".$res->id_paket_keahlian) ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data?')"><i class="material-icons">delete</i></a></td>
                         </tr>
-                    <?php $i++;} ?>
+                    <?php $i++;} if($i==1){echo '<td colspan="9">Tidak Ada Data Untuk ditampilkan</td>';} ?>
                     </tbody>
                 </table>
                 </div>

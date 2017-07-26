@@ -42,11 +42,11 @@
                         <td>Mengajar</td>
                         <td>
                             <ul class="collection">
-                            <?php foreach($mapel as $pel){ ?>
                                 <li class="collection-item">
+                            <?php $banyak = 0; foreach($mapel as $pel){ ?>
                                 <?php echo $pel->Nama_Mapel ?>
+                            <?php $banyak++; } if($banyak==0){echo 'Belum Mengajar Pelajaran Apapun.';} ?>
                                 </li>
-                            <?php } ?>
                             </ul>
                         </td>
                     </tr>

@@ -137,6 +137,12 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col l2 s3" style="padding-top:20.5px;">Alamat</div>
+                        <div class="col l10 s9">
+                            <textarea name="Alamat" class="materialize-textarea"><?php echo $res->Alamat ?></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col l2 s3">Status</div>
                         <div class="col l10 s9">
                             <input type="radio" name="Status" value="Aktif" id="aktif" <?php echo $aktif ?>>

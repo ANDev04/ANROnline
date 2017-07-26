@@ -5,8 +5,25 @@
             if(isset($_GET['success'])&&isset($_GET['error'])){
                 $success = $_GET['success'];
                 $error = $_GET['error'];
+                $ikon = "done_all";
                 $hasil1 = "Data Berhasil di Import : ".$success;
                 $hasil2 = "Data Gagal di Import : ".$error;
+        ?>
+        $('#conn').modal('open');
+        <?php
+            }
+            if(isset($_GET['messenger'])){
+                $messenger = $_GET['messenger'];
+                if($messenger == "1"){
+                    $ikon = "error";
+                    $hasil1 = "Terjadi Kesalahan Saat Mengupload File.";
+                    $hasil2 = "";
+                }
+                else if($messenger == "2"){
+                    $ikon = "error";
+                    $hasil1 = "Pada Kelas dan Semester ini, Siswa Belum Memiliki Data Nilai.";
+                    $hasil2 = "";
+                }
         ?>
         $('#conn').modal('open');
         <?php
@@ -21,7 +38,7 @@
             <p class="center-align">
                 <div class="row">
                     <div class="col s12 center">
-                        <i class="large material-icons">done_all</i>
+                        <i class="large material-icons"><?php echo $ikon; ?></i>
                     </div>
                 </div>
             </p>

@@ -24,7 +24,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col s2" style="padding-top:10.5px;">Nama Siswa</div>
+                        <div class="col s2" style="padding-top:10.5px;">Tipe Konfigurasi</div>
                         <div class="col s10">
                             <select name="tipe">
                                 <option value="Pilih" disabled selected>Pilih Tipe</option>

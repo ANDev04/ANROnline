@@ -26,7 +26,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <?php foreach($resource as $r){ ?>
+                    <?php $banyak = 0; foreach($resource as $r){ ?>
                         <tr>
                             <td><?php echo $r->ID_Config ?></td>
                             <td><?php echo $r->Nama ?></td>
@@ -35,7 +35,7 @@
                             <td><a href="<?php echo base_url("ANROC_PDF/edit/".$r->ID_Config); ?>"><i class="material-icons">edit</i></a></td>
                             <td><a href="<?php echo base_url("ANROC_PDF/delete/".$r->ID_Config); ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus Konfigurasi?')"><i class="material-icons">delete</i></a></td>
                         </tr>
-                    <?php } ?>
+                    <?php $banyak++; } if($banyak==0){echo '<td colspan="9">Tidak Ada Data Untuk ditampilkan</td>';} ?>
                     </tbody>
                 </table>
             </div>

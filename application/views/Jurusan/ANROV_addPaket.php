@@ -18,8 +18,8 @@
             <div class="col s12">
                 <form onsubmit="return validasi(this, 'paket')" action="<?php echo base_url("ANROC_Paket/save") ?>" method="post">
                     <div class="row">
-                        <div class="col l3 s3" style="padding-top:10.5px;">Program Keahlian</div>
-                        <div class="col l9 s9">
+                        <div class="col l3 s3" style="padding-top:21.5px;">Program Keahlian</div>
+                        <div class="input-field col l9 s9">
                             <select name="id_program_keahlian">
                                 <option value="Pilih" disabled selected>Pilih Program Keahlian</option>
                                 <?php foreach($resource as $res){ ?>

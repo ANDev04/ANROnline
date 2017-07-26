@@ -70,7 +70,7 @@
         <div class="row">
             <div class="col s12 right-align">
                 <a class="btn-floating btn-large waves-effect waves-light red <?php if($banyak >= $kuota){echo "disabled";} ?>" href="<?php echo base_url("ANROC_SiswaKelas/create/".$res->Kode_Kelas) ?>"><i class="material-icons right">add</i></a>
-            </div>s
+            </div>
         </div>
     </div>
 </main>

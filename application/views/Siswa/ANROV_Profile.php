@@ -15,7 +15,7 @@
                 <hr>
             </div>
             <div class="col s12">
-                <table class="responsive-table bordered">
+                <table class="bordered">
                     <?php foreach($resource as $res){ ?>
                     <tr>
                         <td>Nama Siswa</td>
@@ -29,10 +29,10 @@
                         <td>Kelas</td>
                         <td>
                             <ul class="collection">
-                            <?php foreach($kelas as $kel){ ?>
                                 <li class="collection-item">
+                                <?php $banyak=0; foreach($kelas as $kel){ ?>
                                     <a href="<?php echo base_url("ANROC_Kelas/Kelas/".$kel->Kode_Kelas) ?>"><?php echo $kel->Tingkat_Kelas.'-'.$kel->Nama_Kelas." (".$kel->Tahun_Masuk."/".$kel->Tahun_Keluar.")" ?></a>
-                                <?php } ?>
+                                <?php $banyak++; } if($banyak == 0){ echo "Belum Pernah Masuk Kelas Manapun."; } ?>
                                 </li>
                             </ul>
                         </td>
@@ -50,7 +50,7 @@
                     </tr>
                     <tr>
                         <td>Tempat, Tanggal Lahir</td>
-                        <td><?php echo $res->Tempat_Lahir.', '.date($res->Tanggal_Lahir) ?></td>
+                        <td><?php echo $res->Tempat_Lahir.', '.date('d F Y', strtotime($res->Tanggal_Lahir)) ?></td>
                     </tr>
                     <tr>
                         <td>Agama</td>

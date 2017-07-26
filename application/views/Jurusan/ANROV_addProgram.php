@@ -17,26 +17,20 @@
             </div>
             <div class="col s12">
                 <form onsubmit="return validasi(this, 'program')" action="<?php echo base_url("ANROC_Program/save") ?>" method="post">
-                    <table>
-                        <tbody id="multiple-form">
-                            <tr id="index-1">
-                                <td>Nama Program Keahlian 1</td>
-                                <td class="row">
-                                    <div class="col s10">
-                                        <input type="text" name="program_keahlian[]" class="program_keahlian">
-                                    </div>
-                                    <div class="col s2 change">
-                                        <button class="btn-floating btn-medium center green trigger" value="index-1"><i class="material-icons">add</i></button>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td id="trigger-submit" colspan="2" class="right-align"><button class="btn" type="submit" name="type" value="insert">Tambah Data</button></td>
-                            </tr>
-                        </tfoot>
-                    </table>
+                    <div id="multiple-form">
+                        <div class="row" id="index-1">
+                            <div class="col l3 s3" style="padding-top:25.5px;">Nama Program Keahlian 1</div>
+                            <div class="input-field col l8 s8">
+                                <input type="text" name="program_keahlian[]" class="program_keahlian">
+                            </div>
+                            <div class="input-field col l1 s1 change right-align">
+                                <button class="btn-floating btn-medium center green trigger" value="index-1"><i class="material-icons">add</i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 right-align"><button class="btn" type="submit" name="type" value="insert"><i class="material-icons left">input</i>Submit</button></div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -50,7 +44,7 @@
             hitung++;
             var id = $(this).val();
             $('#multiple-form').append(
-                '<tr id="index-'+hitung+'"><td>Nama Program Keahlian '+hitung+'</td><td class="row"><div class="col s10"><input type="text" name="program_keahlian[]" class="program_keahlian"></div><div class="col s2"><button class="btn-floating btn-medium center green trigger" value="index-'+hitung+'"><i class="material-icons">add</i></button></div></td></tr>'
+                '<div class="row" id="index-'+hitung+'"><div class="col l3 s3" style="padding-top:25.5px;">Nama Program Keahlian '+hitung+'</div><div class="input-field col l8 s8"><input type="text" name="program_keahlian[]" class="program_keahlian"></div><div class="input-field col l1 s1 change right-align"><button class="btn-floating btn-medium center green trigger" value="index-'+hitung+'"><i class="material-icons">add</i></button></div></div>'
             );
             $(this).replaceWith(
                 '<button class="btn-floating btn-medium center red trigger-delete" value="'+id+'"><i class="material-icons">delete</i></button>'

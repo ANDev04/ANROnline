@@ -56,9 +56,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                <?php
-                    foreach($resource as $res){
-                ?>
+                <?php $banyak = 0; foreach($resource as $res){ ?>
                     <tr>
                         <td><?php echo $res->NIP."/".$res->NUPTK ?></td>
                         <td><a href="<?php echo base_url()."ANROC_Guru/Profile/".$res->ID_Guru ?>"><?php echo $res->Nama_Guru ?></a></td>
@@ -75,9 +73,7 @@
                         <td><a href="<?php echo base_url()."ANROC_Guru/Edit/".$res->ID_Guru ?>"><i class="material-icons">edit</i></a></td>
                         <td><a href="<?php echo base_url()."ANROC_Guru/Hapus/".$res->ID_Guru ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data?')"><i class="material-icons">delete</i></a></td>
                     </tr>
-                <?php 
-                    }
-                ?>
+                <?php $banyak++; } if($banyak==0){echo '<td colspan="9">Tidak Ada Data Untuk ditampilkan</td>';} ?>
                     </tbody>
                 </table>
                 <div class="col s12 center">
