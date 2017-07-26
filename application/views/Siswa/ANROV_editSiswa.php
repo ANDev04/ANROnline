@@ -103,7 +103,7 @@
                     <div class="row">
                         <div class="col l2 s3" style="padding-top:20.5px;">Tanggal Lahir</div>
                         <div class="col l10 s9">
-                            <input type="date" name="Tanggal_Lahir" value="<?php echo $res->Tanggal_Lahir ?>">
+                            <input type="text" name="Tanggal_Lahir" id="datepicker" value="<?php $tl = explode("-", $res->Tanggal_Lahir); echo  $tl[2]."/".$tl[1]."/".$tl[0]?>">
                         </div>
                     </div>
                     <div class="row">
@@ -160,3 +160,8 @@
         </div>
     </div>
 </main>
+<script>
+    $(function(){
+        $("#datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
+    });
+</script>

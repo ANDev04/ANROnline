@@ -81,7 +81,7 @@
                             <td><?php echo $res->Kelas ?></td>
                             <td><?php echo $res->Status ?></td>
                             <td><a href="<?php echo base_url()."ANROC_Siswa/Edit/".$res->ID_SISWA ?>"><i class="material-icons">edit</i></a></td>
-                            <td><a href="<?php echo base_url()."ANROC_Siswa/Hapus/".$res->ID_SISWA ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data?')"><i class="material-icons">delete</i></a></td>
+                            <td><a href="<?php echo base_url()."ANROC_Siswa/Hapus/".$res->ID_SISWA ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data? Jika Anda menghapus data ini, maka data nilai akan ikut terhapus!')"><i class="material-icons">delete</i></a></td>
                         </tr>
                 <?php $banyak++; } if($banyak==0){echo '<td colspan="9">Tidak Ada Data Untuk ditampilkan</td>';} ?>
                     </tbody>

@@ -142,6 +142,7 @@ class ANROC_Siswa extends CI_Controller{
         $this->load->view("ANROV_Footer",$data);
     }
     function save(){
+        $tl = explode("/", $this->input->post('Tanggal_Lahir'));
         if($this->input->post("type")=="insert"){
             $cek = $this->ANRO_Model->read("anr_siswa", array('NIS' => $this->input->post('NIS'), 'NISN'=>$this->input->post('NISN')))->num_rows();
             if(!$cek > 0){
@@ -151,7 +152,7 @@ class ANROC_Siswa extends CI_Controller{
                     'nama_siswa'=>$this->input->post('Nama_Siswa'),
                     'jenis_kelamin'=>$this->input->post('Jenis_Kelamin'),
                     'tempat_lahir'=>$this->input->post('Tempat_Lahir'),
-                    'tanggal_lahir'=>$this->input->post('Tanggal_Lahir'),
+                    'tanggal_lahir'=>$tl[2]."-".$tl[1]."-".$tl[0],
                     'agama'=>$this->input->post('Agama'),
                     'kelas'=>$this->input->post('Kelas'),
                     'no_telp'=>$this->input->post('No_Telp'),
@@ -175,7 +176,7 @@ class ANROC_Siswa extends CI_Controller{
                 'nama_siswa'=>$this->input->post('Nama_Siswa'),
                 'jenis_kelamin'=>$this->input->post('Jenis_Kelamin'),
                 'tempat_lahir'=>$this->input->post('Tempat_Lahir'),
-                'tanggal_lahir'=>$this->input->post('Tanggal_Lahir'),
+                'tanggal_lahir'=>$tl[2]."-".$tl[1]."-".$tl[0],
                 'agama'=>$this->input->post('Agama'),
                 'kelas'=>$this->input->post('Kelas'),
                 'no_telp'=>$this->input->post('No_Telp'),

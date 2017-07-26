@@ -6,10 +6,12 @@
         <script src="<?php echo base_url("assets/js/materialize.min.js") ?>"></script>
         <script src="<?php echo base_url("assets/js/select2.min.js") ?>"></script>
         <script src="<?php echo base_url("assets/js/validasi.js") ?>"></script>
+        <script src="<?php echo base_url("assets/js/jquery-ui.js") ?>"></script>
         <link href="<?php echo base_url("assets/css/materialize.min.css") ?>" rel=stylesheet>
         <link href="<?php echo base_url("assets/css/select2-materialize.css") ?>" rel=stylesheet>
         <link href="<?php echo base_url("assets/css/style.css") ?>" rel=stylesheet>
         <link href="<?php echo base_url("assets/css/materialize-icon.css") ?>" rel=stylesheet>
+        <link href="<?php echo base_url("assets/css/jquery-ui.css") ?>" rel=stylesheet>
         <style>
             .no-js #loader { display: none;  }
             .js #loader { display: block; position: absolute; left: 100px; top: 0; }

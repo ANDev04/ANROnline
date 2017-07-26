@@ -52,10 +52,10 @@ class ANROC_Mapel extends CI_Controller{
     
     public function delete(){
         $kode_mapel = array('Kode_mapel' => $this->uri->segment(3));
-        $cek = $this->ANRO_Model->read("anr_nilai", array('Mapel' => $this->uri->segment(3)))->num_rows();
-        if(!$cek>0){
-            $this->ANRO_Model->delete("anr_mapel", $kode_mapel);
-        }
+        $this->ANRO_Model->delete("anr_mapel", $kode_mapel);
+        $this->ANRO_Model->delete("anr_guru_mapel", $kode_mapel);
+        $kode_mapel = array('Mapel' => $this->uri->segment(3));
+        $this->ANRO_Model->delete("anr_nilai", $kode_mapel);
         redirect(base_url("ANROC_Mapel"));
     }
     
