@@ -50,7 +50,7 @@
                 <div class="section #e53935 red darken-1">
                     <div class="row">
                         <div class="col s12 center">
-                            <h4 class="white-text text-darken-1">Login</h4>
+                            <h4 class="white-text text-darken-1">Lupa Password</h4>
                         </div>
                     </div>
                     <div class="#f5f5f5 grey lighten-4">
@@ -60,19 +60,14 @@
                                     <div class="input-field col s12">
                                         <i class="material-icons prefix">account_circle</i>
                                         <input id="icon_prefix" type="text" name="username" class="validate">
-                                        <label for="icon_prefix">Username / E-mail</label>
-                                    </div>
-                                    <div class="input-field col s12">
-                                        <i class="material-icons prefix">lock</i>
-                                        <input id="password" type="password" class="validate">
-                                        <label for="password">Password</label>
+                                        <label for="icon_prefix">E-mail</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col s6">
-                                        <a href="#">Lupa password?</a>
+                                        <a href="#">Kembali</a>
                                     </div>
-                                    <div class="col s6 right-align"><button class="btn" type="submit" name="type" value="insert"><i class="material-icons left">input</i>Login</button></div>
+                                    <div class="col s6 right-align"><button class="btn" type="submit" name="type" value="insert"><i class="material-icons left">edit</i>Reset</button></div>
                                 </div>
                             </form>
                         </div>
