@@ -30,7 +30,7 @@
         <header>
             <nav>
                 <div class="nav-wrapper">
-                    <a href="<?php echo base_url() ?>" class="brand-logo"><i class="material-icons">book</i>ANROnline</a>
+                    <a href="<?php echo base_url() ?>" class="brand-logo"><i class="material-icons" style="font-size : 2.5rem; margin-right:3px; margin-left:5px;">book</i>ANROnline</a>
                     <a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
                         <li><a href="<?php echo base_url("ANROC_Siswa") ?>">Data Siswa</a></li>
@@ -42,7 +42,12 @@
                         <li><a href="<?php echo base_url("ANROC_PDF") ?>">Cetak PDF</a></li>
                     </ul>
                     <ul id="nav-mobile" class="side-nav">
+                        <li class="logo center" style="padding:10px;">
+                            <img class="valign center responsive-img" src="<?php echo base_url() ?>assets/images/Logo.png" width="150px" height="150px">
+                        </li>
+                        <li><div class="divider"></div></li>
                         <li><a href="<?php echo base_url("ANROC_Siswa") ?>">Data Siswa</a></li>
+                        <li><a href="<?php echo base_url("ANROC_Siswa") ?>">Data Siswa</a></li> 
                         <li><a href="<?php echo base_url("ANROC_Kelas") ?>">Data Kelas</a></li>
                         <li><a href="<?php echo base_url("ANROC_Guru") ?>">Data Guru</a></li>
                         <li><a href="<?php echo base_url("ANROC_Jurusan") ?>">Data Jurusan</a></li>
