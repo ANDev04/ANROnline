@@ -2,6 +2,7 @@
 class ANRO_Model extends CI_Model{
     public function create($table,$data){
         $this->db->insert($table,$data);
+        return  $this->db->insert_id();
     }
     public function read($table, $where=""){
         if($table=="anr_nilai"){
@@ -165,7 +166,7 @@ class ANRO_Model extends CI_Model{
                 }
         }
         if($batas != null){
-            $sql .= " limit ". $offset .", ".$batas;
+            $sql .= " limit ". $this->db->escape_str($offset) .", ".$this->db->escape_str($batas);
         }
         $query = $this->db->query($sql);
         return $query;
