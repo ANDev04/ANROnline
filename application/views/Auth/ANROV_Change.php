@@ -16,11 +16,18 @@
         <div class="col s12">
             <form  onsubmit="return validasi(this, 'auth_c')" action="<?php echo base_url("ANROC_Auth/Ganti"); ?>" method="post">
                 <div class="row">
+                    <input type="hidden" name="email" value="<?php echo $email ?>">
                     <input type="hidden" name="password_lama" value="">
+                    <?php 
+                        if(empty($email)){
+                    ?>
                     <div class="col l2 s3" style="padding-top:20.5px;">Password Lama</div>
                     <div class="col l10 s9">
                         <input type="password" name="con_password_lama" placeholder="Masukan Password">
                     </div>
+                    <?php
+                        }
+                    ?>
                     <div class="col l2 s3" style="padding-top:20.5px;">Password Baru</div>
                     <div class="col l5 s4">
                         <input type="password" name="password" placeholder="Masukan Password">

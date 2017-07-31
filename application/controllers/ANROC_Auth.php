@@ -24,20 +24,32 @@ class ANROC_Auth extends CI_Controller{
         
     }
     function ganti(){
+        $pass = $this->input->post('password');
         $data=array(
-            'password'=>$this->input->post('password')
+            'password'=> md5($pass)
         );
         $where=array(
-            'username'=>$this->session->username
+            'email'=>$this->input->post('email')
         );
-        $this->ANRO_Model->edit($where,$data,"anr_auth");
+        $this->ANRO_Model->update($where,$data,"anr_auth");
         redirect('Beranda');
     }
     function forgotpass(){
         $this->load->view("Auth/ANROV_Reset");
     }
     function forcereset($key){
-        
+        $res=$this->ANRO_Model->read("anr_auth",array("md5(email)"=>$key));
+        foreach($res->result() as $resource){
+            $data['email']=$resource->email;
+        }
+        if($res->num_rows()>0){
+            $this->load->view("ANROV_Header");
+            $this->load->view("Auth/ANROV_Change",$data);
+            $this->load->view("ANROV_Footer");
+        }
+        else{
+            redirect ('ANROC_Auth');
+        }
     }
     function reset(){
         $email = $this->input->post('email');
@@ -62,18 +74,18 @@ class ANROC_Auth extends CI_Controller{
         //konfigurasi pengiriman
         $this->email->from($config['smtp_user']);
         $this->email->to($email);
-        $this->email->subject("Verifikasi Akun");
+        $this->email->subject("Reset Password");
         $this->email->message(
          "Request Reset Password, Silahkan Klik Link dibawah ini<br><br>".
-          site_url("ANROC_Auth/forcereset/$encrypted_email")
+          site_url("ANROC_Auth/forcereset/".$encrypted_email)
         );
 
         if($this->email->send())
         {
-           echo "Berhasil melakukan registrasi, silahkan cek email kamu";
+           echo "Berhasil melakukan reset password, silahkan cek email";
         }else
         {
-           echo "Berhasil melakukan registrasi, namu gagal mengirim verifikasi email";
+           echo "Gagal";
         }
 
         echo "<br><br><a href='".site_url("ANROC_Auth")."'>Kembali ke Menu Login</a>";

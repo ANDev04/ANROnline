@@ -56,7 +56,7 @@ class ANRO_Model extends CI_Model{
             return $query;    
         }else{
             if(!empty($where)){
-                return $this->db->where($where);    
+                return $this->db->get_where($table,$where);    
             }
             else{
                 return $this->db->get($table);
