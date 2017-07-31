@@ -33,6 +33,51 @@ class ANROC_Auth extends CI_Controller{
         $this->ANRO_Model->edit($where,$data,"anr_auth");
         redirect('Beranda');
     }
+    function forgotpass(){
+        $this->load->view("Auth/ANROV_Reset");
+    }
+    function forcereset($key){
+        
+    }
+    function reset(){
+        $email = $this->input->post('email');
+        $encrypted_email = md5($email);
+        $this->load->library('email');
+        $config = array();
+        $config['charset'] = 'utf-8';
+        $config['useragent'] = 'Codeigniter';
+        $config['protocol']= "smtp";
+        $config['mailtype']= "html";
+        $config['smtp_host']= "ssl://smtp.gmail.com";//pengaturan smtp
+        $config['smtp_port']= "465";
+        $config['smtp_timeout']= "400";
+        $config['smtp_user']= "anraport.online@gmail.com"; // isi dengan email kamu
+        $config['smtp_pass']= "ANROnline123"; // isi dengan password kamu
+        $config['crlf']="\r\n"; 
+        $config['newline']="\r\n"; 
+        $config['wordwrap'] = TRUE;
+        //memanggil library email dan set konfigurasi untuk pengiriman email
+
+        $this->email->initialize($config);
+        //konfigurasi pengiriman
+        $this->email->from($config['smtp_user']);
+        $this->email->to($email);
+        $this->email->subject("Verifikasi Akun");
+        $this->email->message(
+         "Request Reset Password, Silahkan Klik Link dibawah ini<br><br>".
+          site_url("ANROC_Auth/forcereset/$encrypted_email")
+        );
+
+        if($this->email->send())
+        {
+           echo "Berhasil melakukan registrasi, silahkan cek email kamu";
+        }else
+        {
+           echo "Berhasil melakukan registrasi, namu gagal mengirim verifikasi email";
+        }
+
+        echo "<br><br><a href='".site_url("ANROC_Auth")."'>Kembali ke Menu Login</a>";
+    }
     function daftar(){
         $username = $this->input->post('username');
         $password = $this->input->post('password');
@@ -82,7 +127,7 @@ class ANROC_Auth extends CI_Controller{
            echo "Berhasil melakukan registrasi, namu gagal mengirim verifikasi email";
         }
 
-        echo "<br><br><a href='".site_url("login")."'>Kembali ke Menu Login</a>";
+        echo "<br><br><a href='".site_url("ANROC_Auth")."'>Kembali ke Menu Login</a>";
     }
     public function verification($key)
     {
