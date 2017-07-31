@@ -77,9 +77,9 @@
                 <td class="angka harian<?php echo $i ?>"><?php if($banyak > 0 && $nilai[0] != "0"){echo $harian=$nilai[0]; $banyak--;}else{$harian=0;} ?></td>
                 <td class="angka uts<?php echo $i ?>"><?php if($banyak > 0 && $nilai[1] != "0"){echo $uts=$nilai[1]; $banyak--;}else{$uts=0;} ?></td>
                 <td class="angka uas<?php echo $i ?>"><?php if($banyak > 0 && $nilai[2] != "0"){echo $uas=$nilai[2]; $banyak--;}else{$uas=0;} ?></td>
-                <td class="angka"><?php echo round(($harian+$uts+$uas)/3); ?></td>
+                <td class="angka"><?php echo round(($harian*0.4)+($uts*0.3)+($uas*0.3)); ?></td>
                 <td class="angka praktek<?php echo $i ?>"><?php if($banyak > 0 && $nilai[3] != "0"){echo $pra=$nilai[3]; $banyak--;}else{$pra=0;} ?></td>
-                <td><?php echo parLulus(($harian+$uts+$uas)/3, $r->KKM, count($nilai), $pra); ?></td>
+                <td><?php echo parLulus(($harian*0.4)+($uts*0.3)+($uas*0.3), $r->KKM, count($nilai), $pra); ?></td>
             </tr>
             <?php 
                         $temp = $r->Kode_Mapel;

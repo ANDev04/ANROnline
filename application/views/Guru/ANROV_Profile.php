@@ -15,7 +15,7 @@
                 <hr>
             </div>
             <div class="col s12">
-                <table class="responsive-table bordered">
+                <table class="bordered">
                     <?php foreach($resource as $res){
                         $ID_Guru = $res->ID_Guru;
                     ?>

@@ -9,10 +9,7 @@ class ANROC_Auth extends CI_Controller{
             redirect("Beranda");
         }
         else{
-            $data['title']="ANROnline | Login";
-            $this->load->view("ANROV_Header",$data);
             $this->load->view("Auth/ANROV_Login");
-            $this->load->view("ANROV_Footer");   
         }
     }
     function register(){
@@ -35,7 +32,7 @@ class ANROC_Auth extends CI_Controller{
             'username' => $username,
             'password' => md5($password),
             'nama' => $nama,
-            'e-mail' => $email,
+            'email' => $email,
             'aktif' => 0
         );
         $id = $this->ANRO_Model->create("anr_auth",$data);
@@ -86,24 +83,22 @@ class ANROC_Auth extends CI_Controller{
     function auth(){
         $username = $this->input->post('username');
         $pass = $this->input->post('password');
-        $where=array(
-            'username' => $username,
-            'password' => md5($pass)
-        );
+        $word = md5($pass);
+        $where="username = '$username' OR email = '$username' AND password = '$word'";
         $cek = $this->ANRO_Model->read("anr_auth",$where);
         if($cek->num_rows() > 0){
             foreach($cek->result() as $res){
                 $nama= $res->nama;
                 $email= $res->e-mail;
-            }
-            $data_session = array(
+                $data_session = array(
                 'username' => $username,
                 'nama' =>  $nama,
-                'e-mail' => $email
+                'email' => $email
             );
             $this->session->set_userdata($data_session); 
             redirect("Beranda");
-        }else{   
+            }
+        }else{  
             echo "Username/Password Salah!";
        }
     }

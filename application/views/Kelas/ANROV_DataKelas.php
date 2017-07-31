@@ -25,7 +25,7 @@
                 <hr>
             </div>
             <div class="col s12">
-                <table class="responsive-table centered">
+                <table class="centered">
                     <thead>
                         <tr>
                             <th>NIS/NISN</th>

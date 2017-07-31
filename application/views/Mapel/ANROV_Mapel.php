@@ -29,7 +29,7 @@
                 </div>
                     <hr>
                 </form>
-                <table class="responsive-table bordered highlight centered">
+                <table class="bordered highlight centered">
                     <thead>
                         <tr>
                             <th>Kode Mata Pelajaran</th>
