@@ -55,7 +55,7 @@
                     </div>
                     <div class="#f5f5f5 grey lighten-4">
                         <div class="row" style="padding:20px">
-                            <form class="col s12">
+                            <form class="col s12" action="<?php echo base_url("ANROC_Auth/login") ?>" method="post">
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <i class="material-icons prefix">account_circle</i>
@@ -64,7 +64,7 @@
                                     </div>
                                     <div class="input-field col s12">
                                         <i class="material-icons prefix">lock</i>
-                                        <input id="password" type="password" class="validate">
+                                        <input id="password" name="password" type="password" class="validate">
                                         <label for="password">Password</label>
                                     </div>
                                 </div>

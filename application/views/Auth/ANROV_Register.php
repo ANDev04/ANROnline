@@ -14,23 +14,23 @@
                 <hr>
             </div>    
         <div class="col s12">
-            <form>
+            <form action="daftar" method="post">
                 <div class="row">
                     <div class="col l2 s3" style="padding-top:20.5px;">Nama</div>
                     <div class="col l10 s9">
-                        <input type="text" placeholder="Masukan Nama Lengkap">
+                        <input type="text" name="nama" placeholder="Masukan Nama Lengkap">
                     </div>
                     <div class="col l2 s3" style="padding-top:25.5px;">Username</div>
                     <div class="input-field col l10 s9">
-                        <input type="text" placeholder="Masukan Username">
+                        <input type="text" name="username" placeholder="Masukan Username">
                     </div>
                     <div class="col l2 s3" style="padding-top:20.5px;">E-mail</div>
                     <div class="col l10 s9">
-                        <input type="email" placeholder="Masukan E-mail">
+                        <input type="email" name="email" placeholder="Masukan E-mail">
                     </div>
                     <div class="col l2 s3" style="padding-top:20.5px;">Password</div>
                     <div class="col l5 s4">
-                        <input type="password" placeholder="Masukan Password">
+                        <input type="password" name="password" placeholder="Masukan Password">
                     </div>
                     <div class="col l5 s5">
                         <input type="password" placeholder="Masukan Konfirmasi Password">
