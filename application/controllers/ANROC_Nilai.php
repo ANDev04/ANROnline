@@ -1,8 +1,11 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 class ANROC_Nilai extends CI_Controller{
     
-    public function __construct(){
-        parent::__construct();
+   function __construct(){
+        parent:: __construct();
+        if($this->session->username == null){
+            redirect("ANROC_Auth");
+        }
     }
     
     public function index(){

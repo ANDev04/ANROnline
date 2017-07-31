@@ -1,5 +1,11 @@
 <?php
     class ANROC_GuruMapel extends CI_Controller{
+        function __construct(){
+            parent:: __construct();
+            if($this->session->username == null){
+                redirect("ANROC_Auth");
+            }
+        }
         function index(){
             $data['title']="ANROnline | Data Guru yang Mengajar";
             $data['resource']=$this->ANRO_Model->read("anr_guru_mapel")->result();

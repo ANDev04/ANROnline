@@ -1,5 +1,11 @@
 <?php
 class ANROC_Siswa extends CI_Controller{
+    function __construct(){
+        parent:: __construct();
+        if($this->session->username == null){
+            redirect("ANROC_Auth");
+        }
+    }
     function index(){
         $key=$this->input->get('key');
         $kelas=$this->input->get('kelas');

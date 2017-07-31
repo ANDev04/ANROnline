@@ -13,8 +13,8 @@ class ANROC_Auth extends CI_Controller{
         }
     }
     function register(){
-        if($this->session->username != null){
-            redirect("Beranda");
+        if($this->session->username == null){
+            redirect("ANROC_Auth");
         }else{
             $data['title']="ANROnline | Regitrasi";
             $this->load->view("ANROV_Header",$data);
@@ -22,6 +22,16 @@ class ANROC_Auth extends CI_Controller{
             $this->load->view("ANROV_Footer");
         }
         
+    }
+    function ganti(){
+        $data=array(
+            'password'=>$this->input->post('password')
+        );
+        $where=array(
+            'username'=>$this->session->username
+        );
+        $this->ANRO_Model->edit($where,$data,"anr_auth");
+        redirect('Beranda');
     }
     function daftar(){
         $username = $this->input->post('username');
@@ -47,8 +57,8 @@ class ANROC_Auth extends CI_Controller{
         $config['smtp_host']= "ssl://smtp.gmail.com";//pengaturan smtp
         $config['smtp_port']= "465";
         $config['smtp_timeout']= "400";
-        $config['smtp_user']= "arifnurdiansyah92@gmail.com"; // isi dengan email kamu
-        $config['smtp_pass']= "naonweh123"; // isi dengan password kamu
+        $config['smtp_user']= "anraport.online@gmail.com"; // isi dengan email kamu
+        $config['smtp_pass']= "ANROnline123"; // isi dengan password kamu
         $config['crlf']="\r\n"; 
         $config['newline']="\r\n"; 
         $config['wordwrap'] = TRUE;
@@ -78,13 +88,13 @@ class ANROC_Auth extends CI_Controller{
     {
         $this->ANRO_Model->update(array("md5(id_auth)"=>$key),array('aktif'=>1),"anr_auth");
         echo "Selamat kamu telah memverifikasi akun kamu";
-        echo "<br><br><a href='".site_url("login")."'>Kembali ke Menu Login</a>";
+        echo "<br><br><a href='".site_url("ANROC_Auth/")."'>Kembali ke Menu Login</a>";
     }
     function auth(){
         $username = $this->input->post('username');
         $pass = $this->input->post('password');
         $word = md5($pass);
-        $where="username = '$username' OR email = '$username' AND password = '$word'";
+        $where="(username = '".$this->db->escape_str($username)."' OR email = '".$this->db->escape_str($username)."') AND password = '".$this->db->escape_str($word)."'";
         $cek = $this->ANRO_Model->read("anr_auth",$where);
         if($cek->num_rows() > 0){
             foreach($cek->result() as $res){
