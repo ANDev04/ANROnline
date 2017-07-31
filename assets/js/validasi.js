@@ -219,5 +219,64 @@ function validasi(form, jenis){
             return(false);
         }
     }
+    else if(jenis == "auth_c"){
+        if(form.con_password_lama.value == ""){
+            Materialize.toast("Password Lama Belum Terisi!", 4000);
+            form.con_password_lama.focus();
+            return(false);
+        }
+        if(form.password.value == ""){
+            Materialize.toast("Password Belum Terisi!", 4000);
+            form.password.focus();
+            return(false);
+        }
+        if(form.con_password.value == ""){
+            Materialize.toast("Konfirmasi Password Belum Terisi!", 4000);
+            form.con_password.focus();
+            return(false);
+        }
+        if(form.con_password_lama.value != form.password_lama.value){
+            Materialize.toast("Password Lama Salah!", 4000);
+            form.con_password_lama.focus();
+            return(false);
+        }
+        if(form.password.value != form.con_password.value){
+            Materialize.toast("Password Tidak Sama!", 4000);
+            form.con_password.focus();
+            return(false);
+        }
+    }
+    else if(jenis == "auth"){
+        if(form.nama.value == ""){
+            Materialize.toast("Nama Belum Terisi!", 4000);
+            form.nama.focus();
+            return(false);
+        }
+        if(form.username.value == ""){
+            Materialize.toast("Username Belum Terisi!", 4000);
+            form.username.focus();
+            return(false);
+        }
+        if(form.email.value == ""){
+            Materialize.toast("E-mail Belum Terisi!", 4000);
+            form.email.focus();
+            return(false);
+        }
+        if(form.password.value == ""){
+            Materialize.toast("Password Belum Terisi!", 4000);
+            form.password.focus();
+            return(false);
+        }
+        if(form.con_password.value == ""){
+            Materialize.toast("Konfirmasi Password Belum Terisi!", 4000);
+            form.con_password.focus();
+            return(false);
+        }
+        if(form.password.value != form.con_password.value){
+            Materialize.toast("Password Tidak Sama!", 4000);
+            form.con_password.focus();
+            return(false);
+        }
+    }
     return (true);  
 }
