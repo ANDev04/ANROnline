@@ -69,7 +69,7 @@
                         $where=array(
                             'nama_kelas'=>$kelas[0]
                         );
-                        $jumlah=$this->ANRO_Model->read("ANR_Kelas",$where)->num_rows();
+                        $jumlah=$this->ANRO_Model->read("anr_kelas",$where)->num_rows();
 
                 ?>
                     <tr>

@@ -1,5 +1,11 @@
 <?php
     class Beranda extends CI_Controller{
+        function __construct(){
+            parent:: __construct();
+            if($this->session->username == null){
+                redirect("ANROC_Auth");
+            }
+        }
         function index(){
             $data["siswa"]=$this->ANRO_Model->read("anr_siswa")->num_rows();
             $data["pelajaran"]=$this->ANRO_Model->read("anr_mapel")->num_rows();

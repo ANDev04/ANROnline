@@ -1,5 +1,11 @@
 <?php 
     class ANROC_Program extends CI_Controller{
+        function __construct(){
+            parent:: __construct();
+            if($this->session->username == null){
+                redirect("ANROC_Auth");
+            }
+        }
         function create(){
             $data['title']="ANROnline | Tambah Data Program Keahlian";
             $this->load->view("ANROV_Header",$data);

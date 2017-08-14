@@ -1,5 +1,11 @@
 <?php
 class ANROC_Guru extends CI_Controller{
+    function __construct(){
+        parent:: __construct();
+        if($this->session->username == null){
+            redirect("ANROC_Auth");
+        }
+    }
     function index(){
         $halaman=$this->input->get('per_page');
         $key=$this->input->get('key');

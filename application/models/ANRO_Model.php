@@ -46,9 +46,17 @@ class ANRO_Model extends CI_Model{
             $this->db->join('anr_mapel', 'anr_mapel.Kode_Mapel = anr_guru_mapel.kode_mapel');
             $query = $this->db->get();
             return $query;    
+        }else if($table=="anr_auth"){
+            $this->db->select('*');
+            $this->db->from('anr_auth');
+            if(!empty($where)){
+                $this->db->where($where);
+            }
+            $query = $this->db->get();
+            return $query;    
         }else{
             if(!empty($where)){
-                return $this->db->get_where($table, $where);    
+                return $this->db->get_where($table,$where);    
             }
             else{
                 return $this->db->get($table);
@@ -166,7 +174,7 @@ class ANRO_Model extends CI_Model{
                 }
         }
         if($batas != null){
-            $sql .= " limit ". $offset .", ".$batas;
+            $sql .= " limit ". $this->db->escape_str($offset) .", ".$this->db->escape_str($batas);
         }
         $query = $this->db->query($sql);
         return $query;

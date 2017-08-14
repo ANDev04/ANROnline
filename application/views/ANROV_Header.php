@@ -40,6 +40,17 @@
                         <li><a href="<?php echo base_url("ANROC_Mapel") ?>">Data Mata Pelajaran</a></li>
                         <li><a href="<?php echo base_url("ANROC_Nilai") ?>">Data Nilai</a></li>
                         <li><a href="<?php echo base_url("ANROC_PDF") ?>">Cetak PDF</a></li>
+                        <?php 
+                            if($this->session->username != null){
+                        ?>
+                        <li><a href="<?php echo base_url("ANROC_Auth/logout")?>"><?php echo $this->session->nama ?> Logout</a></li>
+                        <?php
+                            }else{
+                        ?>
+                        <li><a href="<?php echo base_url("ANROC_Auth")?>">Login</a></li>
+                        <?php
+                            }
+                        ?>
                     </ul>
                     <ul id="nav-mobile" class="side-nav">
                         <li class="logo center" style="padding:10px;">
@@ -54,6 +65,17 @@
                         <li><a href="<?php echo base_url("ANROC_Mapel") ?>">Data Mata Pelajaran</a></li>
                         <li><a href="<?php echo base_url("ANROC_Nilai") ?>">Data Nilai</a></li>
                         <li><a href="<?php echo base_url("ANROC_PDF") ?>">Cetak PDF</a></li>
+                        <?php 
+                            if($this->session->username != null){
+                        ?>
+                        <li><?php echo $this->session->username ?><a href="<?php echo base_url("ANROC_Auth/logout")?>">Logout</a></li>
+                        <?php
+                            }else{
+                        ?>
+                        <li><a href="<?php echo base_url("ANROC_Auth")?>">Login</a></li>
+                        <?php
+                            }
+                        ?>
                     </ul>
                 </div>
             </nav>

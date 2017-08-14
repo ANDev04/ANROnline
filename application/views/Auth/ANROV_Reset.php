@@ -55,11 +55,11 @@
                     </div>
                     <div class="#f5f5f5 grey lighten-4">
                         <div class="row" style="padding:20px">
-                            <form class="col s12">
+                            <form class="col s12" action="<?php echo base_url("ANROC_Auth/reset") ?>" method="post">
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <i class="material-icons prefix">account_circle</i>
-                                        <input id="icon_prefix" type="text" name="username" class="validate">
+                                        <input id="icon_prefix" type="email" name="email" class="validate">
                                         <label for="icon_prefix">E-mail</label>
                                     </div>
                                 </div>

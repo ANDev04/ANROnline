@@ -1,5 +1,11 @@
 <?php
     class ANROC_SiswaKelas extends CI_Controller{
+        function __construct(){
+            parent:: __construct();
+            if($this->session->username == null){
+                redirect("ANROC_Auth");
+            }
+        }
         function index(){
             $data['title']="ANROnline | Data Siswa Yang Terdaftar di Kelas";
             $data['resource']=$this->ANRO_Model->read("anr_siswa_kelas")->result();

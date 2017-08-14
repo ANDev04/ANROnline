@@ -1,5 +1,11 @@
 <?php
 class ANROC_Jurusan extends CI_Controller{
+    function __construct(){
+        parent:: __construct();
+        if($this->session->username == null){
+            redirect("ANROC_Auth");
+        }
+    }
     function index(){
         $data['title']="ANROnline | Jurusan";
         $this->load->view("ANROV_Header.php",$data);

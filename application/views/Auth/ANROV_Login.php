@@ -55,7 +55,7 @@
                     </div>
                     <div class="#f5f5f5 grey lighten-4">
                         <div class="row" style="padding:20px">
-                            <form class="col s12" action="<?php echo base_url("ANROC_Auth/login") ?>" method="post">
+                            <form class="col s12" action="<?php echo site_url("ANROC_Auth/Auth") ?>" method="post">
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <i class="material-icons prefix">account_circle</i>
