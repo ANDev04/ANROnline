@@ -166,11 +166,18 @@ class ANROC_Auth extends CI_Controller{
             redirect("Beranda");
             }
         }else{  
-            echo "Username/Password Salah!";
+            redirect("ANROC_Auth?error=1");
        }
     }
     function logout(){
         $this->session->sess_destroy();
         redirect("ANROC_Auth/");
+    }
+    function akun(){
+        $data['title'] = "ANROnline | Akun";
+        $data['resource'] = $this->ANRO_Model->read("anr_auth")->result();
+        $this->load->view("ANROV_Header", $data);
+        $this->load->view("Auth/ANROV_Akun", $data);
+        $this->load->view("ANROV_Footer", $data);
     }
 }
