@@ -16,7 +16,6 @@
         <div class="col s12">
             <form  onsubmit="return validasi(this, 'auth_c')" action="<?php echo base_url("ANROC_Auth/Ganti"); ?>" method="post">
                 <div class="row">
-                    <input type="hidden" name="email" value="<?php echo $email ?>">
                     <input type="hidden" name="password_lama" value="">
                     <?php 
                         if(empty($email)){

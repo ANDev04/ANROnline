@@ -28,7 +28,7 @@
                         <td><?php echo $res->nama ?></td>
                         <td><?php echo $res->username ?></td>
                         <td><?php echo $res->email ?></td>
-                        </td>
+                        <td><a href="<?php echo base_url()."ANROC_Auth/Hapus/".$res->id_auth ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data?')"><i class="material-icons">delete</i></a></td>
                     </tr>
                 <?php $banyak++; } if($banyak==0){echo '<td colspan="9">Tidak Ada Data Untuk ditampilkan</td>';} ?>
                     </tbody>
@@ -37,7 +37,7 @@
         </div>
         <div class="row">
             <div class="col s12 right-align">
-                <a class="btn-floating btn-large waves-effect waves-light red " href="#"><i class="material-icons right">add</i></a>
+                <a class="btn-floating btn-large waves-effect waves-light red " href="<?php echo base_url("ANROC_Auth/register") ?>"><i class="material-icons right">add</i></a>
             </div>
         </div>
     </div>

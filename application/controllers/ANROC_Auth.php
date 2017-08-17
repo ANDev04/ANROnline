@@ -12,6 +12,16 @@ class ANROC_Auth extends CI_Controller{
             $this->load->view("Auth/ANROV_Login");
         }
     }
+    function hapus($id){
+        if($this->session->username == null){
+            redirect("ANROC_Auth");
+        }else{
+            $where=array('id_auth'=>$id);
+            $this->ANRO_Model->delete("anr_auth",$where);
+            redirect("ANROC_Auth/akun");
+        }
+        
+    }
     function register(){
         if($this->session->username == null){
             redirect("ANROC_Auth");
@@ -25,10 +35,12 @@ class ANROC_Auth extends CI_Controller{
     }
     function ganti(){
         $pass = $this->input->post('password');
+        $old = $this->input->post('con_password_lama');
         $data=array(
             'password'=> md5($pass)
         );
         $where=array(
+            'password'=>md5($old),
             'email'=>$this->input->post('email')
         );
         $this->ANRO_Model->update($where,$data,"anr_auth");
@@ -37,18 +49,14 @@ class ANROC_Auth extends CI_Controller{
     function forgotpass(){
         $this->load->view("Auth/ANROV_Reset");
     }
-    function forcereset($key){
-        $res=$this->ANRO_Model->read("anr_auth",array("md5(email)"=>$key));
-        foreach($res->result() as $resource){
-            $data['email']=$resource->email;
-        }
-        if($res->num_rows()>0){
-            $this->load->view("ANROV_Header");
+    function forcereset(){
+        $data['title']="ANROnline | Ganti Password";
+         if($this->session->username == null){
+            redirect("ANROC_Auth");
+        }else{
+            $this->load->view("ANROV_Header",$data);
             $this->load->view("Auth/ANROV_Change",$data);
             $this->load->view("ANROV_Footer");
-        }
-        else{
-            redirect ('ANROC_Auth');
         }
     }
     function reset(){
@@ -103,43 +111,7 @@ class ANROC_Auth extends CI_Controller{
             'aktif' => 0
         );
         $id = $this->ANRO_Model->create("anr_auth",$data);
-        $encrypted_id = md5($id);
-
-        $this->load->library('email');
-        $config = array();
-        $config['charset'] = 'utf-8';
-        $config['useragent'] = 'Codeigniter';
-        $config['protocol']= "smtp";
-        $config['mailtype']= "html";
-        $config['smtp_host']= "ssl://smtp.gmail.com";//pengaturan smtp
-        $config['smtp_port']= "465";
-        $config['smtp_timeout']= "400";
-        $config['smtp_user']= "anraport.online@gmail.com"; // isi dengan email kamu
-        $config['smtp_pass']= "ANROnline123"; // isi dengan password kamu
-        $config['crlf']="\r\n"; 
-        $config['newline']="\r\n"; 
-        $config['wordwrap'] = TRUE;
-        //memanggil library email dan set konfigurasi untuk pengiriman email
-
-        $this->email->initialize($config);
-        //konfigurasi pengiriman
-        $this->email->from($config['smtp_user']);
-        $this->email->to($email);
-        $this->email->subject("Verifikasi Akun");
-        $this->email->message(
-         "terimakasih telah melakuan registrasi, untuk memverifikasi silahkan klik tautan dibawah ini<br><br>".
-          site_url("ANROC_Auth/verification/$encrypted_id")
-        );
-
-        if($this->email->send())
-        {
-           echo "Berhasil melakukan registrasi, silahkan cek email kamu";
-        }else
-        {
-           echo "Berhasil melakukan registrasi, namu gagal mengirim verifikasi email";
-        }
-
-        echo "<br><br><a href='".site_url("ANROC_Auth")."'>Kembali ke Menu Login</a>";
+        redirect("ANROC_Auth/Akun");
     }
     public function verification($key)
     {

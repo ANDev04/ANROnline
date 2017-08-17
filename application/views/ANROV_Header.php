@@ -54,7 +54,7 @@
                     </ul>
                     <ul id='dropdown1' class='dropdown-content'>
                         <li><a href="<?php echo base_url("ANROC_Auth/akun") ?>">Akun</a></li>
-                        <li><a href="<?php echo base_url("ANROC_Auth/ganti") ?>">Ubah Password</a></li>
+                        <li><a href="<?php echo base_url("ANROC_Auth/forcereset") ?>">Ubah Password</a></li>
                         <li><a href="<?php echo base_url("ANROC_Auth/logout")?>">Logout</a></li>
                     </ul>
                     <ul id="nav-mobile" class="side-nav">
