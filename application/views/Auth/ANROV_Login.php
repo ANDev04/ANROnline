@@ -82,7 +82,13 @@
         </main>
     </body>
     <script>
+        
         $(document).ready(function() {
+            <?php if(isset($_GET['error'])){ $error = $_GET['error'];if($error == "1"){?>
+                var $tC = $('<span>Error! Username / Password Anda Salah.</span>');
+            <?php }?>
+                Materialize.toast($tC, 4000, 'rounded')
+            <?php }?>
             $('.slider').slider();
             $('.modal').modal();
         });
